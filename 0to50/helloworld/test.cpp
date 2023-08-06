@@ -1,20 +1,31 @@
+// #include <iostream>
+// 
+// int func(void);
+// 
+// int main()
+// {
+// 	const int hi = 5;
+// 	std::cout << hi << std::endl;
+// 	int HI = const_cast<int>(hi);
+// 	HI = 8;
+// 	std::cout << HI << std::endl;
+// 	
+// 
+// 	return (EXIT_SUCCESS);
+// }
+
 #include <iostream>
 
-int func(void);
+void foo(int const& x)
+{
+    int& y = const_cast<int&>(x);
+    y = 567;
+}
 
 int main()
 {
-	std::cout << "IN MAIN" << std::endl;
-	func();
-	return (EXIT_SUCCESS);
+    const int x = 123;
+	int *y = &x;
+    foo(x);
+    std::cout << x << "\n";
 }
-
-int func(void)
-{
-	int	HI = 5;
-
-	std::cout << "IN FUNC" << std::endl;
-	std::cout << HI << std::endl;
-	return (EXIT_SUCCESS);
-}
-	
