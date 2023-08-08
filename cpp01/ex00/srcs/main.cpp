@@ -4,5 +4,6 @@
 
 int main()
 {
+	randomChump("masahiot");
 	return (0);
 }
