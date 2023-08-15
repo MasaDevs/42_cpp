@@ -1,6 +1,6 @@
 NAME		=	BraiiiiiiinnnzzzZ
 CXX			=	g++
-CXXFLAG		= 	-Wall -Wextra -Werror
+CXXFLAG		= 	-Wall -Wextra -Werror -fsanitize=address
 VERSION		=	-std=c++98
 INCLUDE		=	-I includes
 SRCSDIR		=	srcs
@@ -11,11 +11,11 @@ OBJS		=	${subst ${SRCSDIR}, ./${OBJSDIR}, ${SRCS:.cpp=.o}}
 all:${NAME}
 
 ${NAME}: ${OBJS}
-	${CXX} ${CXXFLAGS} ${VERSION} ${OBJS} -o ${NAME}
+	${CXX} ${CXXFLAG} ${VERSION} ${OBJS} -o ${NAME}
 
 ${OBJSDIR}/%.o: ${SRCSDIR}/%.cpp
 	mkdir -p ${OBJSDIR}
-	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $@ -c $<
+	$(CXX) $(CXXFLAG) $(INCLUDE) -o $@ -c $<
 
 clean:
 	rm -rf ${OBJSDIR}
