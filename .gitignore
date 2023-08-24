@@ -1,5 +1,2 @@
-*
-!Makefile
-!*.cpp
-!*.hpp
-!*.pdf
+*.o
+googletest/
