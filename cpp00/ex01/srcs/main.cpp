@@ -12,7 +12,7 @@ enum	name_of_data {
 
 bool	is_num(const std::string &s)
 {
-	for(int i = 0; i < s.size(); i++)
+	for(unsigned long i = 0; i < s.size(); i++)
 		if(!isdigit(s[i]))
 			return (false);
 	return (true);
