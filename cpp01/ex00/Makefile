@@ -6,7 +6,7 @@ INCLUDE		=	-I includes
 SRCSDIR		=	srcs
 OBJSDIR		=	objs
 SRCS		=	$(shell find ${SRCSDIR} -name "*.cpp" -type f)
-OBJS		=	${subst ${SRCSDIR}, ./${OBJSDIR}, ${SRCS:.cpp=.o}}
+OBJS		=	${subst ${SRCSDIR}, ${OBJSDIR}, ${SRCS:.cpp=.o}}
 
 all:${NAME}
 
@@ -14,7 +14,7 @@ ${NAME}: ${OBJS}
 	${CXX} ${CXXFLAG} ${VERSION} ${OBJS} -o ${NAME}
 
 ${OBJSDIR}/%.o: ${SRCSDIR}/%.cpp
-	mkdir -p ${OBJSDIR}
+	mkdir -p ${dir OBJSDIR}
 	$(CXX) $(CXXFLAG) $(INCLUDE) -o $@ -c $<
 
 clean:
