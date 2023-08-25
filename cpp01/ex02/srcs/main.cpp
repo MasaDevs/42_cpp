@@ -16,5 +16,3 @@ int main()
 	std::cout << str_ptr << std::endl;
 	std::cout << &str_ref << std::endl;
 }
-
-
