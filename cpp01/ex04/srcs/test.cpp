@@ -4,16 +4,30 @@
 
 int main(int argc, char *argv[])
 {
-	std::ifstream ifs(argv[1]);
 
-	if(ifs.fail())
+	if (argc != 4)
 	{
-		std::cout << "file does not exist" << std::endl;
+		std::cout << "Error: The argument must be 3" << std::endl;
+		std::cout << "Usage: Sed <filename> <src> <dst>" << std::endl;
+		return (0);
 	}
-	std::string S = std::string(argv[1]);
-	std::string R = std::string(".replace");
+
+	std::string input_filename = std::string(argv[1]);
+	std::string output_filename = input_filename + std::string(".replace");
+	std::ifstream input_file(input_filename);
+	std::ofstream output_file(output_filename);
+
+	if (input_file.fail())
+	{
+		std::cout << "cannot opne file" << std::endl;
+		return (0);
+	}
 	
-	std::cout << S + R << std::endl;
+	std::string	line;
+	while (std::getline(input_file, line))
+	{
+		output_file << line << std::endl;
+	}
 }
 		
 	
