@@ -2,6 +2,7 @@ NAME		=	megaphone
 CXX			=	g++
 CXXFLAGS	=	-Wall -Werror -Wextra
 VERSION		=	-std=c++98
+TESTVERSION	=	-std=c++17
 SRCS		=	megaphone.cpp
 OBJS		=	${SRCS:.cpp=.o}
 
