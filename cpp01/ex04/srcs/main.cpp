@@ -1,3 +1,4 @@
+#include "ReplaceString.hpp"
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -24,10 +25,11 @@ int main(int argc, char *argv[])
 	}
 	
 	std::string	line;
+	std::string	s1 = std::string(argv[2]);
+	std::string	s2 = std::string(argv[3]);
 	while (std::getline(input_file, line))
 	{
-		output_file << line << std::endl;
+		output_file << ReplaceString::replace(line, s1, s2) << std::endl;
 	}
-}
-		
-	
+}	
+

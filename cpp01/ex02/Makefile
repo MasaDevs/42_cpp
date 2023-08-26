@@ -11,7 +11,7 @@ ${NAME}: ${OBJS}
 	${CXX} ${CXXFLAGS} ${OBJS} -o ${NAME}
 
 ${OBJSDIR}/%.o: ${SRCSDIR}/%.cpp
-	mkdir -p ${OBJSDIR}
+	mkdir -p ${dir ${OBJS}}
 	${CXX} ${CXXFLAGS} -c $< -o $@
 
 clean:
