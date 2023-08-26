@@ -1,6 +1,12 @@
+#include "Harl.hpp"
 #include <iostream>
 
 int main()
 {
-	std::cout << "It works" << std::endl;
+	std::string		line;
+	Harl			harl;
+	while(std::cout << "input>>" && std::getline(std::cin, line))
+	{
+		harl.complain(line);
+	}
 }

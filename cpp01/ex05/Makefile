@@ -2,6 +2,7 @@ NAME		=	Herl2.0
 CXX			=	g++
 CXXFLAGS	=	-Wall -Werror -Wextra
 VERSION		=	-std=c++98
+INCLUDES	=	-I ./includes
 SRCS		=	${shell find ${SRCSDIR} -name "*.cpp" -type f}
 SRCSDIR		=	srcs
 OBJSDIR		=	objs

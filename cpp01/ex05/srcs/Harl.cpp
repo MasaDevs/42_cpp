@@ -1,6 +1,7 @@
 #include "Harl.hpp"
 #include <iostream>
 #include <string>
+#define	num_of_level 4
 
 void	Harl::debug(void)
 {
@@ -26,7 +27,14 @@ void	Harl::error(void)
 	return ;
 }
 
-void	complain(std::string level)
+void	Harl::complain(std::string level)
 {
-
+	std::string const level_list[num_of_level] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	void (Harl::*func_list[num_of_level])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	for(int i = 0; i < num_of_level; i++)
+	{
+		if(level == level_list[i])
+			(this->*func_list[i])();
+	}
+	return ;
 }
