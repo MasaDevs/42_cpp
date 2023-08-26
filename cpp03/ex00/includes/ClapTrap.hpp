@@ -12,7 +12,7 @@ class	ClapTrap
 		void	attack(const std::string& target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
-		void	get_info(void);
+		void	get_info(void) const;
 	private:
 		std::string		name;
 		long long		hit_points;
