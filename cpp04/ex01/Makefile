@@ -1,4 +1,4 @@
-NAME		=	Polymorphism
+NAME		=	Polymorphism2
 CXX			=	g++
 CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 VERSION		=	-std=c++98
