@@ -4,11 +4,11 @@
 
 int main()
 {
-	Zombie	z("masasasa");
-	Zombie	*zom = newZombie("hello");
+	Zombie *z = zombieHorde(10, "arai");
 	randomChump("masahito");
-	z.announce();
-	zom->announce();
-	delete zom;
+
+	for(int i = 0; i < 10; i++)
+		z[i].announce();
+	delete[] z;
 	return (0);
 }
