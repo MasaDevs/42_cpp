@@ -4,7 +4,6 @@
 Fixed::Fixed()
 {
 	std::cout << "this is Fixed constructor" << std::endl;
-	this->sign = 0;
 	this->decimal = 0;
 	this->fraction = 0;
 	return ;
@@ -19,7 +18,6 @@ Fixed::~Fixed()
 Fixed::Fixed(Fixed const &fixed)
 {
 	std::cout << "this is Fixed copy constructor" << std::endl;
-	this->sign = fixed.sign;
 	this->decimal = fixed.decimal;
 	this->fraction = fixed.fraction;
 	return ;
@@ -40,11 +38,8 @@ int		Fixed::getRawBits(void) const
 Fixed	&Fixed::operator=(Fixed const &fixed)
 {
 	std::cout << "this is Fixed copy constructor" << std::endl;
-	this->sign = fixed.sign;
 	this->decimal = fixed.decimal;
 	this->fraction = fixed.fraction;
 	return (*this);
 }
-	
-
 	
