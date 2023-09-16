@@ -13,74 +13,11 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &breau)
 	return (*this);
 }
 
-Bureaucrat	Bureaucrat::operator++()
+//constructor
+Bureaucrat::Bureaucrat() : name("unknown")
 {
-	try
-	{
-		setGrade(this->grade + 1);
-	}
-	catch (Bureaucrat::GradeTooLowException &e)
-	{
-		std::cout << "this grade is too low !" << std::endl;
-	}
-	catch (Bureaucrat::GradeTooHighException &e)
-	{
-		std::cout << "this grade is too high !" << std::endl;
-	}
-	return (*this);
-}
-
-Bureaucrat	Bureaucrat::operator--()
-{
-	try
-	{
-		setGrade(this->grade - 1);
-	}
-	catch (Bureaucrat::GradeTooLowException &e)
-	{
-		std::cout << "this grade is too low !" << std::endl;
-	}
-	catch (Bureaucrat::GradeTooHighException &e)
-	{
-		std::cout << "this grade is too high !" << std::endl;
-	}
-	return (*this);
-}
-
-const Bureaucrat	Bureaucrat::operator ++(int)
-{
-	Bureaucrat	result = *this;
-	try
-	{
-		setGrade(this->grade + 1);
-	}
-	catch (Bureaucrat::GradeTooLowException &e)
-	{
-		std::cout << "this grade is too low !" << std::endl;
-	}
-	catch (Bureaucrat::GradeTooHighException &e)
-	{
-		std::cout << "this grade is too high !" << std::endl;
-	}
-	return (result);
-}
-
-const Bureaucrat	Bureaucrat::operator --(int)
-{
-	Bureaucrat	result = *this;
-	try
-	{
-		setGrade(this->grade - 1);
-	}
-	catch (Bureaucrat::GradeTooLowException &e)
-	{
-		std::cout << "this grade is too low !" << std::endl;
-	}
-	catch (Bureaucrat::GradeTooHighException &e)
-	{
-		std::cout << "this grade is too high !" << std::endl;
-	}
-	return (result);
+	setGrade(this->grade_min);
+	return ;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
@@ -91,25 +28,32 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 	}
 	catch (Bureaucrat::GradeTooLowException &e)
 	{
-		std::cout << "this grade is too low !" << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 	catch (Bureaucrat::GradeTooHighException &e)
 	{
-		std::cout << "this grade is too high !" << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 	std::cout << "this is Bureaucrat Constracutor" << std::endl;
 	return ;
 }
 
+//destructor
 Bureaucrat::~Bureaucrat()
 {
 	std::cout << "this is Bureaucrat Destracutor" << std::endl;
 	return ;
 }
 
+//member fucntion
 std::string	Bureaucrat::getName(void) const
 {
 	return (this->name);
+}
+
+int			Bureaucrat::getGrade(void) const
+{
+	return (this->grade);
 }
 
 void		Bureaucrat::setGrade(int grade)
@@ -123,8 +67,39 @@ void		Bureaucrat::setGrade(int grade)
 	return ;
 }
 
-int			Bureaucrat::getGrade(void) const
+void	Bureaucrat::gradeIncrement(void)
 {
-	return (this->grade);
+	try
+	{
+		setGrade(getGrade() + 1);
+	}
+	catch (Bureaucrat::GradeTooHighException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	return ;
 }
 
+void	Bureaucrat::gradeDecrement(void)
+{
+	try
+	{
+		setGrade(getGrade() - 1);
+	}
+	catch (Bureaucrat::GradeTooLowException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	return ;
+}
+
+//exception class
+const char	*Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("this grade is too high! must be 150 or under");
+}
+
+const char	*Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("this grade is too low! must be 1 or over");
+}
