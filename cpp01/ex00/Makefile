@@ -1,6 +1,6 @@
 NAME		=	BraiiiiiiinnnzzzZ
 CXX			=	g++
-CXXFLAG		= 	-Wall -Wextra -Werror -fsanitize=address
+CXXFLAG		= 	-Wall -Wextra -Werror -fsanitize=leak
 VERSION		=	-std=c++98
 INCLUDE		=	-I includes
 SRCSDIR		=	srcs

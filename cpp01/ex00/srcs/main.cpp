@@ -4,9 +4,9 @@
 
 int main()
 {
-	Zombie	z("masasasa");
+	Zombie	z("masahiot arai");
 	Zombie	*zom = newZombie("hello");
-	randomChump("masahito");
+	randomChump("ayato arai");
 	z.announce();
 	zom->announce();
 	delete zom;
