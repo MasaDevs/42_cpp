@@ -6,14 +6,15 @@
 #include <string>
 #include <exception>
 
-class	Form
+class	AForm
 {
 	public:
-		Form();
-		Form(std::string name, int grade_for_sign,  int grade_for_execute);
-		~Form();
-		Form(Form const &Form);
-		Form			&operator=(Form const &form);
+		AForm();
+		AForm(std::string name, int grade_for_sign,  int grade_for_execute);
+		~AForm();
+		AForm(AForm const &AForm);
+		AForm			&operator=(AForm const &form);
+		virtual void	execute(Bureaucrat const &executor) = 0;
 		std::string		getName(void) const;
 		int				getGradeForSign(void) const;
 		int				getGradeForExecute(void) const;
@@ -41,6 +42,6 @@ class	Form
 		static int const	grade_max = 150;
 };
 
-std::ostream		& operator << (std::ostream &out, Form const &form);
+std::ostream		& operator << (std::ostream &out, AForm const &form);
 		
 #endif

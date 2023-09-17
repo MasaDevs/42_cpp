@@ -1,43 +1,51 @@
 #include "ShrubberyCreationForm.hpp"
 
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Unknown", 145, 137);
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Unknown", 145, 137)
 {
 		std::cout << "this is Shurubbery default Constructor" << std::endl;
 		return ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target);
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm(target, 145,137)
 {
 		std::cout << "this is Shurubbery default Constructor" << std::endl;
 		return ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &form) : AForm(name, 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &form) : AForm(form.getName(), 145, 137)
 {
 		std::cout << "this is Shurubbery copy Constructor" << std::endl;
 		return ;
 }
 
-
-ShrubberyCreationForm::~ShrubberyCreationForm();	
+ShrubberyCreationForm::~ShrubberyCreationForm()
 {
 		std::cout << "this is Shurubbery default Destructor" << std::endl;
 		return ;
 }
 
-SShrubberyCreationForm	&hrubberyCreationForm::ShrubberyCreationFrom &operator=(ShrubberyCreationForm const &form)
+ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm const &form)
 {
-	(void) form;
-	return ;
+	if ( this != &form )
+	{
+		*this = form;
+	}
+	return (*this);
 }
 
-void	SShrubberyCreationForm::execute(Bureaucrat const &executer)
+void	ShrubberyCreationForm::execute(Bureaucrat const &executer)
 {
 	try
 	{
-		exec(executer);
+		this->checkExecuteGrade(executer);
+		std::cout << "Execute!!" <<std::endl;
+		//create file and write ascii tree
 	}
-	catch ()
+	catch (AForm::GradeTooLowException &e)
 	{
+		std::cout << e.what() << std::endl;
+		std::cout << "this executer doesn't fullfill the criteria.." << std::endl;
+	}
+}
 

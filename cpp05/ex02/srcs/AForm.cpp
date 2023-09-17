@@ -1,13 +1,13 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 
 //Constructor
-Form::Form() : name("unknown"), issigned(false), grade_for_sign(this->grade_max), grade_for_execute(this->grade_max)
+AForm::AForm() : name("unknown"), issigned(false), grade_for_sign(this->grade_max), grade_for_execute(this->grade_max)
 {
 	std::cout << "this is form constructor" << std::endl;
 	return ;
 }
 
-Form::Form(std::string name, int grade_for_sign, int grade_for_execute) : name(name), issigned(false)
+AForm::AForm(std::string name, int grade_for_sign, int grade_for_execute) : name(name), issigned(false)
 {
 	try
 	{
@@ -28,54 +28,54 @@ Form::Form(std::string name, int grade_for_sign, int grade_for_execute) : name(n
 	return ;
 }
 
-Form::Form(Form const &form) : name(form.name), issigned(false), grade_for_sign(form.grade_for_sign), grade_for_execute(form.grade_for_execute)
+AForm::AForm(AForm const &form) : name(form.name), issigned(false), grade_for_sign(form.grade_for_sign), grade_for_execute(form.grade_for_execute)
 {
 	return ;
 }
 
 //Destructor
-Form::~Form()
+AForm::~AForm()
 {
 	std::cout << "this is form destructor" << std::endl;
 	return ;
 }
 
 //operator
-Form	&Form::operator=(Form const &form)
+AForm	&AForm::operator=(AForm const &form)
 {
 	this->grade_for_sign = form.grade_for_sign;
 	this->grade_for_execute= form.grade_for_execute;
 	return (*this);
 }
 
-std::ostream		& operator << (std::ostream &out, Form const &form)
+std::ostream		& operator << (std::ostream &out, AForm const &form)
 {
-	out << "Form::name: " << form.getName() << " GradeForSign: " << form.getGradeForSign() << " GradeForExecute: " << form.getGradeForExecute();
+	out << "AForm::name: " << form.getName() << " GradeForSign: " << form.getGradeForSign() << " GradeForExecute: " << form.getGradeForExecute();
 	return (out);
 }
 		
 //menber function
-std::string		Form::getName(void) const
+std::string		AForm::getName(void) const
 {
 	return (this->name);
 }
 
-int				Form::getGradeForSign(void) const
+int				AForm::getGradeForSign(void) const
 {
 	return (this->grade_for_sign);
 }
 
-int				Form::getGradeForExecute(void) const
+int				AForm::getGradeForExecute(void) const
 {
 	return (this->grade_for_execute);
 }
 
-bool			Form::getIsSigned(void) const
+bool			AForm::getIsSigned(void) const
 {
 	return (this->issigned);
 }
 
-void	Form::beSigned(Bureaucrat const &bureau)
+void	AForm::beSigned(Bureaucrat const &bureau)
 {
 	try
 	{
@@ -83,7 +83,7 @@ void	Form::beSigned(Bureaucrat const &bureau)
 		this->issigned = true;
 		bureau.signForm(true, this->name, "dummy");
 	}
-	catch (Form::GradeTooLowException &e)
+	catch (AForm::GradeTooLowException &e)
 	{
 		bureau.signForm(false, this->name, e.what());
 		this->issigned = false;
@@ -91,32 +91,32 @@ void	Form::beSigned(Bureaucrat const &bureau)
 	return ;
 }
 
-void	Form::isvalid(int grade) const
+void	AForm::isvalid(int grade) const
 {
 	if (this->grade_max < grade)
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	else if (grade < this->grade_min)
-		throw Form::GradeTooHighException();
+		throw AForm::GradeTooHighException();
 }
 
-void	Form::checkSignGrade(Bureaucrat const &bureau)
+void	AForm::checkSignGrade(Bureaucrat const &bureau)
 {
-	if (this->grade_for_sign > bureau.getGrade())	
-		throw Form::GradeTooLowException();
+	if (this->grade_for_sign <  bureau.getGrade())	
+		throw AForm::GradeTooLowException();
 }
 
-void	Form::checkExecuteGrade(Bureaucrat const &bureau)
+void	AForm::checkExecuteGrade(Bureaucrat const &bureau)
 {
-	if (this->grade_for_execute > bureau.getGrade())	
-		throw Form::GradeTooLowException();
+	if (this->grade_for_execute < bureau.getGrade())	
+		throw AForm::GradeTooLowException();
 }
 
-const char *Form::GradeTooLowException::what() const throw()
+const char *AForm::GradeTooLowException::what() const throw()
 {
 	return ("this grade is too low!");
 }
 
-const char *Form::GradeTooHighException::what() const throw()
+const char *AForm::GradeTooHighException::what() const throw()
 {
 	return ("this grade is too high!");
 }
