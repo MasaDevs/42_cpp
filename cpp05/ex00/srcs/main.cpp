@@ -3,12 +3,51 @@
 
 int main(void)
 {
+	//constructor check
 	{
-		Bureaucrat b("masahito arai", 2);
-		b.gradeIncrement();
-		b.gradeIncrement();
-		b.gradeDecrement();
-		std::cout << b << std::endl;
+		Bureaucrat bureau1("masahito arai", 20);
+		Bureaucrat bureau2;
+		Bureaucrat bureau3 = bureau1;
+		Bureaucrat bureau4(bureau2);
+		std::cout << bureau1 << std::endl;
+		std::cout << bureau2 << std::endl;
+		std::cout << bureau3 << std::endl;
+		std::cout << bureau4 << std::endl;
+	}
+	//increment check
+	{
+		Bureaucrat too_high("masahito arai", 3);
+		std::cout << too_high << std::endl;
+		too_high.gradeIncrement();
+		std::cout << too_high << std::endl;
+		too_high.gradeIncrement();
+		std::cout << too_high << std::endl;
+		too_high.gradeIncrement();
+		std::cout << too_high << std::endl;
+		
+	}
+	//decrement check
+	{
+
+		Bureaucrat too_low("masahito arai", 149);
+		std::cout << too_low<< std::endl;
+		too_low.gradeDecrement();
+		std::cout << too_low<< std::endl;
+		too_low.gradeDecrement();
+		std::cout << too_low<< std::endl;
+		too_low.gradeDecrement();
+		std::cout << too_low<< std::endl;
+	}
+	//range check
+	{
+		Bureaucrat too_low1("masahito arai", 151);
+		std::cout << too_low1 << std::endl;
+		Bureaucrat too_low2("masahito arai", 3131);
+		std::cout << too_low2 << std::endl;
+		Bureaucrat too_high1("masahito arai", 0);
+		std::cout << too_high1 << std::endl;
+		Bureaucrat too_high2("masahito arai", -1);
+		std::cout << too_high2 << std::endl;
 	}
 	std::cout << "this program successfully finished" << std::endl;
 	return (0);
