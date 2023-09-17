@@ -9,6 +9,7 @@ class	Bureaucrat
 {
 	public:
 		Bureaucrat();
+		Bureaucrat(Bureaucrat const &bureau);
 		Bureaucrat(std::string name, int grade);
 		~Bureaucrat();
 		std::string			getName(void) const;

@@ -16,10 +16,17 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &breau)
 //constructor
 Bureaucrat::Bureaucrat() : name("unknown")
 {
+	std::cout << "this is Bureaucrat default Constractor" << std::endl;
 	setGrade(this->grade_min);
 	return ;
 }
 
+Bureaucrat::Bureaucrat(Bureaucrat const &bureau) : name(bureau.name), grade(bureau.grade)
+{
+	std::cout << "this is Bureaucrat copy Constractor" << std::endl;
+	return ;
+}
+		
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 {
 	try
@@ -34,7 +41,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << "this is Bureaucrat Constracutor" << std::endl;
+	std::cout << "this is Bureaucrat default Constracutor" << std::endl;
 	return ;
 }
 
@@ -59,9 +66,9 @@ int			Bureaucrat::getGrade(void) const
 void		Bureaucrat::setGrade(int grade)
 {
 	if (grade < this->grade_min)
-		throw GradeTooLowException();
-	else if (this->grade_max < grade)
 		throw GradeTooHighException();
+	else if (this->grade_max < grade)
+		throw GradeTooLowException();
 	this->grade = grade;
 	std::cout << "Bureaucrat Grade was set" << std::endl;
 	return ;
@@ -71,7 +78,7 @@ void	Bureaucrat::gradeIncrement(void)
 {
 	try
 	{
-		setGrade(getGrade() + 1);
+		setGrade(getGrade() - 1);
 	}
 	catch (Bureaucrat::GradeTooHighException &e)
 	{
@@ -84,7 +91,7 @@ void	Bureaucrat::gradeDecrement(void)
 {
 	try
 	{
-		setGrade(getGrade() - 1);
+		setGrade(getGrade() + 1);
 	}
 	catch (Bureaucrat::GradeTooLowException &e)
 	{
@@ -96,10 +103,10 @@ void	Bureaucrat::gradeDecrement(void)
 //exception class
 const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("this grade is too high! must be 150 or under");
+	return ("this grade is too high! must be 1 or over");
 }
 
 const char	*Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("this grade is too low! must be 1 or over");
+	return ("this grade is too low! must be 150 or under");
 }
