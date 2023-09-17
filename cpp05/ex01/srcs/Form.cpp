@@ -34,6 +34,7 @@ void	Form::besigned(Bureaucrat const &bureau)
 {
 	if (bureau.getGrade() <= this->grade_for_sign)
 		this->issigned = true;
+	bureau.signForm();
 	return ;
 }
 
