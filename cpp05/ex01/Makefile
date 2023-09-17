@@ -1,4 +1,4 @@
-NAME		=	Bureaucrat
+NAME		=	Form	
 CXX			=	g++
 CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 VERSION		=	-std=c++98

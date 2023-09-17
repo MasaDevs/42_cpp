@@ -9,13 +9,15 @@ class	Bureaucrat
 {
 	public:
 		Bureaucrat();
+		Bureaucrat(Bureaucrat const &bureau);
 		Bureaucrat(std::string name, int grade);
 		~Bureaucrat();
 		std::string			getName(void) const;
 		int					getGrade(void) const;
 		void				gradeIncrement(void);
 		void				gradeDecrement(void);
-		void				signForm(void);
+		void				signForm(bool issigned, std::string form_name, std::string reason) const;
+
 		Bureaucrat	&operator=(const Bureaucrat &breau);
 		class	GradeTooHighException : public std::exception
 		{
