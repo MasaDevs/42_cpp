@@ -5,9 +5,16 @@
 
 int main(void)
 {
-	Bureaucrat				bureau("masahito arai", 1);
+	Bureaucrat				bureau1("masahito arai", 150);
+	Bureaucrat				bureau2("masahito arai", 138);
+	Bureaucrat				bureau3("masahito arai", 1);
 	ShrubberyCreationForm	form("My form");
-	form.execute(bureau);
+	form.beSigned(bureau1);
+	form.execute(bureau1);
+	form.beSigned(bureau2);
+	form.execute(bureau2);
+	form.beSigned(bureau3);
+	form.execute(bureau3);
 
 //	//constructor check
 //	{
