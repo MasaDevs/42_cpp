@@ -7,12 +7,51 @@
 
 void	ScalarConverter::convert(std::string num)
 {
-	ScalarConverter::convertChar(num);
-	ScalarConverter::convertInt(num);
-	ScalarConverter::convertFloat(num);
-	ScalarConverter::convertDouble(num);
+	try
+	{
+		char	result = ScalarConverter::convertChar(num);
+		std::cout << "char: " << '\''<< result << '\''<< std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try
+	{
+		int		result = ScalarConverter::convertInt(num);
+		std::cout << "int: " << result << std::endl;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try
+	{
+
+		float	result = ScalarConverter::convertFloat(num);
+		std::cout << "float: " << result << "f"<< std::endl;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try
+	{
+		double	result = ScalarConverter::convertDouble(num);
+		std::cout << "double: " << result << std::endl;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }
 
+int		ScalarConverter::isprint(int chr)
+{
+	if (chr < 32 || 126 < chr)
+			return (0);
+	return (chr);
+}
 
 bool	ScalarConverter::isStringDigit(std::string num)
 {
@@ -62,120 +101,92 @@ size_t	ScalarConverter::countDigitsUnderDecimalPoint(std::string str_num)
 }
 	
 // Cast
-void	ScalarConverter::convertChar(std::string str_num)
+char	ScalarConverter::convertChar(std::string str_num)
 {
+	int			num;
+	char		result;
+
+	if (str_num.size() != 1)
+			throw std::invalid_argument("Char: impossible");
 	try
 	{
-		if (str_num.size() != 1)
-				throw std::invalid_argument("impossible");
-		else if (str_num[0] < 32 || 126 < str_num[0])
-				throw std::out_of_range("Non displayable");
-		std::cout << "char: " << '\''<<  static_cast<char> (str_num[0]) << '\''<< std::endl;
+		num = ScalarConverter::convertInt(str_num);
 	}
-	catch(std::exception &e)
+	catch (std::exception &e)
 	{
-		std::cout << "char: " << e.what() << std::endl;
+		throw std::invalid_argument("Char: impossible");
 	}
+	if (!ScalarConverter::isprint(num))
+			throw std::out_of_range("Char: Non displayable");
+	result = static_cast<char> (num);
+	return (result);
 }
 		
-void	ScalarConverter::convertInt(std::string str_num)
+int		ScalarConverter::convertInt(std::string str_num)
 {
-	try
-	{
-		int		num;
-		if (!ScalarConverter::isStringDigit(str_num))
-			throw std::invalid_argument("Impossible");
-		if (str_num.size() == 1 && (str_num[0] < '0' || '9' < str_num[0]))
-			std::cout << "int: " << static_cast<int> (str_num[0]) << std::endl;
-		else
-		{
-			num = std::stoi(str_num);
-			std::cout << "int: " << num << std::endl;
-		}
-		
-	}
-	catch (std::out_of_range &e)
-	{
-		std::cout << "int: Impossible" << std::endl;
-	}
-	catch (std::invalid_argument &e)
-	{
-		std::cout << "int: Impossible" << std::endl;
-	}
+
+	int		num;
+	if (!ScalarConverter::isStringDigit(str_num))
+		throw std::invalid_argument("int: Impossible");
+	if (str_num.size() == 1 && (str_num[0] < '0' || '9' < str_num[0]))
+		num = static_cast<int> (str_num[0]);
+	else
+		num = std::stoi(str_num);
+	return (num);
 }
 
-void	ScalarConverter::convertFloat(std::string str_num)
+float	ScalarConverter::convertFloat(std::string str_num)
 {
-	try
+	float	num;
+
+	if (!ScalarConverter::isStringDigit(str_num))
 	{
-		float	num;
-		if (!ScalarConverter::isStringDigit(str_num))
-		{
-			if (str_num == "inff" || str_num == "inf")
-				throw std::out_of_range("inff");
-			else if (str_num == "-inff" || str_num == "-inf")
-				throw std::out_of_range("-inff");
-			else if (str_num == "nanf" || str_num == "nan")
-				throw std::out_of_range("nanf");
-			throw std::invalid_argument("nan");
-		}
-		if (str_num.size() == 1)
-			std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float> (str_num[0]) << "f"<< std::endl;
-		else
-		{
-			num = std::stof(str_num);
-			std::cout << "float: " <<  std::fixed << std::setprecision(ScalarConverter::countDigitsUnderDecimalPoint(str_num)) << num << "f"<< std::endl;
-		}
+		if (str_num == "inff" || str_num == "inf")
+			throw std::out_of_range("float: inff");
+		else if (str_num == "-inff" || str_num == "-inf")
+			throw std::out_of_range("float: -inff");
+		else if (str_num == "nanf" || str_num == "nan")
+			throw std::out_of_range("float: nanf");
+		throw std::invalid_argument("float: nan");
 	}
-	catch (std::out_of_range &e)
+	if (str_num.size() == 1 && (str_num[0] < '0' || '9' < str_num[0]))
 	{
-		std::cout << "float: " << e.what() << std::endl;
+		num = static_cast<float> (str_num[0]);
 	}
-	catch (std::invalid_argument &e)
-	{
-		std::cout << "float: nanf" << std::endl;
-	}
+	else
+		num = std::stof(str_num);
+	return (num);
 }
 
-void	ScalarConverter::convertDouble(std::string str_num)
+double	ScalarConverter::convertDouble(std::string str_num)
 {
-	try
+	double	num;
+
+	if (!ScalarConverter::isStringDigit(str_num))
 	{
-		double num;
-		if (!ScalarConverter::isStringDigit(str_num))
-		{
-			if (str_num == "inff" || str_num == "inf")
-				throw std::out_of_range("inf");
-			else if (str_num == "-inff" || str_num == "-inf")
-				throw std::out_of_range("-inf");
-			else if (str_num == "nanf" || str_num == "nan")
-				throw std::out_of_range("nan");
-			throw std::invalid_argument("nan");
-		}
-		if (str_num.size() == 1)
-			std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double> (str_num[0]) << std::endl;
-		else
-		{
-			num = std::stof(str_num);
-			std::cout << "double: " <<  std::fixed << std::setprecision(ScalarConverter::countDigitsUnderDecimalPoint(str_num)) << num << std::endl;
-		}
+		if (str_num == "inff" || str_num == "inf")
+			throw std::out_of_range("double: inf");
+		else if (str_num == "-inff" || str_num == "-inf")
+			throw std::out_of_range("double: -inf");
+		else if (str_num == "nanf" || str_num == "nan")
+			throw std::out_of_range("double: nan");
+		throw std::invalid_argument("double: nan");
 	}
-	catch (std::out_of_range &e)
+	if (str_num.size() == 1 && (str_num[0] < '0' || '9' < str_num[0]))
 	{
-		std::cout << "double: " << e.what() << std::endl;
+		num = static_cast<double> (str_num[0]);
 	}
-	catch (std::invalid_argument &e)
+	else
 	{
-		std::cout << "double: nanf" << std::endl;
+		num = std::stof(str_num);
 	}
+	return (num);
 }
 
-int main()
+int	main(int argc, char *argv[])
 {
-	std::string	name;
 
-	while(std::getline(std::cin, name))
-	{
-		ScalarConverter::convert(name);
-	}
+	if (argc < 2)
+		return (0);
+	ScalarConverter::convert(argv[1]);
 }

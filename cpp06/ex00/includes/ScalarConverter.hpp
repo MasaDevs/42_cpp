@@ -9,13 +9,13 @@ class	ScalarConverter
 		static void		convert(std::string chr);
 	private:
 		ScalarConverter();
+		static int		isprint(int chr);
 		static size_t	countDigitsUnderDecimalPoint(std::string);
 		static bool		isStringDigit(std::string);
-		static void		convertChar(std::string str_num);
-		static void		convertInt(std::string);
-		static void		convertFloat(std::string str_num);
-		static void		convertDouble(std::string str_num);
-
+		static char		convertChar(std::string str_num);
+		static int		convertInt(std::string);
+		static float	convertFloat(std::string str_num);
+		static double	convertDouble(std::string str_num);
 };
 
 #endif
