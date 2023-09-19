@@ -2,26 +2,31 @@
 #include <iostream>
 #include <string>
 
-HumanB::HumanB(std::string name)
+HumanB::HumanB(std::string name) : name(name), weapon(nullptr)
 {
-	this->name = name;
-	this->wpn = nullptr;
+	std::cout << "this is HumanB Constructor" << std::endl;
 	return ;
 }
 
-void	HumanB::setWeapon(Weapon &wpn)
+HumanB::~HumanB()
 {
-	this->wpn = &wpn;
+	std::cout << "this is HumanB Constructor" << std::endl;
+	return ;
+}
+
+void	HumanB::setWeapon(Weapon &weapon)
+{
+	this->weapon = &weapon;
 	return ;
 }
 
 void	HumanB::attack(void) const
 {
-	if(this->wpn == nullptr)
+	if(this->weapon == nullptr)
 		std::cout << this->name << " don't have weapon." << std::endl;
 	else
 	{
-		std::string const	&str = this->wpn->getType();
+		std::string const	&str = this->weapon->getType();
 		std::cout << this->name << " attacks with their " << str << std::endl;
 	}
 	return ;

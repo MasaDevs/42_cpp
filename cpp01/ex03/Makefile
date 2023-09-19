@@ -1,8 +1,7 @@
 NAME		=	UnnecessaryViolence
 CXX			=	g++
-CXXFLAGS	=	-Wall -Wextra -Werror
+CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=leak
 VERSION		=	-std=c++98
-TESTVERSION	=	-std=c++17
 INCLUDE		=	-I ./includes/
 SRCS		=	${shell find ${SRCSDIR} -name "*.cpp"}
 SRCSDIR		=	srcs

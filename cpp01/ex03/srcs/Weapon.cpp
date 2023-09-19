@@ -4,18 +4,31 @@
 #include <iostream>
 #include <string>
 
-Weapon::Weapon(std::string type)
+Weapon::Weapon() : type("default")
 {
-	this->type = type;
+	std::cout << "this is Weapon Constructor" << std::endl;
 	return ;
 }
+
+Weapon::Weapon(std::string type) : type(type)
+{
+	std::cout << "this is Weapon Constructor" << std::endl;
+	return ;
+}
+
+Weapon::~Weapon()
+{
+	std::cout << "this is Weapon Destructor" << std::endl;
+	return ;
+}
+
 std::string	const	&Weapon::getType(void) const
 {
 	std::string const	&str = this->type;
 	return (str);
 }
 
-void				Weapon::setType(std::string type)
+void	Weapon::setType(std::string type)
 {
 	this->type = type;
 	return ;

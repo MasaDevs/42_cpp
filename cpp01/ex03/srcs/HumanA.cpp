@@ -2,16 +2,21 @@
 #include <iostream>
 #include <string>
 
-HumanA::HumanA(std::string name, Weapon wpn)
+HumanA::HumanA(std::string name, Weapon weapon) : name(name), weapon(weapon)
 {
-	this->name = name;
-	this->wpn = wpn;
+	std::cout << "this is HumanA Constructor" << std::endl;
+	return ;
+}
+
+HumanA::~HumanA()
+{
+	std::cout << "this is HumanA Destructor" << std::endl;
 	return ;
 }
 
 void	HumanA::attack(void) const
 {
-	std::string const	&str = this->wpn.getType();
+	std::string const	str = this->weapon.getType();
 	std::cout << this->name << " attacks with their " << str << std::endl;
 	return ;
 }

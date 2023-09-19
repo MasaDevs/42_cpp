@@ -1,6 +1,7 @@
 NAME		=	BRAIN
 CXX			=	g++
-CXXFLAGS	=	-Wall -Wextra -Werror
+CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
+VERSION		=	-std=c++98
 SRCS		=	${shell find ${SRCSDIR} -name "*.cpp" -type f}
 SRCSDIR		=	srcs
 OBJSDIR		=	objs
@@ -8,11 +9,11 @@ OBJS		=	${subst ${SRCSDIR}, ${OBJSDIR}, ${SRCS:.cpp=.o}}
 
 all: ${NAME}
 ${NAME}: ${OBJS}
-	${CXX} ${CXXFLAGS} ${OBJS} -o ${NAME}
+	${CXX} ${CXXFLAGS} ${VERSION} ${OBJS} -o ${NAME}
 
 ${OBJSDIR}/%.o: ${SRCSDIR}/%.cpp
 	mkdir -p ${dir ${OBJS}}
-	${CXX} ${CXXFLAGS} -c $< -o $@
+	${CXX} ${CXXFLAGS}  ${VERSION} -c $< -o $@
 
 clean:
 	rm -rf ${OBJSDIR}
