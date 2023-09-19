@@ -5,7 +5,7 @@
 
 void	PhoneBook::add(void)
 {
-	this->contact[index].input_data();
+	this->contact[index].inputData();
 	this->index = (this->index + 1) % 8;
 }
 
@@ -13,7 +13,7 @@ void	PhoneBook::search(void)
 {		
 	for(int i = 0; i < 8; i++)	
 	{
-		this->contact[i].print_data(i);
+		this->contact[i].printData(i);
 	}
 }
 

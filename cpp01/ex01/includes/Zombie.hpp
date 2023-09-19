@@ -7,10 +7,11 @@
 class Zombie
 {
 	public:
-		Zombie() {this->name = "default";}
-		Zombie(std::string name) {this->name = name;}
+		Zombie();
+		Zombie(std::string name);
+		~Zombie();
 		void	announce(void) const;
-		void	set_name(std::string name);
+		void	setName(std::string name);
 	private:
 		std::string name;
 };

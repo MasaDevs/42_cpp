@@ -46,7 +46,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	if (0 < this->hit_points && 0 < this->energy_points)
 	{
 		std::cout << "ClapTrap " << this->name << " repairs "  << amount << " hit point!" << std::endl; 
-		this->hit_points += amount;
+		this->hit_points += static_cast<long long>(amount);
 		this->energy_points--;
 		if(this->hit_points <= 0 || this->energy_points <= 0)
 			std::cout << "ClapTrap " << this->name << " died!" << std::endl;

@@ -7,10 +7,10 @@
 class Contact {
 	public:
 		Contact(){};
-		void	input_data(void);
-		void	print_data(int index);
+		void	inputData(void);
+		void	printData(int index);
 	private:
-		void	set_data(const std::string (&data)[5], int size);
+		void	setData(const std::string (&data)[5], int size);
 		std::string	data[5];
 };
 
