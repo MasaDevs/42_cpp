@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <exception>
-# include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 class Form;
 

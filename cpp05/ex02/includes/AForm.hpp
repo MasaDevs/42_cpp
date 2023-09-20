@@ -1,12 +1,13 @@
 #ifndef	AFORM_HPP
 #define AFORM_HPP
 
-#include "Bureaucrat.hpp"
 #include <iostream>
 #include <string>
 #include <exception>
+#include "Bureaucrat.hpp"
 
 class Bureaucrat;
+
 class	Form
 {
 	public:

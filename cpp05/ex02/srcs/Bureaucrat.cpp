@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 //operator
 std::ostream & operator << (std::ostream &out, Bureaucrat const &b)
