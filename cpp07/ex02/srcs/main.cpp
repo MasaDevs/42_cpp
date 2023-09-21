@@ -3,7 +3,7 @@
 
 int main()
 {
-	Array<int>	arr;
+	Array<int> array(10);
 	std::cout << "this program ends successfully." << std::endl;
 	return (0);
 }
