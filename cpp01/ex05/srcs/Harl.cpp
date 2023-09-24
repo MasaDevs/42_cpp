@@ -1,7 +1,6 @@
 #include "Harl.hpp"
 #include <iostream>
 #include <string>
-#define	num_of_level 4
 
 void	Harl::debug(void) const
 {
