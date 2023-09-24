@@ -23,11 +23,10 @@ void	HumanB::setWeapon(Weapon &weapon)
 void	HumanB::attack(void) const
 {
 	if(this->weapon == nullptr)
-		std::cout << this->name << " don't have weapon." << std::endl;
+		std::cout << this->name << " don't have a weapon." << std::endl;
 	else
 	{
-		std::string const	&str = this->weapon->getType();
-		std::cout << this->name << " attacks with their " << str << std::endl;
+		std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
 	}
 	return ;
 }
