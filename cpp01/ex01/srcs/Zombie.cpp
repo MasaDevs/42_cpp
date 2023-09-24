@@ -2,22 +2,21 @@
 #include <iostream>
 #include <string>
 
-Zombie::Zombie()
+Zombie::Zombie() : name("default")
 {
-	std::cout << "this is Zombie Constructor" << std::endl;
-	this->name = "default";
+	std::cout << "Zombie Constructor" << std::endl;
 	return ;
 }
 
 Zombie::Zombie(std::string name) : name(name)
 {
-	std::cout << "this is Zombie Constructor" << std::endl;
+	std::cout << "Zombie Constructor" << std::endl;
 	return ;
 }
 
 Zombie::~Zombie()
 {
-	std::cout << "this is Zombie Destructor" << std::endl;
+	std::cout << "Zombie Destructor" << std::endl;
 	return ;
 }
 
