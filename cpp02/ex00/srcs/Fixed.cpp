@@ -1,45 +1,41 @@
 #include "Fixed.hpp"
-
-
+#include <bitset>
 Fixed::Fixed()
 {
-	std::cout << "this is Fixed constructor" << std::endl;
-	this->decimal = 0;
-	this->fraction = 0;
+	std::cout << "Fixed Default Constructor" << std::endl;
+	this->value= 0;
 	return ;
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "this is Fixed destructor" << std::endl;
+	std::cout << "Fixed Destructor" << std::endl;
 	return ;
 }
 
 Fixed::Fixed(Fixed const &fixed)
 {
-	std::cout << "this is Fixed copy constructor" << std::endl;
-	this->decimal = fixed.decimal;
-	this->fraction = fixed.fraction;
+	std::cout << "Fixed Copy Constructor" << std::endl;
+	*(this) = fixed;
 	return ;
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	this->decimal = raw>>this->bits;
-	this->fraction = raw  - (this->decimal<<this->bits);
+	std::cout << "getRawBits member Func" << std::endl;
+	this->value= raw;
 }
 
 int		Fixed::getRawBits(void) const
 {
-
-	return ((this->decimal << this->bits) + this->fraction);
+	std::cout << "setRawBits member Func" << std::endl;
+	return (this->value);
 }
 
 Fixed	&Fixed::operator=(Fixed const &fixed)
 {
-	std::cout << "this is Fixed copy constructor" << std::endl;
-	this->decimal = fixed.decimal;
-	this->fraction = fixed.fraction;
+	std::cout << "Fixed Copy Operator" << std::endl;
+	this->value = fixed.value;
 	return (*this);
 }
-	
+

@@ -1,7 +1,6 @@
 #ifndef FIXED_HPP
 #define FIXED_HPP
 #include <iostream>
-#include <cmath>
 
 class	Fixed
 {
@@ -9,12 +8,14 @@ class	Fixed
 		Fixed();
 		Fixed(Fixed const &fixed);
 		~Fixed();
-		int					getRawBits(void) const;
-		void				setRawBits(int const raw);
-		Fixed				&operator=(Fixed const &fixed);
+		int		getRawBits(void) const;
+		void	setRawBits(int const raw);
+		Fixed	&operator=(Fixed const &fixed);
 	private:
-		int					value;
+		unsigned int		decimal;
+		unsigned int		fraction;
 		static int const	bits = 8;
 };
+		
 
 #endif

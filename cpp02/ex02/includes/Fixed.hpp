@@ -38,7 +38,5 @@ class	Fixed
 		int		value;
 		static int const	bits = 8;
 };
-		
 std::ostream&	operator<<(std::ostream& os, const Fixed& fixed);
-
 #endif

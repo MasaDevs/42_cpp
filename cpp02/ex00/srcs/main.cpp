@@ -1,20 +1,14 @@
 #include <iostream>
 #include "Fixed.hpp"
 
-int main()
+int main( void ) 
 {
-	Fixed fixed;
-	fixed.setRawBits(-100000);
-	int ans = fixed.getRawBits();
-	std::cout << ans << std::endl;
-	fixed.setRawBits(-100);
-	ans = fixed.getRawBits();
-	std::cout << ans << std::endl;
-	Fixed yobi;
-
-	yobi = fixed;
-	fixed.setRawBits(100000);
-	ans = yobi.getRawBits();
-	std::cout << ans << std::endl;
-
+	Fixed a;
+	Fixed b( a );
+	Fixed c;
+	c = b;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	return 0;
 }
