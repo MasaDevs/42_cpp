@@ -11,13 +11,13 @@ class	Fixed
 		Fixed(float const num);
 		Fixed(Fixed const &fixed);
 		~Fixed();
-		int		getRawBits(void) const;
-		void	setRawBits(int const raw);
-		int		toInt(void) const;
-		float	toFloat(void) const;
-		Fixed	&operator=(Fixed const &fixed);
+		int					getRawBits(void) const;
+		void				setRawBits(int const raw);
+		int					toInt(void) const;
+		float				toFloat(void) const;
+		Fixed				&operator=(Fixed const &fixed);
 	private:
-		int		value;
+		int					value;
 		static int const	bits = 8;
 };
 		
