@@ -6,7 +6,7 @@
 
 class	PhoneBook {
 	public:
-		PhoneBook() {this->index = 0;}
+		PhoneBook();
 		void add(void);
 		void search(void);
 	private:

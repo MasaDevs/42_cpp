@@ -1,5 +1,5 @@
 NAME		=	megaphone
-CXX			=	g++
+CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra
 VERSION		=	-std=c++98
 SRCS		=	${shell find ${SRCSDIR} -name "*.cpp" -type f}

@@ -14,8 +14,8 @@ static bool	isNumeric(const std::string &s)
 
 void	Contact::inputData(void)
 {
-	std::string	name[5] = {"first name", "last name", "nickname", "phonenumber", "secret"};
-	std::string data[5];
+	std::string const	name[5] = {"first name", "last name", "nickname", "phonenumber", "secret"};
+	std::string			data[5];
 
 	for(int i = 0; i < 5; i++)
 	{
@@ -46,7 +46,7 @@ void	Contact::setData(const std::string (&data)[5], int size)
 	return ;
 }
 
-void	Contact::printData(int index)
+void	Contact::printTable(int index)
 {
 
 	std::cout << '|';
@@ -68,3 +68,9 @@ void	Contact::printData(int index)
 	std::cout << std::endl;
 }
 
+void	Contact::printData(void)
+{
+	std::string const	name[5] = {"first name", "last name", "nickname", "phonenumber", "secret"};
+	for (int i = 0; i < 5; i++)	
+		std::cout << name[i] << ": " << this->data[i] << std::endl;
+}

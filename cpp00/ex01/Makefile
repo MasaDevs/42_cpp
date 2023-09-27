@@ -1,6 +1,6 @@
 NAME		=	MyAwesomePhoneBook
-CXX			=	g++
-CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=leak
+CXX			=	c++
+CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 VERSION		=	-std=c++98
 INCLUDE		=	-I ./includes/
 SRCS		=	${shell find ${SRCSDIR} -name "*.cpp"}
