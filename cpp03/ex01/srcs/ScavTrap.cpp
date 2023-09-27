@@ -2,23 +2,28 @@
 #include <iostream>
 #include <string>
 
-ScavTrap::ScavTrap(std::string name):ClapTrap(name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 100, 30)
 {
-	std::cout << "this is Scav Constructor" << std::endl;
-	this->hit_points = 100;
-	this->energy_points = 100;
-	this->attack_damage = 30;
-	return ;
-}
-
-void	ScavTrap::attack(std::string name)
-{
-	std::cout << "this is scav attack" << name << std::endl;
+	std::cout << "Scav Constructor" << std::endl;
 	return ;
 }
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "this is Scav Destructor" << std::endl;
+	std::cout << "Scav Destructor" << std::endl;
 	return ;
 }
+
+void	ScavTrap::attack(std::string name)
+{
+	std::cout << "Scav Attack" << name << std::endl;
+	ClapTrap::attack(name);
+	return ;
+}
+
+void	ScavTrap::guardGate(void)
+{
+	std::cout << "ScavTrap is now in Gate keeper mode." << std::endl;
+	return ;
+}
+	
