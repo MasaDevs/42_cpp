@@ -13,3 +13,9 @@ FlagTrap::~FlagTrap()
 	std::cout << "FlagTrap Destructor" << std::endl;
 	return ;
 }
+
+void	FlagTrap::highFivesGuys(void)
+{
+	std::cout << "high fives" << std::endl;
+	return ;
+}

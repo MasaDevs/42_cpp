@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 
-
 ClapTrap::ClapTrap(std::string name) : name(name), hit_points(10), energy_points(10), attack_damage(0)
 {
 	std::cout << "ClapTop constructor" << std::endl;
@@ -88,3 +87,4 @@ void	ClapTrap::getInfo(void) const
 	std::cout << "attack:	" << this->attack_damage << std::endl;
 	std::cout << "---------------------" << std::endl;
 }
+

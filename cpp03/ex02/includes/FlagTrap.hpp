@@ -10,6 +10,5 @@ class	FlagTrap: public ClapTrap
 		FlagTrap(std::string name);
 		~FlagTrap();
 		void	highFivesGuys(void);
-
 };
 #endif
