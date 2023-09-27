@@ -3,11 +3,10 @@
 #include <iostream>
 #include <iterator>
 
-template <
-	template< class > class  T >
-T< int >::iterator	easyfind(T< int > container, unsigned int index)
+template <class T >
+typename T::iterator	easyfind(T &container, int index)
 {
-	for (T< int >::iterator iter = container.begin(); iter != container.end(); iter++)
+	for (typename T::iterator iter = container.begin(); iter != container.end(); iter++)
 		if (*iter == index)
 			return (iter);
 	return (container.end());
