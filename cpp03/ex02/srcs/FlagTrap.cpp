@@ -2,17 +2,14 @@
 #include <iostream>
 #include <string>
 
-FlagTrap::FlagTrap(std::string name): ClapTrap(name)
+FlagTrap::FlagTrap(std::string name): ClapTrap(name, 100, 100, 30)
 {
-	std::cout << "this is FlagTrap constructor" << std::endl;
-	this->hit_points = 100;
-	this->energy_points = 100;
-	this->attack_damage = 100;
+	std::cout << "FlagTrap constructor" << std::endl;
 	return ;
 }
 
 FlagTrap::~FlagTrap()
 {
-	std::cout << "this is FlagTrap destructor" << std::endl;
+	std::cout << "FlagTrap Destructor" << std::endl;
+	return ;
 }
-	

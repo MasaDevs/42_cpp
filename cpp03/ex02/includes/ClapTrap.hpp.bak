@@ -8,14 +8,12 @@ class	ClapTrap
 {
 	public:
 		ClapTrap(std::string name);	
-		ClapTrap(ClapTrap const &claptrap);
 		~ClapTrap();	
-		void		attack(const std::string& target);
-		void		takeDamage(unsigned int amount);
-		void		beRepaired(unsigned int amount);
-		void		getInfo(void) const;
-		ClapTrap	&operator=(ClapTrap const &claptrap);
-	private:
+		void	attack(const std::string& target);
+		void	takeDamage(unsigned int amount);
+		void	beRepaired(unsigned int amount);
+		void	get_info(void) const;
+	protected:
 		std::string		name;
 		long long		hit_points;
 		long long		energy_points;

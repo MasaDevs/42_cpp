@@ -23,10 +23,13 @@ ClapTrap::~ClapTrap()
 
 ClapTrap	&ClapTrap::operator=(ClapTrap const &claptrap)
 {
-	this->name = claptrap.name;
-	this->hit_points = claptrap.hit_points;
-	this->energy_points = claptrap.energy_points;
-	this->attack_damage = claptrap.attack_damage;
+	if (this != claptrap)
+	{
+		this->name = claptrap.name;
+		this->hit_points = claptrap.hit_points;
+		this->energy_points = claptrap.energy_points;
+		this->attack_damage = claptrap.attack_damage;
+	}
 	return (*this);
 }
 

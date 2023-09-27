@@ -4,5 +4,7 @@
 int main()
 {
 	ClapTrap ct("masahito");
-	ct.get_info();
+	ClapTrap cp = ct;
+	ClapTrap ce(ct);
+	ct.getInfo();
 }

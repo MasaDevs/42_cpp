@@ -6,6 +6,6 @@ int main()
 {
 	ClapTrap ct("masahito");
 	FlagTrap ft("yoda");
-	ct.get_info();
-	ft.get_info();
+	ct.getInfo();
+	ft.getInfo();
 }

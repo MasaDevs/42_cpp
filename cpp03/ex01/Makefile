@@ -1,5 +1,5 @@
 NAME		=	ScavTrap
-CXX			=	g++
+CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra
 INCLUDES	=	-I ./includes
 VERSION		=	-std=c++98
