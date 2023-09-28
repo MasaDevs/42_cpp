@@ -1,5 +1,5 @@
 NAME		=	BRAIN
-CXX			=	g++
+CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 VERSION		=	-std=c++98
 SRCS		=	${shell find ${SRCSDIR} -name "*.cpp" -type f}

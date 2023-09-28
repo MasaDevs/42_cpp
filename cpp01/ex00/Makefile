@@ -1,5 +1,5 @@
 NAME		=	BraiiiiiiinnnzzzZ
-CXX			=	g++
+CXX			=	c++
 CXXFLAG		= 	-Wall -Wextra -Werror -fsanitize=address
 VERSION		=	-std=c++98
 INCLUDE		=	-I includes

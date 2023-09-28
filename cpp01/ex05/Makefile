@@ -1,5 +1,5 @@
 NAME		=	Herl2.0
-CXX			=	g++
+CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra
 VERSION		=	-std=c++98
 INCLUDES	=	-I ./includes

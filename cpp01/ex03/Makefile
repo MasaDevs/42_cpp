@@ -1,5 +1,5 @@
 NAME		=	UnnecessaryViolence
-CXX			=	g++
+CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 VERSION		=	-std=c++98
 INCLUDE		=	-I ./includes/
