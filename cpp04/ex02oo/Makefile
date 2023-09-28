@@ -1,5 +1,5 @@
-NAME		=	Polymorphism
-CXX			=	c++
+NAME		=	AbstractClass
+CXX			=	g++
 CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 VERSION		=	-std=c++98
 TESTVERSION	=	-std=c++17

@@ -2,11 +2,13 @@
 #define DOG_HPP
 #include "Animal.hpp"
 
-class	Dog:public Animal
+class	Dog:public AAnimal
 {
 	public:
 		Dog();
+		Dog(Dog const &dog);
 		~Dog();
-		void	makeSound(void) const override;
+		void	makeSound(void) const;
+		Dog		&operator=(Dog const &dog);
 };
 #endif

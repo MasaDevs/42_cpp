@@ -35,7 +35,8 @@ int		Fixed::getRawBits(void) const
 Fixed	&Fixed::operator=(Fixed const &fixed)
 {
 	std::cout << "Fixed Copy Operator" << std::endl;
-	this->value = fixed.value;
+	if (this != &fixed)
+		this->value = fixed.value;
 	return (*this);
 }
 

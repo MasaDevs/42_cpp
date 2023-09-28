@@ -6,9 +6,7 @@ class	Dog:public Animal
 {
 	public:
 		Dog();
-		Dog(Dog const &dog);
 		~Dog();
-		Dog	&operator=(Dog const &dog);
-		void		makeSound(void) const;
+		void	makeSound(void) const override;
 };
 #endif

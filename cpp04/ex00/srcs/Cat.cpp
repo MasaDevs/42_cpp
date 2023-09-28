@@ -2,14 +2,26 @@
 
 Cat::Cat()
 {
-	std::cout << "this is Cat constructor" << std::endl;
+	std::cout << "Cat Constructor" << std::endl;
 	this->type = "Cat";
 	return ;
 }
 
+Cat	&Cat::operator=(Cat const &cat)
+{
+	if (this != &cat)
+		Animal::operator=(cat);
+	return (*this);
+}
+
+Cat::Cat(Cat const &cat) : Animal(cat)
+{
+	std::cout << "Cat Copy Constructor" << std::endl;
+}
+
 Cat::~Cat()
 {
-	std::cout << "this is Cat destructor" << std::endl;
+	std::cout << "Cat destructor" << std::endl;
 	return ;
 }
 
