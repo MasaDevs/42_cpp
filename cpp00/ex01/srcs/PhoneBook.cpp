@@ -28,12 +28,13 @@ void	PhoneBook::search(void)
 	{
 		if (line.size() == 1 && '1' <= line[0]  && line[0] <= '8')
 		{
-			index = line[0] - '1';
+			index = line[0] - '0';
 			break;
 		}
 		std::cout << "Please input number between 1 and 8" << std::endl;
 		std::cout << "Number: ";
 	}
-	this->contact[index].printData();
+	if (index)
+		this->contact[index - 1].printData();
 }
 
