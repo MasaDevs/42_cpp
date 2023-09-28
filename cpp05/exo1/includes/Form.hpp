@@ -19,7 +19,7 @@ class	Form
 		int				getGradeForExecute(void) const;
 		bool			getIsSigned(void) const;
 		void			beSigned(Bureaucrat const &bureau);
-		void			isValid(int grade) const;
+		void			isvalid(int grade) const;
 		void			checkSignGrade(Bureaucrat const &bureau);
 		void			checkExecuteGrade(Bureaucrat const &bureau);
 		class	GradeTooHighException : public std::exception
@@ -34,7 +34,6 @@ class	Form
 		};
 	private:
 		std::string const	name;
-		bool				isvalid;
 		bool				issigned;
 		int					grade_for_sign;
 		int					grade_for_execute;
