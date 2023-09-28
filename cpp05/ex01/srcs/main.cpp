@@ -6,6 +6,9 @@ int main(void)
 {
 	//constructor check
 	{
+		std::cout << std::endl;
+		std::cout << std::endl;
+		std::cout << "Constructor Check" << std::endl;
 		Form form1("My Form", 20, 40);
 		Form form2;
 		Form form3 = form1;
@@ -18,6 +21,9 @@ int main(void)
 
 	//range check
 	{
+		std::cout << std::endl;
+		std::cout << std::endl;
+		std::cout << "Range Check" << std::endl;
 		Form too_low1("masahito arai", 151, 100);
 		std::cout << too_low1 << std::endl;
 		Form too_low2("masahito arai", 100, 3131);
@@ -27,7 +33,11 @@ int main(void)
 		Form too_high2("masahito arai", 100, -1);
 		std::cout << too_high2 << std::endl;
 	}
+
 	{
+		std::cout << std::endl;
+		std::cout << std::endl;
+		std::cout << "Normal Check" << std::endl;
 		Bureaucrat	highest("masahito arai", 1);
 		Bureaucrat	lowest("masahito arai", 150);
 		Form		higher("My form", 2, 1);

@@ -3,7 +3,7 @@
 //Constructor
 Form::Form() : name("unknown"), issigned(false), grade_for_sign(this->grade_max), grade_for_execute(this->grade_max)
 {
-	std::cout << "this is form constructor" << std::endl;
+	std::cout << "Form Default Constructor" << std::endl;
 	return ;
 }
 
@@ -24,19 +24,20 @@ Form::Form(std::string name, int grade_for_sign, int grade_for_execute) : name(n
 	{
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << "this is form constructor" << std::endl;
+	std::cout << "Form Constructor" << std::endl;
 	return ;
 }
 
 Form::Form(Form const &form) : name(form.name), issigned(false), grade_for_sign(form.grade_for_sign), grade_for_execute(form.grade_for_execute)
 {
+	std::cout << "Form Copy Constructor" << std::endl;
 	return ;
 }
 
 //Destructor
 Form::~Form()
 {
-	std::cout << "this is form destructor" << std::endl;
+	std::cout << "Form Destructor" << std::endl;
 	return ;
 }
 
