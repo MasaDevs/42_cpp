@@ -8,13 +8,17 @@ int main(void)
 		std::cout << std::endl;
 		std::cout << "Constructor Check" << std::endl;
 		Bureaucrat bureau1("masahito arai", 20);
-		Bureaucrat bureau2;
+	//	Bureaucrat bureau2;
+	//	Bureaucrat bureau4(bureau1);
+		std::cout << "++++++++++++++++++++" << std::endl;
 		Bureaucrat bureau3 = bureau1;
-		Bureaucrat bureau4(bureau2);
+		std::cout << "++++++++++++++++++++" << std::endl;
+		Bureaucrat bureau5;
+		bureau5 = bureau1;
 		std::cout << bureau1 << std::endl;
-		std::cout << bureau2 << std::endl;
+	//	std::cout << bureau2 << std::endl;
 		std::cout << bureau3 << std::endl;
-		std::cout << bureau4 << std::endl;
+	//	std::cout << bureau4 << std::endl;
 	}
 	//increment check
 	{

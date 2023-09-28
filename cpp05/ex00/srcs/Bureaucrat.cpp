@@ -7,8 +7,9 @@ std::ostream & operator << (std::ostream &out, Bureaucrat const &b)
 	return (out);
 }
 
-Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &breau)
+Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &breau)
 {
+	std::cout << "Copy Operator Called" << std::endl;
 	if (this != &breau)
 		this->grade = breau.getGrade();
 	return (*this);
