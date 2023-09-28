@@ -9,21 +9,22 @@ std::ostream & operator << (std::ostream &out, Bureaucrat const &b)
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &breau)
 {
-	this->grade = breau.getGrade();
+	if (this != &breau)
+		this->grade = breau.getGrade();
 	return (*this);
 }
 
 //constructor
 Bureaucrat::Bureaucrat() : name("unknown")
 {
-	std::cout << "this is Bureaucrat default Constractor" << std::endl;
+	std::cout << "Bureaucrat Default Constractor" << std::endl;
 	setGrade(this->grade_min);
 	return ;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &bureau) : name(bureau.name), grade(bureau.grade)
 {
-	std::cout << "this is Bureaucrat copy Constractor" << std::endl;
+	std::cout << "Bureaucrat Copy Constractor" << std::endl;
 	return ;
 }
 		
@@ -35,20 +36,20 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 	}
 	catch (Bureaucrat::GradeTooLowException &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	catch (Bureaucrat::GradeTooHighException &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
-	std::cout << "this is Bureaucrat default Constracutor" << std::endl;
+	std::cout << "Bureaucrat Default Constracutor" << std::endl;
 	return ;
 }
 
 //destructor
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "this is Bureaucrat Destracutor" << std::endl;
+	std::cout << "Bureaucrat Destracutor" << std::endl;
 	return ;
 }
 
@@ -82,7 +83,7 @@ void	Bureaucrat::gradeIncrement(void)
 	}
 	catch (Bureaucrat::GradeTooHighException &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	return ;
 }
@@ -95,7 +96,7 @@ void	Bureaucrat::gradeDecrement(void)
 	}
 	catch (Bureaucrat::GradeTooLowException &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	return ;
 }
