@@ -6,7 +6,6 @@
 
 class Contact {
 	public:
-		Contact(){};
 		void						inputData(void);
 		void						printTable(int index);
 		void						printData(void);

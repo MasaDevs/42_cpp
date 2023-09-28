@@ -3,11 +3,20 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <cctype>
 
 static bool	isNumeric(const std::string &s)
 {
 	for(unsigned long i = 0; i < s.size(); i++)
 		if(!isdigit(s[i]))
+			return (false);
+	return (true);
+}
+
+static bool	isValid(std::string line)
+{
+	for (size_t i = 0; i < line.size(); i++)
+		if (!std::isprint(line[i]) || line[i] == '\t')
 			return (false);
 	return (true);
 }
@@ -24,13 +33,11 @@ void	Contact::inputData(void)
 		std::cout << name[i] << std::endl;
 		while(std::getline(std::cin, line))
 		{
-			if(i == 3 && !isNumeric(line))
-			{
+			if (!isValid(line))	
+				std::cout << "Please enter printable character and Don't use any spaces or tabs." << std::endl;
+			else if(i == 3 && !isNumeric(line))
 				std::cout << "Error!\nThe phonenumber should be a series of number." << std::endl;
-				std::cout << name[i] << std::endl;
-				continue;
-			}
-			if(!line.empty())	
+			else if (!line.empty())	
 				break;
 			std::cout << name[i] << std::endl;
 		}
