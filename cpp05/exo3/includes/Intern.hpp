@@ -6,17 +6,13 @@
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "PresidentialPardon.hpp"
 
 class	Intern
 {
 	public:
-		Intern();
-		Intern(Intern const &intern);
-		~Intern();
 		Form	*makeForm(std::string class_name, std::string target);
-		Intern	&operator=(Intern const &intern);
 	private:
-};
+		Form
 #endif
 

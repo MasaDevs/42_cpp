@@ -1,4 +1,4 @@
-NAME		=	Form	
+NAME		=	Form
 CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 VERSION		=	-std=c++98

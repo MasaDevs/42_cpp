@@ -44,7 +44,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executer)
 		std::string const	file_name = executer.getName() + "_shrubbery";
 		
 		std::ofstream ofs;
-		ofs.open(file_name.c_str(), std::ios::out);
+		ofs.open(file_name, std::ios::out);
 		ofs << "       t       " << std::endl;
 		ofs << "      tre      " << std::endl;
 		ofs << "     treet     " << std::endl;
