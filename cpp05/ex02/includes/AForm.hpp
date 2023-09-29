@@ -6,6 +6,8 @@
 #include <string>
 #include <exception>
 
+class	Bureaucrat;
+
 class	Form
 {
 	public:

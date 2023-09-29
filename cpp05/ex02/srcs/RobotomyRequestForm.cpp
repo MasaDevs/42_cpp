@@ -40,7 +40,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executer)
 	{
 		this->checkExecuteGrade(executer);
 		std::cout << "ddddddddddddddddddddddddd!!" <<std::endl;
-		if (std::rand() % 2)
+		if (rand() % 2)
 			std::cout << "this target has been robotomized !" << std::endl;
 		else
 			std::cout << "this target couldn't be robotomized !" << std::endl;

@@ -1,15 +1,15 @@
 #include "Bureaucrat.hpp"
 
 //operator
-std::ostream & operator << (std::ostream &out, Bureaucrat const &b)
+std::ostream	&operator << (std::ostream &out, Bureaucrat const &b)
 {
 	out << b.getName() << ", bureaucrat grade "	 << b.getGrade() << ".";
 	return (out);
 }
 
-Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &breau)
+Bureaucrat		&Bureaucrat::operator=(Bureaucrat const &breau)
 {
-	std::cout << "Copy Operator Called" << std::endl;
+	std::cout << "Copy Operator" << std::endl;
 	if (this != &breau)
 		this->grade = breau.getGrade();
 	return (*this);
@@ -19,7 +19,7 @@ Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &breau)
 Bureaucrat::Bureaucrat() : name("unknown")
 {
 	std::cout << "Bureaucrat Default Constractor" << std::endl;
-	setGrade(this->grade_min);
+	setGrade(this->grade_max);
 	return ;
 }
 
@@ -38,10 +38,12 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 	catch (Bureaucrat::GradeTooLowException &e)
 	{
 		std::cerr << e.what() << std::endl;
+		this->grade = this->grade_max;
 	}
 	catch (Bureaucrat::GradeTooHighException &e)
 	{
 		std::cerr << e.what() << std::endl;
+		this->grade = this->grade_max;
 	}
 	std::cout << "Bureaucrat Default Constracutor" << std::endl;
 	return ;
