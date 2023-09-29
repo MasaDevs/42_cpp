@@ -38,10 +38,12 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 	catch (Bureaucrat::GradeTooLowException &e)
 	{
 		std::cerr << e.what() << std::endl;
+		this->grade = this->grade_max;
 	}
 	catch (Bureaucrat::GradeTooHighException &e)
 	{
 		std::cerr << e.what() << std::endl;
+		this->grade = this->grade_max;
 	}
 	std::cout << "Bureaucrat Default Constracutor" << std::endl;
 	return ;

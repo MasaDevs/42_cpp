@@ -94,8 +94,8 @@ void	Form::beSigned(Bureaucrat const &bureau)
 	try
 	{
 		this->checkSignGrade(bureau);
-		this->issigned = true;
 		bureau.signForm(true, this->name, "dummy");
+		this->issigned = true;
 	}
 	catch (Form::GradeTooLowException &e)
 	{
@@ -115,13 +115,13 @@ void	Form::isValid(int grade) const
 
 void	Form::checkSignGrade(Bureaucrat const &bureau)
 {
-	if (this->grade_for_sign > bureau.getGrade())	
+	if (this->grade_for_sign < bureau.getGrade())	
 		throw Form::GradeTooLowException();
 }
 
 void	Form::checkExecuteGrade(Bureaucrat const &bureau)
 {
-	if (this->grade_for_execute > bureau.getGrade())	
+	if (this->grade_for_execute < bureau.getGrade())	
 		throw Form::GradeTooLowException();
 }
 
