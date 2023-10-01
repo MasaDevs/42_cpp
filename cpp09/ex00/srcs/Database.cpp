@@ -1,5 +1,5 @@
 #include "Database.hpp"
-#include <time.h>
+#include "DateFormat.hpp"
 #include <limits.h>
 
 Database::Database(std::string file_name)
@@ -17,75 +17,61 @@ Database::Database(std::string file_name)
 		if (line.size() <= line.find(","))
 		{
 			std::cerr << "this format is not csv data !" << std::endl;
-			return ;
+			continue ;
 		}
 		std::string	date = line.substr(0,line.find(","));
 		std::string	s_data = line.substr(line.find(",") + 1);
-		long long	data = std::stol(s_data);
-		this->insertData(date, data);
+		try
+		{
+			float	data = std::stof(s_data);
+			this->insertData(date, data);
+		}
+		catch (std::invalid_argument &e)
+		{
+			std::cout << "This line is invalid. " << e.what() << std::endl;
+		}
 	}
+	ifs.close();
 }
 
-bool	Database::insertData(std::string date, long long data)
+bool	Database::insertData(std::string date, float data)
 {
-	//ここら辺例外でもいい
-	if (!this->checkDateFormat(date))
-		return (false);
-	else if (data < INT_MIN || INT_MAX < data)
-		return (false);
-	else if (this->database.find(date) != this->database.end())
-		return (false);
+	DateFormat	dateformat("%Y-%m-%d", 10);
+	if (!dateformat.checkDateFormat(date))
+		throw std::invalid_argument("ivalid date format: date is not feasible.");
+	else if (data < 0 || INT_MAX < data)
+		throw std::invalid_argument("ivalid data format: exceeded int range.");
+	else if (!this->database.empty() && this->database.find(date) != this->database.end())
+		throw std::invalid_argument("ivalid data format: duplicate date.");
 	this->database[date] = data;
 	return (true);
 }
 
+	
+float	Database::searchData(std::string date)
+{
+	std::map<std::string, float>::iterator iter = this->database.lower_bound(date);
+	if (iter == this->database.end())
+	{
+		if (date < this->database.begin()->first)
+			throw std::invalid_argument("too old date !");
+		else if (this->database.rbegin()->first < date)
+			return (this->database.rbegin()->second);
+	}
+	else
+	{
+		if (this->database.begin() == iter)
+			throw std::invalid_argument("too old date !");
+		iter--;
+		return (iter->second);
+	}
+	throw std::invalid_argument("can't get data !");
+}
+
 void	Database::printData(void)
 {
-	for (std::map<std::string, int>::iterator iter = this->database.begin(); iter != database.end(); iter++)
+	for (std::map<std::string, float>::iterator iter = this->database.begin(); iter != database.end(); iter++)
 		std::cout << iter->first << " " << iter->second << std::endl;
 }
 
-bool	Database::checkDateFormat(std::string date)
-{
-	struct tm result;
-
-	if (date.size() != 10)
-		return (false);
-	else if (strptime(date.c_str(), "%Y-%m-%d", &result) == NULL)
-		return (false);
-	return (this->isValidDay(result));
-}
-
-bool	Database::isValidDay(struct tm result)
-{
-	switch(result.tm_mon + 1)
-	{
-		case 1:
-		case 3: case 5:
-		case 7:
-		case 8:
-		case 10:
-		case 12:
-			break;
-		case 4:
-		case 6:
-		case 9:
-		case 11:
-			if (30 < result.tm_mday)
-				return (false);
-			break;
-		case 2:
-		{
-			if (result.tm_year % 4 == 0 && result.tm_year % 100)
-			{
-				if (29 < result.tm_mday)
-					return (false);
-			}
-			else if (28 < result.tm_mday)
-				return (false);
-			break;
-		}
-	}
-	return (true);
-}
 

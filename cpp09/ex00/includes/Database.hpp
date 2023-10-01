@@ -9,12 +9,11 @@ class	Database
 {
 	public:
 		Database(std::string file_name);
-		bool	insertData(std::string date, long long data);
+		bool	insertData(std::string date, float data);
+		float	searchData(std::string date);
 		void	printData(void);
 	private:
-		bool	checkDateFormat(std::string);
-		bool	isValidDay(struct tm result);
-		std::map<std::string, int> database;
+		std::map<std::string, float> database;
 };
 
 #endif
