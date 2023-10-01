@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 	{
 		std::cout << rpn.perse(argv[1]) << std::endl;
 	}
-	catch (std::invalid_argument &e)
+	catch (std::exception &e)
 	{
 		std::cerr << "Error: " << e.what() << std::endl;
 	}
