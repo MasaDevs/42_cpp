@@ -23,6 +23,8 @@ void	PhoneBook::search(void)
 	{
 		this->contact[i].printTable(i);
 	}
+	if (std::cin.eof())
+		return ;
 	std::cout << "Number: ";
 	while (std::getline(std::cin, line))
 	{

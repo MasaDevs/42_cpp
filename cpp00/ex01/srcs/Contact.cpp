@@ -30,6 +30,8 @@ void	Contact::inputData(void)
 	{
 		std::string line;
 
+		if (std::cin.eof())
+			return ;
 		std::cout << name[i] << std::endl;
 		while(std::getline(std::cin, line))
 		{
