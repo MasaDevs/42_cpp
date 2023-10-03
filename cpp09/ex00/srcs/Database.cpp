@@ -62,7 +62,9 @@ float	Database::searchData(std::string date)
 	{
 		if (this->database.begin() == iter)
 			throw std::invalid_argument("too old date !");
-		iter--;
+		if (date < iter->first)
+			iter--;
+		std::cout << iter->first << std::endl;
 		return (iter->second);
 	}
 	throw std::invalid_argument("can't get data !");
