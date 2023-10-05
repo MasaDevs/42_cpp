@@ -15,7 +15,7 @@ static bool	isNumeric(const std::string &s)
 static bool	isValid(std::string line)
 {
 	for (size_t i = 0; i < line.size(); i++)
-		if (!std::isprint(line[i]) || line[i] == '\t')
+		if (!std::isprint(line[i]) || std::isspace(line[i]))
 			return (false);
 	return (true);
 }
