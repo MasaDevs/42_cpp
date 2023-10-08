@@ -15,7 +15,7 @@ ${NAME}: ${OBJS}
 
 ${OBJSDIR}/%.o: ${SRCSDIR}/%.cpp
 	mkdir -p ${dir ${OBJS}}
-	$(CXX) $(CXXFLAG) $(INCLUDE) -o $@ -c $<
+	$(CXX) $(CXXFLAG) $(INCLUDE) ${VERSION} -o $@ -c $<
 
 clean:
 	rm -rf ${OBJSDIR}
