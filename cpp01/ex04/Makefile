@@ -2,7 +2,6 @@ NAME		=	SedForLosers
 CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 VERSION		=	-std=c++98
-TESTVERSION	=	-std=c++17
 INCLUDE		=	-I ./includes/
 SRCS		=	${shell find ${SRCSDIR} -name "*.cpp"}
 SRCSDIR		=	srcs

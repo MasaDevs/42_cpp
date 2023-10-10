@@ -15,13 +15,21 @@ Sed::~Sed()
 void	Sed::editStream(void)
 {
 	std::string		output_file_name = this->input_file_name + std::string(".replace");
-	std::ifstream	input_file(input_file_name);
-	std::ofstream	output_file(output_file_name);
+	std::ifstream	input_file(input_file_name.c_str());
+	std::ofstream	output_file(output_file_name.c_str());
 
 	if (input_file.fail())
 	{
-		std::cout << "cannot opne file" << std::endl;
-		output_file.close();
+		std::cout << "cannot open input file" << std::endl;
+		if (!output_file.fail())
+			output_file.close();
+		return ;
+	}
+	if (output_file.fail())
+	{
+		std::cout << "cannot open output file" << std::endl;
+		if (!input_file.fail())
+			input_file.close();
 		return ;
 	}
 	std::cout << "Replacing..." << std::endl;

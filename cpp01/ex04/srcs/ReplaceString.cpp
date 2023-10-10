@@ -4,14 +4,15 @@
 
 std::string	ReplaceString::replace(std::string line, std::string s1, std::string s2)
 {
-	for(unsigned int i = 0; i < line.size(); i++)
+ 	if (s1 == "\0")
+		return (line);
+	int i = 0;
+	while (line.find(s1) != std::string::npos)
 	{
-		if(line.substr(i, s1.size()) == s1)	
-		{
-			line = line.substr(0, i) + s2 + line.substr(i + s1.size());
-			i = i +  s2.size();
-			continue;
-		}
+		size_t		index = line.find(s1);
+		line.erase(index, s1.size());
+		line.insert(index, s2);
+		i++;
 	}
 	return (line);
 }	
