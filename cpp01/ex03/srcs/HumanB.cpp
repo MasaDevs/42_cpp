@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-HumanB::HumanB(std::string name) : name(name), weapon(nullptr)
+HumanB::HumanB(std::string name) : name(name), weapon(NULL)
 {
 	std::cout << "this is HumanB Constructor" << std::endl;
 	return ;
@@ -22,7 +22,7 @@ void	HumanB::setWeapon(Weapon &weapon)
 
 void	HumanB::attack(void) const
 {
-	if(this->weapon == nullptr)
+	if(this->weapon == NULL)
 		std::cout << this->name << " don't have a weapon." << std::endl;
 	else
 	{
