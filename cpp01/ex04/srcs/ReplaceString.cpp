@@ -4,6 +4,8 @@
 
 std::string	ReplaceString::replace(std::string line, std::string s1, std::string s2)
 {
+	if (s1 == "\0")
+		return (line);
 	for(unsigned int i = 0; i < line.size(); i++)
 	{
 		if(line.substr(i, s1.size()) == s1)	
