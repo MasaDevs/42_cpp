@@ -22,13 +22,13 @@ Fixed::Fixed(Fixed const &fixed)
 
 void	Fixed::setRawBits(int const raw)
 {
-	std::cout << "getRawBits member Func" << std::endl;
+	std::cout << "setRawBits member Func" << std::endl;
 	this->value= raw;
 }
 
 int		Fixed::getRawBits(void) const
 {
-	std::cout << "setRawBits member Func" << std::endl;
+	std::cout << "getRawBits member Func" << std::endl;
 	return (this->value);
 }
 

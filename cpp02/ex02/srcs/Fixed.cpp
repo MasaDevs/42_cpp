@@ -17,8 +17,7 @@ Fixed::Fixed(int const num)
 Fixed::Fixed(float const num)
 {
 	std::cout << "Fixed Float Constructor" << std::endl;
-	this->value = roundf(num)  * (1<<this->bits);
-	this->value += ((1<<this->bits) * (num - roundf(num)));
+	this->value = roundf(num  * (1<<this->bits));
 }
 
 Fixed::~Fixed()
@@ -69,13 +68,13 @@ Fixed	Fixed::operator-(Fixed const &fixed) const
 
 Fixed	Fixed::operator*(Fixed const &fixed) const
 {
-	Fixed result(this->toFloat() * fixed.toFloat());
+	Fixed result(this->getRawBits() * fixed.getRawBits());
 	return (result);
 }
 
 Fixed	Fixed::operator/(Fixed const &fixed) const
 {
-	Fixed result(this->toFloat() / fixed.toFloat());
+	Fixed result(this->getRawBits() / fixed.getRawBits());
 	return (result);
 }
 

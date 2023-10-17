@@ -17,8 +17,7 @@ Fixed::Fixed(int const num)
 Fixed::Fixed(float const num)
 {
 	std::cout << "Fixed Float Constructor" << std::endl;
-	this->value = roundf(num)  * (1<<(this->bits));
-	this->value += ((num - roundf(num)) * (1<<(this->bits)));
+	this->value = roundf(num  * (1<<(this->bits)));
 }
 
 Fixed::~Fixed()
@@ -36,11 +35,13 @@ Fixed::Fixed(Fixed const &fixed)
 
 void	Fixed::setRawBits(int const raw)
 {
+	std::cout << "member func setRowBits" << std::endl;
 	this->value= raw;
 }
 
 int		Fixed::getRawBits(void) const
 {
+	std::cout << "member func getRowBits" << std::endl;
 	return (this->value);
 }
 
@@ -48,7 +49,7 @@ Fixed	&Fixed::operator=(Fixed const &fixed)
 {
 	std::cout << "Fixed Copy Operator" << std::endl;
 	if (this != &fixed)
-		this->value = fixed.value;
+		this->value = fixed.getRawBits();
 	return (*this);
 }
 
