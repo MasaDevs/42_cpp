@@ -3,8 +3,9 @@
 
 int main()
 {
-	ClapTrap ct("masahito");
-	ClapTrap cp = ct;
-	ClapTrap ce(ct);
-	ct.getInfo();
+	ClapTrap masahito("masahito");
+	ClapTrap masahitocp = masahito;
+	ClapTrap masahitococonst(masahito);
+	masahito.getInfo();
+	masahito.attack("tanake");
 }
