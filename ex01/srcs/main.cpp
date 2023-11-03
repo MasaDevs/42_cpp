@@ -9,6 +9,8 @@ int main()
 	std::cout << "this is my age" << std::endl;
 	ct.getInfo();
 	ct.attack("yoda");
+	for (int i = 0; i < 10; i++)
+		ct.attack("yoda");
 	st.getInfo();
 	st.attack("yoda");
 }

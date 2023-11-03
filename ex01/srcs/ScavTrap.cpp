@@ -2,9 +2,12 @@
 #include <iostream>
 #include <string>
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 100, 30)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "Scav Constructor" << std::endl;
+	setHitPoints(100);
+	setEnergyPoints(50);
+	setAttackDamages(20);
 	return ;
 }
 
@@ -14,10 +17,20 @@ ScavTrap::~ScavTrap()
 	return ;
 }
 
-void	ScavTrap::attack(std::string name)
+void	ScavTrap::attack(std::string const  &target)
 {
-	std::cout << "Scav Attack" << name << std::endl;
-	ClapTrap::attack(name);
+	if (!getIsAlive())
+	{
+		std::cout << "ScavTrap " << getName() << " can't attack " << target << ". Need hit_points or energy_points !" << std::endl;
+		return ;
+	}
+	std::cout << "ScavTrap " << getName() << " attacks " << target << ", causing " << getAttackDamages() << " points of damage!" << std::endl;
+	setEnergyPoints(getEnergyPoints() - 1);
+	if(getHitPoints() <= 0 || getEnergyPoints() <= 0)
+	{
+		std::cout << "ScavTrap " << getName() << " died!" << std::endl;
+		setIsAlive(false);
+	}
 	return ;
 }
 

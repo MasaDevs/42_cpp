@@ -2,19 +2,11 @@
 #include <iostream>
 #include <string>
 
-
-ClapTrap::ClapTrap(std::string name) : name(name), hit_points(10), energy_points(10), attack_damage(0)
+ClapTrap::ClapTrap(std::string name) : name_(name), hit_points_(10), energy_points_(10), attack_damages_(0), isalive_(true)
 {
-	std::cout << "ClapTop constructor" << std::endl;
+	std::cout << "ClapTop Constructor" << std::endl;
 	return ;
-}
-
-ClapTrap::ClapTrap(std::string name, long long hit_points, long long energy_points, long long attack_damage) : name(name), hit_points(hit_points), energy_points(energy_points), attack_damage(attack_damage)
-{
-	std::cout << "ClapTop constructor" << std::endl;
-	return ;
-}
-
+} 
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTop Destructor" << std::endl;
@@ -23,12 +15,13 @@ ClapTrap::~ClapTrap()
 
 ClapTrap	&ClapTrap::operator=(ClapTrap const &claptrap)
 {
-	if (this != claptrap)
+	if (this != &claptrap)
 	{
-		this->name = claptrap.name;
-		this->hit_points = claptrap.hit_points;
-		this->energy_points = claptrap.energy_points;
-		this->attack_damage = claptrap.attack_damage;
+		name_ = claptrap.name_;
+		hit_points_ = claptrap.hit_points_;
+		energy_points_ = claptrap.energy_points_;
+		attack_damages_ = claptrap.attack_damages_;
+        isalive_ = claptrap.isalive_;
 	}
 	return (*this);
 }
@@ -40,52 +33,107 @@ ClapTrap::ClapTrap(ClapTrap const &claptrap)
 }
 
 	
-void	ClapTrap::attack(const std::string& target)
+void	ClapTrap::attack(std::string const &target)
 {
-	if (this->hit_points <= 0 || this->energy_points <= 0)
+	if (!isalive_)
 	{
-		std::cout << "ClapTrap " << this->name << " can't attack " << target << ". Need hit_points or energy_points !" << std::endl;
+		std::cout << "ClapTrap " << name_ << " can't attack " << target << ". Need hit_points or energy_points !" << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing " << this->attack_damage << " points of damage!" << std::endl;
-	this->energy_points--;
-	if(this->hit_points <= 0 || this->energy_points <= 0)
-		std::cout << "ClapTrap " << this->name << " died!" << std::endl;
+	std::cout << "ClapTrap " << name_ << " attacks " << target << ", causing " << attack_damages_ << " points of damage!" << std::endl;
+	energy_points_--;
+	if(hit_points_ <= 0 || energy_points_ <= 0)
+	{
+		std::cout << "ClapTrap " << name_ << " died!" << std::endl;
+		isalive_ = false;
+	}
+	return ;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	if (this->hit_points <= 0)
+	if (!isalive_)
 	{
-		std::cout << "ClapTrap " << this->name << " has been already dead."  << std::endl;
+		std::cout << "ClapTrap " << name_ << " has been already dead."  << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << this->name << " takes "  << amount << " damages" << std::endl;
-	this->hit_points -= static_cast<long long>(amount);
-	if(this->hit_points <= 0 || this->energy_points <= 0)
-		std::cout << "ClapTrap " << this->name << " died!" << std::endl;
+	std::cout << "ClapTrap " << name_ << " takes "  << amount << " damages" << std::endl;
+	hit_points_ -= static_cast<long long>(amount);
+	if(hit_points_ <= 0 || energy_points_ <= 0)
+	{
+		std::cout << "ClapTrap " << name_ << " died!" << std::endl;
+		isalive_ = false;
+	}
+	return ;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->hit_points <= 0 || this->energy_points <= 0)
+	if (!isalive_)
 	{
-		std::cout << "ClapTrap " << this->name << " can't be repaired. Need hit_points or energy_points !" << std::endl;
+		std::cout << "ClapTrap " << name_ << " can't be repaired. Need hit_points or energy_points !" << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << this->name << " is repaired "  << amount << " hit point!" << std::endl; 
-	this->hit_points += static_cast<long long>(amount);
-	this->energy_points--;
-	if(this->hit_points <= 0 || this->energy_points <= 0)
-	std::cout << "ClapTrap " << this->name << " died!" << std::endl;
+	std::cout << "ClapTrap " << name_ << " is repaired "  << amount << " hit point!" << std::endl; 
+	hit_points_ += static_cast<long long>(amount);
+	energy_points_--;
+	if(hit_points_ <= 0 || energy_points_ <= 0)
+    {
+	    std::cout << "ClapTrap " << name_ << " died!" << std::endl;
+		isalive_ = false;
+    }
+
 }
 
 void	ClapTrap::getInfo(void) const
 {
 	std::cout << "--------info--------" << std::endl;
-	std::cout << "name:	" << this->name << std::endl;
-	std::cout << "hit point:" << this->hit_points << std::endl;
-	std::cout << "energy:	" << this->energy_points << std::endl;
-	std::cout << "attack:	" << this->attack_damage << std::endl;
+	std::cout << "name:	" << name_ << std::endl;
+	std::cout << "hit point:" << hit_points_ << std::endl;
+	std::cout << "energy:	" << energy_points_ << std::endl;
+	std::cout << "attack:	" << attack_damages_ << std::endl;
 	std::cout << "---------------------" << std::endl;
+}
+
+void	ClapTrap::setHitPoints(long long hit_points)
+{
+	hit_points_ = hit_points;
+}
+
+void	ClapTrap::setEnergyPoints(long long energy_points)
+{
+	energy_points_ = energy_points;
+}
+
+void	ClapTrap::setAttackDamages(long long attack_damages)
+{
+	attack_damages_ = attack_damages;
+}
+
+void	ClapTrap::setIsAlive(bool isalive)
+{
+	isalive_ = isalive;
+}
+
+std::string	ClapTrap::getName() const
+{
+	return (name_);
+}
+
+long long		ClapTrap::getHitPoints() const
+{
+	return (hit_points_);
+}
+long long		ClapTrap::getEnergyPoints() const
+{
+	return (energy_points_);
+}
+long long		ClapTrap::getAttackDamages() const
+{
+	return (attack_damages_);
+}
+
+bool			ClapTrap::getIsAlive() const
+{
+	return (isalive_);
 }
