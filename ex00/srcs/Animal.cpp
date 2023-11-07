@@ -1,6 +1,6 @@
 #include "Animal.hpp"
 
-Animal::Animal()
+Animal::Animal() : type("base-type")
 {
 	std::cout << "Animal Default Constructor" << std::endl;
 	return ;
@@ -27,7 +27,7 @@ Animal	&Animal::operator=(Animal const &animal)
 	return (*this);
 }
 
-std::string	Animal::getType(void)
+std::string	const &Animal::getType(void) const
 {
 	return (this->type);
 }
