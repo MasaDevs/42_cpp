@@ -7,6 +7,7 @@ ClapTrap::ClapTrap(std::string name) : name_(name), hit_points_(10), energy_poin
 	std::cout << "ClapTop Constructor" << std::endl;
 	return ;
 } 
+
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTop Destructor" << std::endl;
@@ -32,7 +33,6 @@ ClapTrap::ClapTrap(ClapTrap const &claptrap)
 	return ;
 }
 
-	
 void	ClapTrap::attack(std::string const &target)
 {
 	if (!isalive_)
@@ -93,47 +93,5 @@ void	ClapTrap::getInfo(void) const
 	std::cout << "energy:	" << energy_points_ << std::endl;
 	std::cout << "attack:	" << attack_damages_ << std::endl;
 	std::cout << "---------------------" << std::endl;
-}
-
-void	ClapTrap::setHitPoints(long long hit_points)
-{
-	hit_points_ = hit_points;
-}
-
-void	ClapTrap::setEnergyPoints(long long energy_points)
-{
-	energy_points_ = energy_points;
-}
-
-void	ClapTrap::setAttackDamages(long long attack_damages)
-{
-	attack_damages_ = attack_damages;
-}
-
-void	ClapTrap::setIsAlive(bool isalive)
-{
-	isalive_ = isalive;
-}
-
-std::string	ClapTrap::getName() const
-{
-	return (name_);
-}
-
-long long		ClapTrap::getHitPoints() const
-{
-	return (hit_points_);
-}
-long long		ClapTrap::getEnergyPoints() const
-{
-	return (energy_points_);
-}
-long long		ClapTrap::getAttackDamages() const
-{
-	return (attack_damages_);
-}
-
-bool			ClapTrap::getIsAlive() const
-{
-	return (isalive_);
+	std::cout << std::endl;
 }
