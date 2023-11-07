@@ -1,16 +1,25 @@
-#include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include <iostream>
 
 int main()
 {
-	ClapTrap ct("masahito");
-	ScavTrap st("serena");
-	std::cout << "this is my age" << std::endl;
-	ct.getInfo();
-	ct.attack("yoda");
-	for (int i = 0; i < 10; i++)
-		ct.attack("yoda");
-	st.getInfo();
-	st.attack("yoda");
+	ScavTrap masahito("masahito");
+	ScavTrap masahitocp = masahito;
+	ScavTrap masahitoref(masahito);
+
+	std::cout << "----------------ATTACK-----------------" << std::endl;
+	for (int i = 0; i < 52; i++)
+		masahito.attack("arai");
+	masahito.getInfo();
+	std::cout << std::endl;
+	std::cout << "----------------BEREPAIRED-----------------" << std::endl;
+	for (int i = 0; i < 52; i++)
+		masahitocp.beRepaired(10);
+	masahitocp.getInfo();
+	std::cout << std::endl;
+	std::cout << "----------------TAKEDAMAGE-----------------" << std::endl;
+	for (int i = 0; i < 12; i++)
+		masahitoref.takeDamage(10);
+	masahitoref.getInfo();
+	std::cout << std::endl;
 }

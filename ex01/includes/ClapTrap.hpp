@@ -15,16 +15,7 @@ class	ClapTrap
 		void			takeDamage(unsigned int amount);
 		void			beRepaired(unsigned int amount);
 		void			getInfo(void) const;
-		void			setHitPoints(long long hit_points);
-		void			setEnergyPoints(long long enegy_points);
-		void			setAttackDamages(long long attack_damages);
-		void			setIsAlive(bool isalive);
-		std::string		getName() const;
-		long long		getHitPoints() const;
-		long long		getEnergyPoints() const;
-		long long		getAttackDamages() const;
-		bool			getIsAlive() const;
-	private:
+	protected:
 		std::string		name_;
 		long long		hit_points_;
 		long long		energy_points_;

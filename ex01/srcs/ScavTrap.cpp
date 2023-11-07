@@ -5,9 +5,16 @@
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "Scav Constructor" << std::endl;
-	setHitPoints(100);
-	setEnergyPoints(50);
-	setAttackDamages(20);
+	hit_points_ = 100;
+	energy_points_ = 50;
+	attack_damages_ = 20;
+	return ;
+}
+
+ScavTrap::ScavTrap(ScavTrap const &scavtrap) : ClapTrap(scavtrap)
+{
+	std::cout << "ScavTrap Copy Constructor" << std::endl;
+	*(this) = scavtrap;
 	return ;
 }
 
@@ -17,19 +24,28 @@ ScavTrap::~ScavTrap()
 	return ;
 }
 
+ScavTrap	&ScavTrap::operator=(ScavTrap const &scavtrap)
+{
+	if (this != &scavtrap)
+	{
+		ClapTrap::operator=(scavtrap);
+	}
+	return (*this);
+}
+
 void	ScavTrap::attack(std::string const  &target)
 {
-	if (!getIsAlive())
+	if (!isalive_)
 	{
-		std::cout << "ScavTrap " << getName() << " can't attack " << target << ". Need hit_points or energy_points !" << std::endl;
+		std::cout << "ScavTrap " << name_ << " can't attack " << target << ". Need hit_points or energy_points !" << std::endl;
 		return ;
 	}
-	std::cout << "ScavTrap " << getName() << " attacks " << target << ", causing " << getAttackDamages() << " points of damage!" << std::endl;
-	setEnergyPoints(getEnergyPoints() - 1);
-	if(getHitPoints() <= 0 || getEnergyPoints() <= 0)
+	std::cout << "ScavTrap " << name_ << " attacks " << target << ", causing " << attack_damages_ << " points of damage!" << std::endl;
+	energy_points_--;;
+	if(hit_points_ <= 0 || energy_points_ <= 0)
 	{
-		std::cout << "ScavTrap " << getName() << " died!" << std::endl;
-		setIsAlive(false);
+		std::cout << "ScavTrap " << name_ << " died!" << std::endl;
+		isalive_ = false;
 	}
 	return ;
 }
