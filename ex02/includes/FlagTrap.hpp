@@ -9,6 +9,7 @@ class	FlagTrap: public ClapTrap
 	public:
 		FlagTrap(std::string name);
 		~FlagTrap();
+		void	attack(std::string const  &target);
 		void	highFivesGuys(void);
 };
 #endif

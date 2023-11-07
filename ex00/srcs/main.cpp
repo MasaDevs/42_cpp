@@ -5,12 +5,27 @@ int main()
 {
 	ClapTrap masahito("masahito");
 	ClapTrap masahitocp = masahito;
-	ClapTrap masahitococonst(masahito);
+	ClapTrap masahitoref(masahito);
 	masahito.getInfo();
-	masahito.attack("tanake");
-	masahito.attack("tanake");
-	masahito.beRepaired(10);
-	masahito.takeDamage(10);
-	masahito.beRepaired(10);
-    masahitococonst.attack("tanaka");
+	std::cout << "---------------------ATTACK---------------------" << std::endl << std::endl;
+	for (int i = 0; i < 12 ; i++)
+	{
+		masahitocp.attack("tanaka");
+		masahitocp.getInfo();
+		std::cout << std::endl;
+	}
+	std::cout << "---------------------REPAIR---------------------" << std::endl << std::endl;
+	for (int i = 0; i < 12 ; i++)
+	{
+		masahito.beRepaired(10);
+		masahito.getInfo();
+		std::cout << std::endl;
+	}
+	std::cout << "---------------------takeDamage---------------------" << std::endl << std::endl;
+	for (int i = 0; i < 12 ; i++)
+	{
+		masahitoref.takeDamage(1);
+		masahitoref.getInfo();
+		std::cout << std::endl;
+	}
 }
