@@ -94,4 +94,5 @@ void	ClapTrap::getInfo(void) const
 	std::cout << "energy:	" << energy_points_ << std::endl;
 	std::cout << "attack:	" << attack_damages_ << std::endl;
 	std::cout << "---------------------" << std::endl;
+	std::cout << std::endl;
 }
