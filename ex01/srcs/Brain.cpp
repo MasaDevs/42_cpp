@@ -2,10 +2,18 @@
 #include <string>
 #include "Brain.hpp" 
 
-Brain::Brain()
+Brain::Brain() : index(0)
 {
 	std::cout << "Brain Constructor" << std::endl;
 	return ;
+}
+
+Brain::Brain(std::string const (&ideas)[100]) : index(0)
+{
+	std::cout << "Brain Constructor" << std::endl;
+	for (int i = 0; i < 100; i++)
+		this->ideas[i] = ideas[i];
+	return ;		
 }
 
 Brain::Brain(Brain const &brain)
@@ -17,6 +25,7 @@ Brain::Brain(Brain const &brain)
 
 Brain	&Brain::operator=(Brain const &brain)
 {
+	this->index = brain.index;
 	if (this != &brain)
 		for (int i = 0; i < 100; i++)
 			this->ideas[i] = brain.ideas[i];
@@ -29,3 +38,8 @@ Brain::~Brain()
 	return ;
 }
 
+void	Brain::insert_idea(std::string const &idea)
+{
+	this->ideas[index] = idea;
+	index = (index + 1) % 100;
+}
