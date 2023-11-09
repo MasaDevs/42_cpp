@@ -29,6 +29,7 @@ ClapTrap	&ClapTrap::operator=(ClapTrap const &claptrap)
 
 ClapTrap::ClapTrap(ClapTrap const &claptrap)
 {
+	std::cout << "ClapTrap Copy Constructor" << std::endl;
 	*(this) = claptrap;
 	return ;
 }
@@ -54,14 +55,14 @@ void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (!isalive_)
 	{
-		std::cout << "ClapTrap " << name_ << " has been already dead."  << std::endl;
+		std::cout << name_ << " has been already dead."  << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << name_ << " takes "  << amount << " damages" << std::endl;
+	std::cout << name_ << " takes "  << amount << " damages" << std::endl;
 	hit_points_ -= static_cast<long long>(amount);
 	if(hit_points_ <= 0 || energy_points_ <= 0)
 	{
-		std::cout << "ClapTrap " << name_ << " died!" << std::endl;
+		std::cout << name_ << " died!" << std::endl;
 		isalive_ = false;
 	}
 	return ;
@@ -71,15 +72,15 @@ void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (!isalive_)
 	{
-		std::cout << "ClapTrap " << name_ << " can't be repaired. Need hit_points or energy_points !" << std::endl;
+		std::cout << name_ << " can't be repaired. Need hit_points or energy_points !" << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << name_ << " is repaired "  << amount << " hit point!" << std::endl; 
+	std::cout << name_ << " is repaired "  << amount << " hit point!" << std::endl; 
 	hit_points_ += static_cast<long long>(amount);
 	energy_points_--;
 	if(hit_points_ <= 0 || energy_points_ <= 0)
     {
-	    std::cout << "ClapTrap " << name_ << " died!" << std::endl;
+	    std::cout << name_ << " died!" << std::endl;
 		isalive_ = false;
     }
 
