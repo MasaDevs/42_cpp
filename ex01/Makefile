@@ -1,6 +1,6 @@
 NAME		=	Polymorphism2
 CXX			=	c++
-CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
+CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=leak
 VERSION		=	-std=c++98
 INCLUDE		=	-I ./includes/
 SRCS		=	${shell find ${SRCSDIR} -name "*.cpp"}

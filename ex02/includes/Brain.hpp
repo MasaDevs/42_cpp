@@ -7,11 +7,14 @@ class	Brain
 {
 	public:
 		Brain();
+		Brain(std::string const (&ideas)[100]);
 		Brain(Brain const &brain);
 		~Brain();
+		void	insert_idea(std::string const &idea);
+		void	show_array(void) const;
 		Brain	&operator=(Brain const &brain);
-		void			show_array(void) const;
 	private:
-		std::string		ideas[100];
+		std::string		ideas_[100];
+		int				index_;
 };
 #endif

@@ -2,14 +2,13 @@
 #include <iostream>
 #include <string>
 
-Dog::Dog(void)
+Dog::Dog(void) : Animal("Dog")
 {
 	std::cout << "Dog Constructor" << std::endl;
-	this->type = "Dog";
 	return ;
 }
 
-Dog::Dog(Dog const &dog)
+Dog::Dog(Dog const &dog) : Animal(dog)
 {
 	*this = dog;
 	return ;

@@ -5,11 +5,12 @@
 Dog::Dog(void)
 {
 	std::cout << "Dog Constructor" << std::endl;
-	this->type = "Dog";
+	this->type_ = "Dog";
+	this->brain = new Brain();
 	return ;
 }
 
-Dog::Dog(Dog const &dog)
+Dog::Dog(Dog const &dog) : Animal(dog)
 {
 	*this = dog;
 	return ;
@@ -18,15 +19,20 @@ Dog::Dog(Dog const &dog)
 Dog::~Dog(void)
 {
 	std::cout << "Dog Destructor" << std::endl;
+	delete this->brain;
 	return ;
 }
 
 Dog		&Dog::operator=(Dog const &dog)
 {
 	if (this != &dog)
-		AAnimal::operator=(dog);
+	{
+		Animal::operator=(dog);
+		this->brain = dog.brain;
+	}
 	return (*this);
 }
+
 void	Dog::makeSound(void) const
 {
 	std::cout << "bau-bau" << std::endl;	

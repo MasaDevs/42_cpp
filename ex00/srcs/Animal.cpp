@@ -1,6 +1,12 @@
 #include "Animal.hpp"
 
-Animal::Animal() : type("base-type")
+Animal::Animal() : type_("base-type")
+{
+	std::cout << "Animal Default Constructor" << std::endl;
+	return ;
+}
+
+Animal::Animal(std::string const &type) : type_(type)
 {
 	std::cout << "Animal Default Constructor" << std::endl;
 	return ;
@@ -23,13 +29,13 @@ Animal	&Animal::operator=(Animal const &animal)
 {
 	std::cout << "Animal Copy Operator" << std::endl;
 	if (this != &animal)
-		this->type = animal.type;	
+		this->type_ = animal.type_;	
 	return (*this);
 }
 
 std::string	const &Animal::getType(void) const
 {
-	return (this->type);
+	return (this->type_);
 }
 
 void	Animal::makeSound(void) const

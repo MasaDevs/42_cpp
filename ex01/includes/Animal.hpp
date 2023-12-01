@@ -13,6 +13,6 @@ class	Animal
 		std::string const	&getType(void);
 		Animal	&operator=(Animal const &animal);
 	protected:
-		std::string		type;
+		std::string		type_;
 };
 #endif

@@ -1,42 +1,38 @@
 #include "Animal.hpp"
 
-AAnimal::AAnimal()
+Animal::Animal()
 {
-	std::cout << "AAnimal Constructor" << std::endl;
-	this->my_brain = new Brain();
+	std::cout << "Animal Constructor" << std::endl;
 	return ;
 }
 
-AAnimal::AAnimal(AAnimal const &AAnimal)
+Animal::Animal(Animal const &animal)
 {
-	std::cout << "AAnimal Copy Constructor" << std::endl;
-	*this = AAnimal;
+	std::cout << "Animal Copy Constructor" << std::endl;
+	*this = animal;
 }
 
-AAnimal::~AAnimal()
+Animal::~Animal()
 {
-	std::cout << "AAnimal Destructor" << std::endl;
-	if (this->my_brain)
-		delete this->my_brain;
+	std::cout << "Animal Destructor" << std::endl;
 	return ;
 }
 
-AAnimal	&AAnimal::operator=(AAnimal const &AAnimal)
+Animal	&Animal::operator=(Animal const &animal)
 {
-	if (this != &AAnimal)
+	if (this != &animal)
 	{
-		this->type = AAnimal.type;
-		this->my_brain = AAnimal.my_brain;
+		this->type_ = animal.type_;
 	}
 	return (*this);
 }
 
-std::string	AAnimal::getType(void)
+std::string	const &Animal::getType(void)
 {
-	return (this->type);
+	return (this->type_);
 }
 
-void	AAnimal::makeSound(void) const
+void	Animal::makeSound(void) const
 {
 	std::cout << "Base Sound" << std::endl;
 	return ;

@@ -2,10 +2,10 @@
 #include "Cat.hpp"
 #include <iostream>
 #include <string>
-#define ANIMAL_LEN 5
+#define ANIMAL_LEN 10
 int main()
 {
-	/*
+	
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
@@ -18,7 +18,6 @@ int main()
 	std::cout << "dog was deleted" << std::endl;
 	delete i;
 	std::cout << "cat was deleted" << std::endl;
-	*/
 	
 	/*TEST*/
 	
@@ -30,8 +29,9 @@ int main()
 			zoo[i] = new Dog();
 		else
 			zoo[i] = new Cat();
-	}
-	for(int i = 0; i < ANIMAL_LEN; i++)
+		std::cout << zoo[i]->getType() << std::endl;
+		zoo[i]->makeSound();
 		delete zoo[i];
+	}
 	return 0;
 }

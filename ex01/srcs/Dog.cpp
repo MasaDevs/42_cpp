@@ -5,12 +5,12 @@
 Dog::Dog(void)
 {
 	std::cout << "Dog Constructor" << std::endl;
-	this->type = "Dog";
+	this->type_ = "Dog";
 	this->brain = new Brain();
 	return ;
 }
 
-Dog::Dog(Dog const &dog)
+Dog::Dog(Dog const &dog) : Animal(dog)
 {
 	*this = dog;
 	return ;

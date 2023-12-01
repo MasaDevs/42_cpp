@@ -3,12 +3,12 @@
 Cat::Cat()
 {
 	std::cout << "Cat Constructor" << std::endl;
-	this->type = "Cat";
+	this->type_ = "Cat";
 	this->brain = new Brain();
 	return ;
 }
 
-Cat::Cat(Cat const &cat)
+Cat::Cat(Cat const &cat) : Animal(cat)
 {
 	std::cout << "Cat Copy Constructor" << std::endl;
 	*this = cat;

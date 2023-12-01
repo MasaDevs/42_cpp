@@ -14,7 +14,7 @@ class	Brain
 		void	show_array(void) const;
 		Brain	&operator=(Brain const &brain);
 	private:
-		std::string		ideas[100];
-		int				index;
+		std::string		ideas_[100];
+		int				index_;
 };
 #endif

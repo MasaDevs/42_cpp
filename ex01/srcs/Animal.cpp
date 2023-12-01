@@ -22,14 +22,14 @@ Animal	&Animal::operator=(Animal const &animal)
 {
 	if (this != &animal)
 	{
-		this->type = animal.type;
+		this->type_ = animal.type_;
 	}
 	return (*this);
 }
 
 std::string	const &Animal::getType(void)
 {
-	return (this->type);
+	return (this->type_);
 }
 
 void	Animal::makeSound(void) const
