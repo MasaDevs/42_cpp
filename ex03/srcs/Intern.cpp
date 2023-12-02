@@ -9,7 +9,8 @@ Intern::Intern()
 Intern::Intern(Intern const &intern)
 {
 	std::cout << "Default Constructor" << std::endl;
-	*this = intern;
+	if (this != &intern)
+		*this = intern;
 	return ;
 }
 
@@ -26,9 +27,9 @@ Intern	&Intern::operator=(Intern const &intern)
 	return (*this);
 }
 
-Form	*Intern::makeForm(std::string form_name, std::string target)
+AForm	*Intern::makeForm(std::string const &form_name, std::string const &target)
 {
-	Form	*form = NULL
+	AForm	*form = NULL
 
 	return (form);
 }

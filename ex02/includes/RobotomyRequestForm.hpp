@@ -5,12 +5,12 @@
 #include <iostream>
 #include <cstdlib>
 
-class	RobotomyRequestForm : public Form
+class	RobotomyRequestForm : public AForm
 {
 	public:
 		RobotomyRequestForm();
 		RobotomyRequestForm(RobotomyRequestForm const &form);
-		RobotomyRequestForm(std::string target);
+		RobotomyRequestForm(std::string const &target);
 		~RobotomyRequestForm();	
 		RobotomyRequestForm &operator=(RobotomyRequestForm const &form);
 		void		execute(Bureaucrat const &executor);

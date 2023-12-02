@@ -3,12 +3,12 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
-class	ShrubberyCreationForm : public Form
+class	ShrubberyCreationForm : public AForm
 {
 	public:
 		ShrubberyCreationForm();
 		ShrubberyCreationForm(ShrubberyCreationForm const &form);
-		ShrubberyCreationForm(std::string target);
+		ShrubberyCreationForm(std::string const &target);
 		~ShrubberyCreationForm();	
 		ShrubberyCreationForm &operator=(ShrubberyCreationForm const &form);
 		void		execute(Bureaucrat const &executor);

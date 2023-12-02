@@ -1,19 +1,19 @@
 #include "PresidentialPardonForm.hpp"
 
 
-PresidentialPardonForm::PresidentialPardonForm() : Form("Unknown", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm() : AForm("Unknown", 25, 5)
 {
 		std::cout << "this is Shurubbery default Constructor" << std::endl;
 		return ;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form(target, 25,5)
+PresidentialPardonForm::PresidentialPardonForm(std::string const &target) : AForm(target, 25,5)
 {
 		std::cout << "this is Shurubbery default Constructor" << std::endl;
 		return ;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &form) : Form(form.getName(), 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &form) : AForm(form.getName(), 25, 5)
 {
 		std::cout << "this is Shurubbery copy Constructor" << std::endl;
 		return ;
@@ -42,7 +42,7 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executer)
 		std::cout << "Execute!!" <<std::endl;
 		std::cout << this->getName() << "has been pardoned by Zaphod Beeblebrox."  << std::endl;
 	}
-	catch (Form::GradeTooLowException &e)
+	catch (AForm::GradeTooLowException &e)
 	{
 		std::cout << e.what() << std::endl;
 		std::cout << "this executer doesn't fullfill the criteria.." << std::endl;

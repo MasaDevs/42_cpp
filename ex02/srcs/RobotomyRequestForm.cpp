@@ -1,19 +1,19 @@
 #include "RobotomyRequestForm.hpp"
 
 
-RobotomyRequestForm::RobotomyRequestForm() : Form("Unknown", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm() : AForm("Unknown", 72, 45)
 {
 		std::cout << "this is Shurubbery default Constructor" << std::endl;
 		return ;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form(target, 72,45)
+RobotomyRequestForm::RobotomyRequestForm(std::string const &target) : AForm(target, 72,45)
 {
 		std::cout << "this is Shurubbery default Constructor" << std::endl;
 		return ;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &form) : Form(form.getName(), 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &form) : AForm(form.getName(), 72, 45)
 {
 		std::cout << "this is Shurubbery copy Constructor" << std::endl;
 		return ;
@@ -46,7 +46,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executer)
 			std::cout << "this target couldn't be robotomized !" << std::endl;
 		//create file and write ascii tree
 	}
-	catch (Form::GradeTooLowException &e)
+	catch (AForm::GradeTooLowException &e)
 	{
 		std::cout << e.what() << std::endl;
 		std::cout << "this executer doesn't fullfill the criteria.." << std::endl;

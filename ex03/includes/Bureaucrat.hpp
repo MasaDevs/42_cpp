@@ -6,7 +6,7 @@
 #include <exception>
 #include "AForm.hpp"
 
-class	Form;
+class	AForm;
 
 class	Bureaucrat
 {
@@ -19,8 +19,8 @@ class	Bureaucrat
 		int					getGrade(void) const;
 		void				gradeIncrement(void);
 		void				gradeDecrement(void);
-		void				signForm(bool issigned, std::string form_name, std::string name) const;
-		void				executeForm(Form const &form) const;
+		void				signForm(bool issigned, std::string const &form_name, std::string const &name = "") const;
+		void				executeForm(AForm const &form) const;
 		Bureaucrat	&operator=(Bureaucrat const &breau);
 		class	GradeTooHighException : public std::exception
 		{

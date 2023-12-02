@@ -102,7 +102,7 @@ void	Bureaucrat::gradeDecrement(void)
 	return ;
 }
 
-void	Bureaucrat::signForm(bool issigned, std::string form_name, std::string reason) const
+void	Bureaucrat::signForm(bool issigned, std::string const &form_name, std::string const &reason) const
 {
 	if (issigned)
 		std::cout << this->name << " signed " << form_name << std::endl; 
@@ -111,7 +111,7 @@ void	Bureaucrat::signForm(bool issigned, std::string form_name, std::string reas
 	return ;
 }
 
-void	Bureaucrat::executeForm(Form const &form) const
+void	Bureaucrat::executeForm(AForm const &form) const
 {
 	std::cout << this->getName() << " executed " << form.getName() << std::endl;
 	return ;
