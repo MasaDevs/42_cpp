@@ -11,25 +11,25 @@ Bureaucrat		&Bureaucrat::operator=(Bureaucrat const &breau)
 {
 	std::cout << "Copy Operator" << std::endl;
 	if (this != &breau)
-		this->grade = breau.getGrade();
+		this->grade_ = breau.getGrade();
 	return (*this);
 }
 
 //constructor
-Bureaucrat::Bureaucrat() : name("unknown")
+Bureaucrat::Bureaucrat() : name_("unknown")
 {
 	std::cout << "Bureaucrat Default Constractor" << std::endl;
-	setGrade(this->grade_max);
+	setGrade(this->grade_max_);
 	return ;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &bureau) : name(bureau.name), grade(bureau.grade)
+Bureaucrat::Bureaucrat(Bureaucrat const &bureau) : name_(bureau.name_), grade_(bureau.grade_)
 {
 	std::cout << "Bureaucrat Copy Constractor" << std::endl;
 	return ;
 }
 		
-Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
+Bureaucrat::Bureaucrat(std::string name, int grade) : name_(name)
 {
 	try
 	{
@@ -38,12 +38,12 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 	catch (Bureaucrat::GradeTooLowException &e)
 	{
 		std::cerr << e.what() << std::endl;
-		this->grade = this->grade_max;
+		this->grade_ = this->grade_max_;
 	}
 	catch (Bureaucrat::GradeTooHighException &e)
 	{
 		std::cerr << e.what() << std::endl;
-		this->grade = this->grade_max;
+		this->grade_ = this->grade_max_;
 	}
 	std::cout << "Bureaucrat Default Constracutor" << std::endl;
 	return ;
@@ -57,23 +57,23 @@ Bureaucrat::~Bureaucrat()
 }
 
 //member fucntion
-std::string	Bureaucrat::getName(void) const
+std::string	const &Bureaucrat::getName(void) const
 {
-	return (this->name);
+	return (this->name_);
 }
 
 int			Bureaucrat::getGrade(void) const
 {
-	return (this->grade);
+	return (this->grade_);
 }
 
 void		Bureaucrat::setGrade(int grade)
 {
-	if (grade < this->grade_min)
+	if (grade < this->grade_min_)
 		throw GradeTooHighException();
-	else if (this->grade_max < grade)
+	else if (this->grade_max_ < grade)
 		throw GradeTooLowException();
-	this->grade = grade;
+	this->grade_ = grade;
 	std::cout << "Bureaucrat Grade was set" << std::endl;
 	return ;
 }
