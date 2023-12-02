@@ -14,7 +14,7 @@ class	AForm
 		AForm();
 		AForm(std::string const &name, int grade_for_sign,  int grade_for_execute);
 		AForm(AForm const &Form);
-		~AForm();
+		virtual ~AForm();
 		AForm			&operator=(AForm const &form);
 		virtual	void	execute(Bureaucrat const &executer) = 0;
 		std::string		const &getName(void) const;
