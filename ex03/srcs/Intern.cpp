@@ -1,5 +1,7 @@
 #include "Intern.hpp"
 
+std::string const Intern::form_book_[Intern::num_of_forms] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+
 Intern::Intern()
 {
 	std::cout << "Default Constructor" << std::endl;
@@ -27,9 +29,33 @@ Intern	&Intern::operator=(Intern const &intern)
 	return (*this);
 }
 
+int	Intern::getFormIndex(std::string const &form_name)
+{
+	for (int i = 0; i < num_of_forms; i++)
+		if (form_book_[i] == form_name)
+			return (i);
+	return (-1);
+}
+
 AForm	*Intern::makeForm(std::string const &form_name, std::string const &target)
 {
-	AForm	*form = NULL
+	AForm	*form = NULL;
+	int		index = getFormIndex(form_name);
 
+	switch (index)
+	{
+		case 0:
+			form = new ShrubberyCreationForm(target);
+			break;
+		case 1:
+			form = new RobotomyRequestForm(target);
+			break;
+		case 2:
+			form = new PresidentialPardonForm(target);
+			break;
+		default:
+			std::cout << "form name: " << form_name << " doesn't match this Intern." << std::endl;
+			break;
+	}
 	return (form);
 }
