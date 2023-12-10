@@ -2,16 +2,17 @@
 #include <iostream>
 #include <string>
 
-Dog::Dog(void)
+Dog::Dog(void) : Animal("dog")
 {
 	std::cout << "Dog Constructor" << std::endl;
-	this->type_ = "Dog";
 	this->brain = new Brain();
 	return ;
 }
 
 Dog::Dog(Dog const &dog) : Animal(dog)
 {
+	std::cout << "Dog Copy Constructor" << std::endl;
+	this->brain = new Brain();
 	*this = dog;
 	return ;
 }
@@ -28,7 +29,7 @@ Dog		&Dog::operator=(Dog const &dog)
 	if (this != &dog)
 	{
 		Animal::operator=(dog);
-		this->brain = dog.brain;
+		*(this->brain) = *(dog.brain);
 	}
 	return (*this);
 }

@@ -1,6 +1,6 @@
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat() : WrongAnimal("wrong cat")
+WrongCat::WrongCat() : WrongAnimal("cat")
 {
 	std::cout << "WrongCat Constructor" << std::endl;
 	return ;
@@ -26,6 +26,6 @@ WrongCat::~WrongCat()
 
 void	WrongCat::makeSound(void) const
 {
-	std::cout << "bau-bau" << std::endl;
+	std::cout << "meow-meow" << std::endl;
 	return ;
 }

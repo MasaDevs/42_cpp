@@ -12,6 +12,12 @@ Animal::Animal(Animal const &animal)
 	*this = animal;
 }
 
+Animal::Animal(std::string const &type) : type_(type)
+{
+	std::cout << "Animal Default Constructor" << std::endl;
+	return ;
+}
+
 Animal::~Animal()
 {
 	std::cout << "Animal Destructor" << std::endl;
@@ -30,11 +36,5 @@ Animal	&Animal::operator=(Animal const &animal)
 std::string	const &Animal::getType(void)
 {
 	return (this->type_);
-}
-
-void	Animal::makeSound(void) const
-{
-	std::cout << "Base Sound" << std::endl;
-	return ;
 }
 

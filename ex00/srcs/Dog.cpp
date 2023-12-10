@@ -10,6 +10,7 @@ Dog::Dog(void) : Animal("Dog")
 
 Dog::Dog(Dog const &dog) : Animal(dog)
 {
+	std::cout << "Dog Copy Constructor" << std::endl;
 	*this = dog;
 	return ;
 }
