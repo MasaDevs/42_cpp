@@ -1,5 +1,5 @@
 NAME		=	Polymorphism2
-CXX			=	c++
+CXX		=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 VERSION		=	-std=c++98
 INCLUDE		=	-I ./includes/
@@ -13,7 +13,7 @@ ${NAME}: ${OBJS}
 
 ${OBJSDIR}/%.o: ${SRCSDIR}/%.cpp
 	mkdir -p ${dir $@}
-	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $@ -c $< 
+	${CXX} ${CXXFLAGS} ${VERSION} ${INCLUDE} -o $@ -c $< 
 
 clean:
 	rm -rf ${OBJSDIR}
