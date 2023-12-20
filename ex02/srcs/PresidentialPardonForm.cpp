@@ -3,25 +3,25 @@
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("Unknown", 25, 5)
 {
-		std::cout << "this is Shurubbery default Constructor" << std::endl;
+		std::cout << "Presidential Default Constructor" << std::endl;
 		return ;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string const &target) : AForm(target, 25,5)
 {
-		std::cout << "this is Shurubbery default Constructor" << std::endl;
+		std::cout << "Presidential Constructor" << std::endl;
 		return ;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &form) : AForm(form.getName(), 25, 5)
 {
-		std::cout << "this is Shurubbery copy Constructor" << std::endl;
+		std::cout << "Presidential Copy Constructor" << std::endl;
 		return ;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
-		std::cout << "this is Shurubbery default Destructor" << std::endl;
+		std::cout << "Presidential Destructor" << std::endl;
 		return ;
 }
 
