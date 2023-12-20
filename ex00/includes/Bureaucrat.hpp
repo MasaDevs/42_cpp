@@ -32,7 +32,8 @@ class	Bureaucrat
 		int					grade_;
 		static int const	grade_highest_ = 1;
 		static int const	grade_lowest_ = 150;
-		void				setGrade(int grade);
+		int					getProperGrade(int const grade);
+		int					setGrade(int grade);
 };
 
 std::ostream & operator << (std::ostream &out, Bureaucrat const &b);
