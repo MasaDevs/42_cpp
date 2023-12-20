@@ -7,7 +7,7 @@ Form::Form() : name_("unknown"), isvalid_(true), issigned_(false), grade_for_sig
 	return ;
 }
 
-Form::Form(std::string name, int grade_for_sign, int grade_for_execute) : name_(name), isvalid_(true), issigned_(false), grade_for_sign_(getProperGrade(grade_for_sign)), grade_for_execute_(getProperGrade(grade_for_execute))
+Form::Form(std::string const &name, int grade_for_sign, int grade_for_execute) : name_(name), isvalid_(true), issigned_(false), grade_for_sign_(getProperGrade(grade_for_sign)), grade_for_execute_(getProperGrade(grade_for_execute))
 {
 	std::cout << "Form Constructor" << std::endl;
 	return ;
