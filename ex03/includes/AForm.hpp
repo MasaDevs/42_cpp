@@ -11,9 +11,7 @@ class	AForm
 	public:
 		AForm();
 		AForm(std::string const &name, int grade_for_sign,  int grade_for_execute);
-		AForm(AForm const &AForm);
 		virtual ~AForm();
-		AForm				&operator=(AForm const &form);
 		std::string const	&getName(void) const;
 		int					getGradeForSign(void) const;
 		int					getGradeForExecute(void) const;
@@ -43,6 +41,8 @@ class	AForm
 		int	const 			grade_for_execute_;
 		static int const	grade_highest_ = 1;
 		static int const	grade_lowest_ = 150;
+		AForm(AForm const &AForm);
+		AForm				&operator=(AForm const &form);
 };
 
 std::ostream		& operator << (std::ostream &out, AForm const &form);

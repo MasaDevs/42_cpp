@@ -12,8 +12,6 @@ class	Form
 		Form();
 		Form(std::string const &name, int grade_for_sign,  int grade_for_execute);
 		~Form();
-		Form(Form const &Form);
-		Form				&operator=(Form const &form);
 		std::string const	&getName(void) const;
 		int					getGradeForSign(void) const;
 		int					getGradeForExecute(void) const;
@@ -42,6 +40,8 @@ class	Form
 		int	const 			grade_for_execute_;
 		static int const	grade_highest_ = 1;
 		static int const	grade_lowest_ = 150;
+		Form(Form const &Form);
+		Form				&operator=(Form const &form);
 };
 
 std::ostream		& operator << (std::ostream &out, Form const &form);

@@ -17,16 +17,8 @@ int main(void)
 		Form form2;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		Form form3 = form1;
-		std::cout << "++++++++++++++++++++" << std::endl;
-
-		Form form4(form2);
-		std::cout << "++++++++++++++++++++" << std::endl;
-
 		std::cout << form1 << std::endl;
 		std::cout << form2 << std::endl;
-		std::cout << form3 << std::endl;
-		std::cout << form4 << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 		std::cout << std::endl;
 	}
