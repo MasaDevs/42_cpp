@@ -1,7 +1,7 @@
 #include "Form.hpp"
 
 //Constructor
-Form::Form() : name_("unknown"), isvalid_(true), issigned_(false), grade_for_sign_(this->grade_max_), grade_for_execute_(this->grade_max_)
+Form::Form() : name_("unknown"), isvalid_(true), issigned_(false), grade_for_sign_(this->grade_lowest_), grade_for_execute_(this->grade_lowest_)
 {
 	std::cout << "Form Default Constructor" << std::endl;
 	return ;
@@ -31,7 +31,7 @@ Form::Form(std::string name, int grade_for_sign, int grade_for_execute) : name_(
 	return ;
 }
 
-Form::Form(Form const &form) : name_(form.name_), isvalid_(form.isvalid_), issigned_(false), grade_for_sign_(form.grade_for_sign_), grade_for_execute_(form.grade_for_execute_)
+Form::Form(Form const &form) : name_(form.name_), isvalid_(form.isvalid_), issigned_(form.issigned_), grade_for_sign_(form.grade_for_sign_), grade_for_execute_(form.grade_for_execute_)
 {
 	std::cout << "Form Copy Constructor" << std::endl;
 	return ;
@@ -107,9 +107,9 @@ void	Form::beSigned(Bureaucrat const &bureau)
 
 void	Form::isValid(int grade) const
 {
-	if (this->grade_max_ < grade)
+	if (this->grade_lowest_ < grade)
 		throw Form::GradeTooLowException();
-	else if (grade < this->grade_min_)
+	else if (grade < this->grade_highest_)
 		throw Form::GradeTooHighException();
 }
 

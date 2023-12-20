@@ -38,8 +38,8 @@ class	Form
 		bool				issigned_;
 		int					grade_for_sign_;
 		int					grade_for_execute_;
-		static int const	grade_min_ = 1;
-		static int const	grade_max_ = 150;
+		static int const	grade_highest_ = 1;
+		static int const	grade_lowest_ = 150;
 };
 
 std::ostream		& operator << (std::ostream &out, Form const &form);

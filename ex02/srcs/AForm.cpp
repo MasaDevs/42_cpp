@@ -1,6 +1,6 @@
 #include "AForm.hpp"
 //Constructor
-AForm::AForm() : name_("unknown"), isvalid_(true), issigned_(false), grade_for_sign_(this->grade_max_), grade_for_execute_(this->grade_max_)
+AForm::AForm() : name_("unknown"), isvalid_(true), issigned_(false), grade_for_sign_(this->grade_lowest_), grade_for_execute_(this->grade_lowest_)
 {
 	std::cout << "AForm Default Constructor" << std::endl;
 	return ;
@@ -101,9 +101,9 @@ void				AForm::beSigned(Bureaucrat const &bureau)
 
 void				AForm::isValid(int grade) const
 {
-	if (this->grade_max_ < grade)
+	if (this->grade_lowest_ < grade)
 		throw AForm::GradeTooLowException();
-	else if (grade < this->grade_min_)
+	else if (grade < this->grade_highest_)
 		throw AForm::GradeTooHighException();
 }
 
