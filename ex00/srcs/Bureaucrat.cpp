@@ -43,6 +43,17 @@ int	Bureaucrat::getProperGrade(int const grade)
 	return (grade);
 }
 
+void		Bureaucrat::setGrade(int grade)
+{
+	if (grade < this->grade_highest_)
+		throw GradeTooHighException();
+	else if (this->grade_lowest_ < grade)
+		throw GradeTooLowException();
+	this->grade_ = grade;
+	std::cout << "Bureaucrat Grade was set" << std::endl;
+	return ;
+}
+
 std::string	const	&Bureaucrat::getName(void) const
 {
 	return (this->name_);
