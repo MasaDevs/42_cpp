@@ -20,7 +20,7 @@ class	AForm
 		void				setIsSigned(bool  issigned);
 		virtual	void		execute(Bureaucrat const &executer) = 0;
 		void				beSigned(Bureaucrat const &bureau);
-		void				isValid(int const grade) const;
+		bool				getIsValid(void) const;
 		void				checkSignGrade(Bureaucrat const &bureau);
 		void				checkExecuteGrade(Bureaucrat const &bureau);
 		class	GradeTooHighException : public std::exception

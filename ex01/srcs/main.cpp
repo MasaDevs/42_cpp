@@ -6,8 +6,6 @@ int main(void)
 {
 	//constructor check
 	{
-		std::cout << std::endl;
-		std::cout << std::endl;
 		std::cout << "Constructor Check" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
