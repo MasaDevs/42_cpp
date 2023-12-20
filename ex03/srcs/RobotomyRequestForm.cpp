@@ -3,25 +3,25 @@
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("Unknown", 72, 45)
 {
-		std::cout << "this is Shurubbery default Constructor" << std::endl;
+		std::cout << "Robotomy default Constructor" << std::endl;
 		return ;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string const &target) : AForm(target, 72,45)
 {
-		std::cout << "this is Shurubbery default Constructor" << std::endl;
+		std::cout << "Robotomy Constructor" << std::endl;
 		return ;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &form) : AForm(form.getName(), 72, 45)
 {
-		std::cout << "this is Shurubbery copy Constructor" << std::endl;
+		std::cout << "Robotomy Copy Constructor" << std::endl;
 		return ;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-		std::cout << "this is Shurubbery default Destructor" << std::endl;
+		std::cout << "Robotomy Destructor" << std::endl;
 		return ;
 }
 
@@ -40,7 +40,8 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executer)
 	{
 		this->checkExecuteGrade(executer);
 		std::cout << "ddddddddddddddddddddddddd!!" <<std::endl;
-		if (rand() % 2)
+		std::srand(std::time(NULL));
+		if (std::rand() % 2)
 			std::cout << "this target has been robotomized !" << std::endl;
 		else
 			std::cout << "this target couldn't be robotomized !" << std::endl;

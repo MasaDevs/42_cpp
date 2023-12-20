@@ -11,63 +11,85 @@ int main(void)
 	{
 		Intern	masa;
 		std::cout << "ShrubberyCreationForm" << std::endl;
-		//definition
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		Bureaucrat				highest("masahito arai", 1);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		Bureaucrat				middle("kentaro yoda", 138);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		Bureaucrat				lower("Naka Ren", 146);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		AForm* form1 = masa.makeForm("shrubbery creation", "My form");
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		AForm* form2 = masa.makeForm("shrubbery creation", "My form");
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		AForm* form3 = masa.makeForm("shrubbery creation", "My form");
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//highest
 		form1->beSigned(highest);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		if (form1->getIsSigned()) std::cout << "Yes" << std::endl;
 		else	std::cout << "No" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		form1->execute(highest);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//middle
 		form2->beSigned(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		if (form2->getIsSigned()) std::cout << "Yes" << std::endl;
 		else	std::cout << "No" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		form2->execute(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//lower
 		form3->beSigned(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		if (form3->getIsSigned()) std::cout << "Yes" << std::endl;
 		else	std::cout << "No" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		form3->execute(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//incurement middle
 		middle.gradeIncrement();
 		lower.gradeIncrement();
+		std::cout << "++++++++++++++++++++" << std::endl;
 		//middle
 		form2->beSigned(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		if (form2->getIsSigned()) std::cout << "Yes" << std::endl;
 		else	std::cout << "No" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		form2->execute(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//lower
 		form3->beSigned(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		if (form3->getIsSigned()) std::cout << "Yes" << std::endl;
 		else	std::cout << "No" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		form3->execute(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		delete form1;
 		delete form2;
 		delete form3;
@@ -76,61 +98,83 @@ int main(void)
 	{
 		Intern	masa;
 		std::cout << "RobotomyRequest" << std::endl;
-		//definition
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		Bureaucrat				highest("masahito arai", 1);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		Bureaucrat				middle("kentaro yoda", 44);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		Bureaucrat				lower("Naka Ren", 73);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		AForm* form1 = masa.makeForm("robotomy request", "My form");
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		AForm* form2 = masa.makeForm("robotomy request", "My form");
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		AForm* form3 = masa.makeForm("robotomy request", "My form");
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//highest
 		form1->beSigned(highest);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		if (form1->getIsSigned()) std::cout << "Yes" << std::endl;
 		else	std::cout << "No" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		form1->execute(highest);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//middle
 		form2->beSigned(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		if (form2->getIsSigned()) std::cout << "Yes" << std::endl;
 		else	std::cout << "No" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		form2->execute(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//lower
 		form3->beSigned(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		if (form3->getIsSigned()) std::cout << "Yes" << std::endl;
 		else	std::cout << "No" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		form3->execute(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//incurement middle
 		middle.gradeIncrement();
 		lower.gradeIncrement();
+		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//middle
 		form2->beSigned(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		if (form2->getIsSigned()) std::cout << "Yes" << std::endl;
 		else	std::cout << "No" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		form2->execute(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//lower
 		form3->beSigned(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		if (form3->getIsSigned()) std::cout << "Yes" << std::endl;
 		else	std::cout << "No" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		form3->execute(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
 		delete form1;
@@ -141,61 +185,83 @@ int main(void)
 	{
 		Intern masa;
 		std::cout << "PresidentialPardonFrom" << std::endl;
-		//definition
 		std::cout << "++++++++++++++++++++" << std::endl;
+	
 		Bureaucrat				highest("masahito arai", 1);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		Bureaucrat				middle("kentaro yoda", 6);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		Bureaucrat				lower("Naka Ren", 26);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		AForm* form1 = masa.makeForm("presidential pardon", "My form");
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		AForm* form2 = masa.makeForm("presidential pardon", "My form");
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		AForm* form3 = masa.makeForm("presidential pardon", "My form");
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//highest
 		form1->beSigned(highest);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		if (form1->getIsSigned()) std::cout << "Yes" << std::endl;
 		else	std::cout << "No" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		form1->execute(highest);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//middle
 		form2->beSigned(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		if (form2->getIsSigned()) std::cout << "Yes" << std::endl;
 		else	std::cout << "No" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		form2->execute(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//lower
 		form3->beSigned(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		if (form3->getIsSigned()) std::cout << "Yes" << std::endl;
 		else	std::cout << "No" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		form3->execute(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//incurement middle
 		middle.gradeIncrement();
 		lower.gradeIncrement();
+		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//middle
 		form2->beSigned(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		if (form2->getIsSigned()) std::cout << "Yes" << std::endl;
 		else	std::cout << "No" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		form2->execute(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//lower
 		form3->beSigned(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		if (form3->getIsSigned()) std::cout << "Yes" << std::endl;
 		else	std::cout << "No" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		form3->execute(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
 		delete form1;

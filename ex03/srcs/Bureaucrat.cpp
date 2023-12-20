@@ -1,49 +1,22 @@
 #include "Bureaucrat.hpp"
-
-//operator
-std::ostream & operator << (std::ostream &out, Bureaucrat const &b)
-{
-	out << b.getName() << ", bureaucrat grade "	 << b.getGrade() << ".";
-	return (out);
-}
-
-Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &breau)
-{
-	std::cout << "Copy Operator Called" << std::endl;
-	if (this != &breau)
-		this->grade = breau.getGrade();
-	return (*this);
-}
+#include "AForm.hpp"
 
 //constructor
-Bureaucrat::Bureaucrat() : name("unknown")
+Bureaucrat::Bureaucrat() : name_("unknown"), grade_(this->grade_lowest_)
 {
 	std::cout << "Bureaucrat Default Constractor" << std::endl;
-	setGrade(this->grade_highest);
 	return ;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &bureau) : name(bureau.name), grade(bureau.grade)
+Bureaucrat::Bureaucrat(Bureaucrat const &bureau) : name_(bureau.name_), grade_(bureau.grade_)
 {
 	std::cout << "Bureaucrat Copy Constractor" << std::endl;
 	return ;
 }
 		
-Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
+Bureaucrat::Bureaucrat(std::string name, int grade) : name_(name), grade_(getProperGrade(grade))
 {
-	try
-	{
-		setGrade(grade);
-	}
-	catch (Bureaucrat::GradeTooLowException &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	catch (Bureaucrat::GradeTooHighException &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	std::cout << "Bureaucrat Default Constracutor" << std::endl;
+	std::cout << "Bureaucrat Constracutor" << std::endl;
 	return ;
 }
 
@@ -55,25 +28,70 @@ Bureaucrat::~Bureaucrat()
 }
 
 //member fucntion
-std::string	Bureaucrat::getName(void) const
+int	Bureaucrat::getProperGrade(int const grade)
 {
-	return (this->name);
-}
-
-int			Bureaucrat::getGrade(void) const
-{
-	return (this->grade);
+	try 
+	{
+		if (grade < this->grade_highest_)
+			throw GradeTooHighException();
+		else if (this->grade_lowest_ < grade)
+			throw GradeTooLowException();
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+		return (this->grade_lowest_);
+	}
+	return (grade);
 }
 
 void		Bureaucrat::setGrade(int grade)
 {
-	if (grade < this->grade_highest)
+	if (grade < this->grade_highest_)
 		throw GradeTooHighException();
-	else if (this->grade_lowest < grade)
+	else if (this->grade_lowest_ < grade)
 		throw GradeTooLowException();
-	this->grade = grade;
+	this->grade_ = grade;
 	std::cout << "Bureaucrat Grade was set" << std::endl;
 	return ;
+}	
+
+std::string	const	&Bureaucrat::getName(void) const
+{
+	return (this->name_);
+}
+
+int Bureaucrat::getGrade(void) const
+{
+	return (this->grade_);
+}
+
+void	Bureaucrat::signForm(AForm &form) const
+{
+	try
+	{
+		if (form.getGradeForSign() < this->grade_)
+			throw GradeTooHighException();
+		form.setIsSigned(true);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm &form) const
+{
+	try
+	{
+		if (form.getGradeForExecute() < this->grade_)
+			throw GradeTooHighException();
+		form.execute(*this);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 void	Bureaucrat::gradeIncrement(void)
@@ -102,21 +120,6 @@ void	Bureaucrat::gradeDecrement(void)
 	return ;
 }
 
-void	Bureaucrat::signForm(bool issigned, std::string const &form_name, std::string const &reason) const
-{
-	if (issigned)
-		std::cout << this->name << " signed " << form_name << std::endl; 
-	else
-		std::cerr << this->name << " couldn't sign " << form_name << " because " << reason << "." << std::endl; 
-	return ;
-}
-
-void	Bureaucrat::executeForm(AForm const &form) const
-{
-	std::cout << this->getName() << " executed " << form.getName() << std::endl;
-	return ;
-}
-
 //exception class
 const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {
@@ -126,4 +129,19 @@ const char	*Bureaucrat::GradeTooHighException::what() const throw()
 const char	*Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("this grade is too low! must be 150 or under");
+}
+
+//operator
+std::ostream	&operator << (std::ostream &out, Bureaucrat const &b)
+{
+	out << b.getName() << ", bureaucrat grade "	 << b.getGrade() << ".";
+	return (out);
+}
+
+Bureaucrat		&Bureaucrat::operator=(Bureaucrat const &breau)
+{
+	std::cout << "Copy Operator" << std::endl;
+	if (this != &breau)
+		this->grade_ = breau.getGrade();
+	return (*this);
 }
