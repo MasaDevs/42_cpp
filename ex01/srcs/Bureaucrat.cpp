@@ -68,6 +68,11 @@ int Bureaucrat::getGrade(void) const
 
 void	Bureaucrat::signForm(Form &form) const
 {
+	if (!form.getIsValid())
+	{
+		std::cerr << "this form is not valid." << std::endl;
+		return ;
+	}
 	try
 	{
 		if (form.getGradeForSign() < this->grade_)
