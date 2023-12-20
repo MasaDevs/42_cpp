@@ -29,7 +29,7 @@ Intern	&Intern::operator=(Intern const &intern)
 	return (*this);
 }
 
-int	Intern::getFormIndex(std::string const &form_name)
+int	Intern::getForhighestdex(std::string const &form_name)
 {
 	for (int i = 0; i < num_of_forms; i++)
 		if (form_book_[i] == form_name)
@@ -40,7 +40,7 @@ int	Intern::getFormIndex(std::string const &form_name)
 AForm	*Intern::makeForm(std::string const &form_name, std::string const &target)
 {
 	AForm	*form = NULL;
-	int		index = getFormIndex(form_name);
+	int		index = getForhighestdex(form_name);
 
 	switch (index)
 	{

@@ -19,7 +19,7 @@ Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &breau)
 Bureaucrat::Bureaucrat() : name("unknown")
 {
 	std::cout << "Bureaucrat Default Constractor" << std::endl;
-	setGrade(this->grade_min);
+	setGrade(this->grade_highest);
 	return ;
 }
 
@@ -67,9 +67,9 @@ int			Bureaucrat::getGrade(void) const
 
 void		Bureaucrat::setGrade(int grade)
 {
-	if (grade < this->grade_min)
+	if (grade < this->grade_highest)
 		throw GradeTooHighException();
-	else if (this->grade_max < grade)
+	else if (this->grade_lowest < grade)
 		throw GradeTooLowException();
 	this->grade = grade;
 	std::cout << "Bureaucrat Grade was set" << std::endl;

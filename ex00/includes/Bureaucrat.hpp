@@ -30,8 +30,8 @@ class	Bureaucrat
 	private:
 		std::string const	name_;
 		int					grade_;
-		static int const	grade_min_ = 1;
-		static int const	grade_max_ = 150;
+		static int const	grade_highest_ = 1;
+		static int const	grade_lowest_ = 150;
 		void				setGrade(int grade);
 };
 
