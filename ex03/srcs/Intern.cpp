@@ -1,6 +1,6 @@
 #include "Intern.hpp"
 
-std::string const Intern::form_book_[Intern::num_of_forms] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+std::string const Intern::form_book_[Intern::num_of_forms_] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 
 Intern::Intern()
 {
@@ -31,7 +31,7 @@ Intern	&Intern::operator=(Intern const &intern)
 
 int	Intern::getForhighestdex(std::string const &form_name)
 {
-	for (int i = 0; i < num_of_forms; i++)
+	for (int i = 0; i < num_of_forms_; i++)
 		if (form_book_[i] == form_name)
 			return (i);
 	return (-1);
