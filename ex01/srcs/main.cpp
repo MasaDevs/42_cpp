@@ -79,14 +79,14 @@ int main(void)
 		Form		lower("My form", 149, 149);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		higher.beSigned(highest);
+		highest.signForm(higher);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		if (higher.getIsSigned()) std::cout << "Yes" << std::endl;
 		else	std::cout << "No" << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		lower.beSigned(lowest);
+		lowest.signForm(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		if (lower.getIsSigned()) std::cout << "Yes" << std::endl;

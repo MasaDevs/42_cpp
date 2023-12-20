@@ -14,7 +14,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const &bureau) : name_(bureau.name_), grade_(b
 		
 Bureaucrat::Bureaucrat(std::string name, int grade) : name_(name), grade_(getProperGrade(grade))
 {
-	std::cout << "Bureaucrat Default Constracutor" << std::endl;
+	std::cout << "Bureaucrat Constracutor" << std::endl;
 	return ;
 }
 

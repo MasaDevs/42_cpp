@@ -79,11 +79,14 @@ void	Form::beSigned(Bureaucrat const &bureau)
 	}
 	try
 	{
+		if (this->grade_for_sign_ < bureau.getGrade())
+			throw GradeTooLowException();
 		bureau.signForm(*this);
 		this->issigned_ = true;
 	}
-	catch (Form::GradeTooLowException &e)
+	catch (std::exception &e)
 	{
+		std::cerr << e.what() << std::endl;
 		this->issigned_ = false;
 	}
 	return ;

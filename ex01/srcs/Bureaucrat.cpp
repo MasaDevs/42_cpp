@@ -16,7 +16,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const &bureau) : name_(bureau.name_), grade_(b
 		
 Bureaucrat::Bureaucrat(std::string name, int grade) : name_(name), grade_(getProperGrade(grade))
 {
-	std::cout << "Bureaucrat Default Constracutor" << std::endl;
+	std::cout << "Bureaucrat Constracutor" << std::endl;
 	return ;
 }
 
@@ -68,9 +68,16 @@ int Bureaucrat::getGrade(void) const
 
 void	Bureaucrat::signForm(Form &form) const
 {
-	if (form.getGradeForSign() < this->grade_)
-		throw GradeTooHighException();
-	form.setIsSigned(true);
+	try
+	{
+		if (form.getGradeForSign() < this->grade_)
+			throw GradeTooHighException();
+		form.setIsSigned(true);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 void	Bureaucrat::gradeIncrement(void)
