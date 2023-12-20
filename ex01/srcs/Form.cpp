@@ -105,7 +105,7 @@ void	Form::beSigned(Bureaucrat const &bureau)
 	return ;
 }
 
-void	Form::isValid(int grade) const
+void	Form::isValid(int const grade) const
 {
 	if (this->grade_lowest_ < grade)
 		throw Form::GradeTooLowException();
