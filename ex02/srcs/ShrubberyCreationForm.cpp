@@ -56,7 +56,6 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executer)
 		ofs << "    treetr    " << std::endl;
 		ofs << "    treetr    " << std::endl;
 		ofs.close();
-		executer.executeForm(*this);
 	}
 	catch (AForm::GradeTooLowException &e)
 	{
