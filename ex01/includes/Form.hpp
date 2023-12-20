@@ -17,7 +17,9 @@ class	Form
 		std::string const	&getName(void) const;
 		int					getGradeForSign(void) const;
 		int					getGradeForExecute(void) const;
+		int					getProperGrade(int grade);
 		bool				getIsSigned(void) const;
+		void				setIsSigned(bool  issigned);
 		void				beSigned(Bureaucrat const &bureau);
 		void				isValid(int const grade) const;
 		void				checkSignGrade(Bureaucrat const &bureau);
