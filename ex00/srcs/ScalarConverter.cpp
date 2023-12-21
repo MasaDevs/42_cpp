@@ -1,9 +1,17 @@
 #include "ScalarConverter.hpp"
 
 // Private Member Function
+std::string	ScalarConverter::to_string(int num)
+{
+	std::stringstream	stream;
+
+	stream << num;
+	return (stream.str());
+}
+	
 std::string	ScalarConverter::convertCharToAsciiNumber(char chr)
 {
-	return (std::to_string(static_cast<int>(chr)));
+	return (to_string(static_cast<int>(chr)));
 }
 
 double	ScalarConverter::convertStringToDouble(std::string str)
@@ -27,9 +35,10 @@ int	ScalarConverter::convertStringToInt(std::string str)
 
 char	ScalarConverter::convertStringToChar(std::string str)
 {
-	if (str.size() != 1 || std::isdigit(str[0])|| !std::isprint(str[0]))
-		throw std::exception();
-	return (static_cast<char>(str[0]));
+	int num = std::stoi(str);
+	if (std::isdigit(num)|| !std::isprint(num))
+		throw std::out_of_range("Non Dispalyable");
+	return (static_cast<char>(num));
 }
 	
 //Public Member Function
@@ -39,6 +48,10 @@ void	ScalarConverter::convert(std::string const &target)
 	try
 	{
 		std::cout << "char: "  << convertStringToChar(str) << std::endl;
+	}
+	catch (std::out_of_range &e)
+	{
+		std::cout << e.what() << std::endl;
 	}
 	catch (std::exception &e)
 	{
@@ -69,8 +82,4 @@ void	ScalarConverter::convert(std::string const &target)
 		std::cout << "unable to Convert"<< std::endl;
 	}
 }
-
-
-	
-
 
