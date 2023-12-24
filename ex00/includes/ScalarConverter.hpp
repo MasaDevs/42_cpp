@@ -1,23 +1,37 @@
 #ifndef	SCALARCONVERTER_HPP
 #define	SCALARCONVERTER_HPP
 #include <iostream>
-#include <sstream>
 #include <string>
+#include <cmath>
+#include <limits>
 #include <iomanip>
 #include <exception>
+
+enum	ScalarType
+{
+	CHAR,
+	INT,
+	FLOAT,
+	DOUBLE,
+	ERROR,
+};
 
 class	ScalarConverter
 {
 	public:
-		static void		convert(std::string const &target);
+		static void		convert(std::string target);
 	private:
 		ScalarConverter();
-		static std::string	to_string(int num);
-		static std::string	convertCharToAsciiNumber(char chr);
-		static double		convertStringToDouble(std::string str);
-		static float		convertStringToFloat(std::string str);
-		static int		convertStringToInt(std::string str);
-		static char		convertStringToChar(std::string str);
+		ScalarConverter(ScalarConverter &scalar_converter);
+		~ScalarConverter();
+		ScalarConverter		&operator=(ScalarConverter const &scalar_converter);
+		static ScalarType	judgeScalarType(std::string const &target);
+		template<typename T>
+		static bool			isPrintable(T num);
+		template <typename T>
+		static void			convertType(T scalar_target);
+		static void			convertType(float scalar_target);
+		static void			convertType(double scalar_target);
 };
 
 #endif

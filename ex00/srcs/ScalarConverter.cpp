@@ -1,85 +1,106 @@
 #include "ScalarConverter.hpp"
 
-// Private Member Function
-std::string	ScalarConverter::to_string(int num)
+//private function
+ScalarType	ScalarConverter::judgeScalarType(std::string const &target)
 {
-	std::stringstream	stream;
+	bool	is_delimiter = false;
 
-	stream << num;
-	return (stream.str());
-}
-	
-std::string	ScalarConverter::convertCharToAsciiNumber(char chr)
-{
-	return (to_string(static_cast<int>(chr)));
-}
-
-double	ScalarConverter::convertStringToDouble(std::string str)
-{
-	if (str.size() == 1 && !std::isdigit(str[0]))	
-		str = convertCharToAsciiNumber(str[0]);
-	return (std::stod(str));
-}
-
-float	ScalarConverter::convertStringToFloat(std::string str)	
-{
-	return (static_cast<float>(convertStringToDouble(str)));
-}
-
-int	ScalarConverter::convertStringToInt(std::string str)
-{
-	if (str.size() == 1 && !std::isdigit(str[0]))	
-		str = convertCharToAsciiNumber(str[0]);
-	return (std::stoi(str));
+	if (target.size() == 1 && !std::isdigit(target[0]))
+		return (CHAR);
+	if (target == "nan" || target == "inf" || target == "-inf")
+		return (DOUBLE);
+	if (target == "nanf" || target == "inff" || target == "-inff")
+		return (FLOAT);
+	for (std::string::size_type i = target[0] == '-' ? 1 : 0; i < target.size(); i++)
+	{
+		if (std::isdigit(target[i]))
+			continue;
+		else if (target[i] == '.' && !is_delimiter)
+		{
+			is_delimiter = true;
+			continue;
+		}
+		else if (target[i] == 'f' && i + 1 == target.size() && is_delimiter)
+		{
+			return (FLOAT);
+		}
+		return (ERROR); }
+	return (is_delimiter ? DOUBLE : INT);
 }
 
-char	ScalarConverter::convertStringToChar(std::string str)
+template<typename T>
+bool	ScalarConverter::isPrintable(T num)
 {
-	int num = std::stoi(str);
-	if (std::isdigit(num)|| !std::isprint(num))
-		throw std::out_of_range("Non Dispalyable");
-	return (static_cast<char>(num));
+	return (32 <= num && num <= 126);
 }
-	
-//Public Member Function
-void	ScalarConverter::convert(std::string const &target)
+
+template <typename T>
+void	ScalarConverter::convertType(T scalar_target)
 {
-	std::string str = target;
+	std::cout << "char: " << (isPrintable(scalar_target) ? std::string(1, scalar_target) : "No displayable") << std::endl;
+	std::cout << "int: " << static_cast<int>(scalar_target) << std::endl;
+	std::cout << "float: " << static_cast<float>(scalar_target) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(scalar_target) << std::endl;
+}
+
+void	ScalarConverter::convertType(float scalar_target)
+{
+	if (scalar_target!= scalar_target || std::numeric_limits<float>::max() < scalar_target || scalar_target < std::numeric_limits<float>::min())
+	{
+		std::cout << "char: impossible" << std::endl;;
+		std::cout << "int: impossible" << std::endl;
+	}
+	else
+	{
+		std::cout << "char: " << (isPrintable(scalar_target) ? std::string(1, scalar_target) : "No displayable") << std::endl;
+		std::cout << "int: " << static_cast<int>(scalar_target) << std::endl;
+	}
+	std::cout << "float: " << static_cast<float>(scalar_target) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(scalar_target) << std::endl;
+}
+
+void	ScalarConverter::convertType(double scalar_target)
+{
+	if (scalar_target!= scalar_target || std::numeric_limits<float>::max() < scalar_target || scalar_target < std::numeric_limits<float>::min())
+	{
+		std::cout << "char: impossible" << std::endl;;
+		std::cout << "int: impossible" << std::endl;
+	}
+	else
+	{
+		std::cout << "char: " << (isPrintable(scalar_target) ? std::string(1, scalar_target) : "No displayable") << std::endl;
+		std::cout << "int: " << static_cast<int>(scalar_target) << std::endl;
+	}
+	std::cout << "float: " << static_cast<float>(scalar_target) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(scalar_target) << std::endl;
+}
+
+
+void	ScalarConverter::convert(std::string target)	
+{
 	try
 	{
-		std::cout << "char: "  << convertStringToChar(str) << std::endl;
-	}
-	catch (std::out_of_range &e)
-	{
-		std::cout << e.what() << std::endl;
+
+		switch (judgeScalarType(target)) {
+			case CHAR:
+				std::cout << "type: char" << std::endl;
+				return (convertType(target[0]));
+			case INT:
+				std::cout << "type: int" << std::endl;
+				return (convertType(std::stoi(target)));
+			case FLOAT:
+				std::cout << "type: float" << std::endl;
+				return (convertType(std::stof(target)));
+			case DOUBLE:
+				std::cout << "type: double" << std::endl;
+				return (convertType(std::stod(target)));
+			case ERROR:
+				std::cout << "type: error" << std::endl;
+				throw std::invalid_argument("invalid argument");
+		}
 	}
 	catch (std::exception &e)
 	{
-		std::cout << "Impossible"<< std::endl;
-	}
-	try
-	{
-		std::cout << "int: " << convertStringToInt(str) << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "Impossible"<< std::endl;
-	}
-	try
-	{
-		std::cout << "float: " << convertStringToFloat(str) << "f" << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "unable to Convert"<< std::endl;
-	}
-	try
-	{
-		std::cout << "double: " << convertStringToDouble(str) << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "unable to Convert"<< std::endl;
+		std::cerr << "Error: " << e.what() << std::endl;
 	}
 }
-

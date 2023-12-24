@@ -1,6 +1,6 @@
 NAME		=	convert
 CXX		=	c++
-CXXFLAGS	=	-Wall -Werror -Wextra
+CXXFLAGS	=	-Wall -Werror -Wextra -g -fsanitize=address
 INCLUDES	=	-I ./includes
 VERSION		=	-std=c++11
 SRCS		=	${shell find ${SRCSDIR} -name "*.cpp" -type f}
