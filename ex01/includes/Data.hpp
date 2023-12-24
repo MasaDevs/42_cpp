@@ -7,11 +7,13 @@ class	Data
 {
 	public:
 		Data();
-		Data(std::string);
+		Data(std::string const &);
+		Data(Data const &);
+		Data		&operator=(Data const &);
 		~Data();
-		std::string	getData(void);
-		void		setData(std::string);
+		std::string	const	&getData(void) const;
+		void				setData(std::string const &);
 	private:
-		std::string		data;
+		std::string		string_data_;
 };
 #endif

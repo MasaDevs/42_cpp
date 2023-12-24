@@ -2,7 +2,7 @@ NAME		=	Serialization
 CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra -fsanitize=address
 INCLUDES	=	-I ./includes
-VERSION		=	-std=c++98
+VERSION		=	-std=c++11
 SRCS		=	${shell find ${SRCSDIR} -name "*.cpp" -type f}
 OBJS		=	${subst ${SRCSDIR}, ${OBJSDIR}, ${SRCS:.cpp=.o}}
 SRCSDIR		=	srcs
