@@ -1,8 +1,7 @@
-NAME		=	AbstractClass
-CXX			=	g++
+NAME		=	Template01
+CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 VERSION		=	-std=c++98
-TESTVERSION	=	-std=c++17
 INCLUDE		=	-I ./includes/
 SRCS		=	${shell find ${SRCSDIR} -name "*.cpp"}
 SRCSDIR		=	srcs
@@ -14,7 +13,7 @@ ${NAME}: ${OBJS}
 
 ${OBJSDIR}/%.o: ${SRCSDIR}/%.cpp
 	mkdir -p ${dir $@}
-	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $@ -c $< 
+	$(CXX) $(CXXFLAGS) $(VERSION) $(INCLUDE) -o $@ -c $< 
 
 clean:
 	rm -rf ${OBJSDIR}
