@@ -16,8 +16,8 @@ class	Array
 		T				&operator[](unsigned int index);
 		const T	 		&operator[](unsigned int index) const;
 	private:
-		T				*array_;
 		unsigned int	array_size_;
+		T				*array_;
 };
 
 template <typename T>
@@ -33,16 +33,14 @@ Array<T>::Array(unsigned int n) : array_size_(n), array_(new T[n])
 template <typename T>
 Array<T>::Array(Array const &array)
 {
+	this->array_ = new T(array.array_size_);
 	*this =  array;
 }
 
 template <typename T>
 Array<T>::~Array()
 {
-	if (this->size() == 1)
-		delete this->array_;
-	else
-		delete [](this->array_);
+	this->array_size_ == 1 ? delete this->array_ : delete [](this->array_);
 }
 
 template <typename T>
