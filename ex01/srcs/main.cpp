@@ -13,11 +13,14 @@ void	change_to_n(char &chr)
 
 int main()
 {
-	int		num[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
-	char	str[] = "masahito arai";
+	std::cout << "----------PRINT----------" << std::endl;
+	int			num[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
 	iter(num, 10, print);
+
+	std::cout << "----------CONVERT----------" << std::endl;
+	std::string	str = "masahito arai";
 	std::cout << "before iter:	" << str << std::endl;
-	iter(str, 13, change_to_n);
+	iter(str, str.size(), change_to_n);
 	std::cout << "after iter:	"<< str << std::endl;
 	std::cout << "this program ends successfully." << std::endl;
 }
