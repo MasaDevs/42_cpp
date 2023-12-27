@@ -14,12 +14,15 @@ bool	DateFormat::checkDateFormat(std::string date)
 		return (false);
 	else if (strptime(date.c_str(), this->date_format.c_str(), &result) == NULL)
 		return (false);
+	std::cout << result.tm_mday << std::endl;
 	return (this->isValidDay(result));
 }
 
 bool	DateFormat::isValidDay(struct tm result)
 {
-	switch(result.tm_mon + 1)
+	int		month = result.tm_mon + 1;
+	int		day = result.tm_mday;
+	switch(month)
 	{
 		case 1:
 		case 3: case 5:
@@ -27,25 +30,17 @@ bool	DateFormat::isValidDay(struct tm result)
 		case 8:
 		case 10:
 		case 12:
-			break;
+			return (1 <= day && day <= 31 ? true : false);
 		case 4:
 		case 6:
 		case 9:
 		case 11:
-			if (30 < result.tm_mday)
-				return (false);
-			break;
+			return (1 <= day && day<= 30 ? true : false);
 		case 2:
-		{
 			if (result.tm_year % 4 == 0 && result.tm_year % 100)
-			{
-				if (29 < result.tm_mday)
-					return (false);
-			}
-			else if (28 < result.tm_mday)
-				return (false);
-			break;
-		}
+				return (1 <= day && day <= 29 ? true : false);
+			return (1 <= day && day <= 28 ? true : false);
+		default :
+			return (false);
 	}
-	return (true);
 }
