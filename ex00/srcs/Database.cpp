@@ -1,8 +1,4 @@
 #include "Database.hpp"
-#include "DateFormat.hpp"
-#include <exception>
-#include <limits.h>
-#include <stdexcept>
 
 Database::Database(std::string file_name)
 {

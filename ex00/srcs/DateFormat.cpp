@@ -1,6 +1,4 @@
-
 #include "DateFormat.hpp"
-#include <string>
 
 bool	DateFormat::checkDateFormat(std::string const &date)
 {

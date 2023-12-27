@@ -1,9 +1,11 @@
 #ifndef	DATABASE_HPP
 #define	DATABASE_HPP
+#include "DateFormat.hpp"
 #include <iostream>
 #include <string>
 #include <map>
 #include <fstream>
+#include <climits>
 
 class	Database
 {
