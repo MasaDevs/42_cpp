@@ -8,18 +8,18 @@ Database::Database(std::string file_name)
 	std::string		line;
 	if (!ifs)
 	{
-		std::cerr << "Could'nt open the data file." << std::endl;
+		std::cerr << "Error: database: Could'nt open the data file." << std::endl;
 		return ;
 	}
 	std::getline(ifs, line);
 	while(std::getline(ifs, line))
 	{
-		if (line.size() <= line.find(","))
+		if (line.find(",") == std::string::npos)
 		{
-			std::cerr << "this format is not csv data !" << std::endl;
+			std::cerr << "Error: database: this format is not csv data !" << std::endl;
 			continue ;
 		}
-		std::string	date = line.substr(0,line.find(","));
+		std::string	date = line.substr(0, line.find(","));
 		std::string	s_data = line.substr(line.find(",") + 1);
 		try
 		{
@@ -28,7 +28,7 @@ Database::Database(std::string file_name)
 		}
 		catch (std::invalid_argument &e)
 		{
-			std::cout << "This line is invalid. " << e.what() << std::endl;
+			std::cout << "Error: database: the data is invalid. " << e.what() << std::endl;
 		}
 	}
 	ifs.close();
@@ -38,11 +38,11 @@ bool	Database::insertData(std::string date, float data)
 {
 	DateFormat	dateformat("%Y-%m-%d", 10);
 	if (!dateformat.checkDateFormat(date))
-		throw std::invalid_argument("ivalid date format: date is not feasible.");
+		throw std::invalid_argument("Error: ivalid date format: date is not feasible.");
 	else if (data < 0 || INT_MAX < data)
-		throw std::invalid_argument("ivalid data format: exceeded int range.");
+		throw std::invalid_argument("Error: ivalid data format: exceeded int range.");
 	else if (!this->database.empty() && this->database.find(date) != this->database.end())
-		throw std::invalid_argument("ivalid data format: duplicate date.");
+		throw std::invalid_argument("Error: ivalid data format: duplicate date.");
 	this->database[date] = data;
 	return (true);
 }

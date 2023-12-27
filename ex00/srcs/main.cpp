@@ -1,26 +1,35 @@
 #include <iostream>
+#include <limits>
 #include <string>
 #include <fstream>
 #include "Database.hpp"
 #include <exception>
+#include <climits>
 
-int	main()
+int	main(int argc, char *argv[])
 {
 	Database database("data.csv");
 
-	std::ifstream	ifs("input.text");
-	std::string		line;
-	if (!ifs)
+	if (argc != 2)
 	{
-		std::cerr << "Could'nt open the data file." << std::endl;
-		return (0);
+		std::cerr << "Error: the argument must be 1." << std::endl;
+		return (1);
 	}
-	std::getline(ifs, line);
-	while(std::getline(ifs, line))
+
+	std::ifstream	ifs_input(argv[1]);
+	if (!ifs_input)
 	{
-		if (line.size() <= line.find("|"))
+		std::cerr << "Error: Could'nt open the data file." << std::endl;
+		return (1);
+	}
+
+	std::string		line;
+	std::getline(ifs_input, line);
+	while(std::getline(ifs_input, line))
+	{
+		if (line.find("|") == std::string::npos)
 		{
-			std::cerr << "this format is bad !" << std::endl;
+			std::cerr << "input: the format is bad !" << std::endl;
 			continue ;
 		}
 		std::string	date = line.substr(0,line.find(" |"));
@@ -28,17 +37,19 @@ int	main()
 		try
 		{
 			float	input_data = std::stof(s_data);
-			if (input_data < 0 || INT_MAX < input_data)
-				throw std::invalid_argument("Too Large Number !");
+			if (input_data < 0)
+				throw std::invalid_argument("input: not a positive number.");
+			else if (static_cast<long long>(INT_MAX) < static_cast<long long>(input_data))
+				throw std::invalid_argument("input: too Large Number !");
 			float	db_data = database.searchData(date);
-			std::cout << date  << " " << input_data << "=>" << input_data / db_data << std::endl;
+			std::cout << date << " " << input_data << " => " << db_data * input_data << std::endl;
 		}
 		catch (std::invalid_argument &e)
 		{
 			std::cout << "Error!: " << e.what() << std::endl;
 		}
 	}
-	ifs.close();
+	ifs_input.close();
 }
 
 
