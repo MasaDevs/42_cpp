@@ -1,27 +1,20 @@
 
 #include "DateFormat.hpp"
+#include <string>
 
-DateFormat::DateFormat(std::string date_format, unsigned int date_len) : date_format(date_format), date_len(date_len)
+bool	DateFormat::checkDateFormat(std::string const &date)
 {
-	return ;
+	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
+		return (false);
+
+	int			year = std::stoi(date.substr(0, 4));	
+	int			month = std::stoi(date.substr(5, 2));
+	int			day = std::stoi(date.substr(8, 2));
+	return (isValidDay(year, month, day));
 }
 
-bool	DateFormat::checkDateFormat(std::string date)
+bool	DateFormat::isValidDay(int year, int month, int day)
 {
-	struct tm result;
-
-	if (date.size() != this->date_len)
-		return (false);
-	else if (strptime(date.c_str(), this->date_format.c_str(), &result) == NULL)
-		return (false);
-	std::cout << result.tm_mday << std::endl;
-	return (this->isValidDay(result));
-}
-
-bool	DateFormat::isValidDay(struct tm result)
-{
-	int		month = result.tm_mon + 1;
-	int		day = result.tm_mday;
 	switch(month)
 	{
 		case 1:
@@ -38,7 +31,7 @@ bool	DateFormat::isValidDay(struct tm result)
 		case 11:
 			return (1 <= day && day<= 30 ? true : false);
 		case 2:
-			if (result.tm_year % 4 == 0 && result.tm_year % 100)
+			if ((year % 400 == 0) || (year % 4 == 0 && year % 100) )
 				return (1 <= day && day <= 29 ? true : false);
 			return (1 <= day && day <= 28 ? true : false);
 		default :

@@ -10,7 +10,6 @@
 int	main(int argc, char *argv[])
 {
 	Database	database("data.csv");
-	DateFormat	dateformat("%Y-%m-%d", 10);
 	
 	if (argc != 2)
 	{
@@ -38,7 +37,7 @@ int	main(int argc, char *argv[])
 		std::string	s_data = line.substr(line.find("|") + 1);
 		try
 		{
-			if (!dateformat.checkDateFormat(date))
+			if (!DateFormat::checkDateFormat(date))
 				throw std::invalid_argument("input: bad input");
 			float	input_data = std::stof(s_data);
 			if (input_data < 0)

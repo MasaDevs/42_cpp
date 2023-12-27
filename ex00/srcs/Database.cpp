@@ -38,8 +38,7 @@ Database::Database(std::string file_name)
 
 bool	Database::insertData(std::string date, float data)
 {
-	DateFormat	dateformat("%Y-%m-%d", 10);
-	if (!dateformat.checkDateFormat(date))
+	if (!DateFormat::checkDateFormat(date))
 		throw std::invalid_argument("database: insert: ivalid date format: date is not feasible.");
 	else if (data < 0 || static_cast<long long>(INT_MAX) < static_cast<long long>(data))
 		throw std::invalid_argument("database: insert: ivalid data format: exceeded int range.");

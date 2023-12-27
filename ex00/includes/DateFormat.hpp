@@ -2,17 +2,15 @@
 #define DATEFORMAT_HPP
 #include <iostream>
 #include <string>
-#include <time.h>
+#include <ctime>
 
 class	DateFormat
 {
 	public:
-		DateFormat(std::string date_format, unsigned int date_len);
-		bool	checkDateFormat(std::string);
-		bool	isValidDay(struct tm result);
+		static bool	checkDateFormat(std::string const &);
+		static bool	isValidDay(int year, int month, int day);
 	private:
-		std::string		date_format;
-		unsigned int	date_len;
+		DateFormat();
 };
 
 #endif
