@@ -1,5 +1,5 @@
 NAME		=	PmergeMe
-CXX			=	g++
+CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror
 SRCS		=	${shell find ${SRCSDIR} -name "*.cpp" -type f}
 SRCSDIR		=	srcs
@@ -8,11 +8,11 @@ OBJS		=	${subst ${SRCSDIR}, ${OBJSDIR}, ${SRCS:.cpp=.o}}
 
 all: ${NAME}
 ${NAME}: ${OBJS}
-	${CXX} ${CXXFLAGS} ${OBJS} -o ${NAME}
+	${CXX} ${CXXFLAGS} ${VERSION} ${OBJS} -o ${NAME}
 
 ${OBJSDIR}/%.o: ${SRCSDIR}/%.cpp
 	mkdir -p ${dir ${OBJS}}
-	${CXX} ${CXXFLAGS} -c $< -o $@
+	${CXX} ${CXXFLAGS} ${INCLUDE} ${VERSION} -c $< -o $@
 
 clean:
 	rm -rf ${OBJSDIR}
