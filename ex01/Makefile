@@ -1,5 +1,5 @@
 NAME		=	RPN
-CXX			=	g++
+CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror
 INCLUDE		=	-I ./includes
 SRCS		=	${shell find ${SRCSDIR} -name "*.cpp" -type f}
@@ -13,7 +13,7 @@ ${NAME}: ${OBJS}
 
 ${OBJSDIR}/%.o: ${SRCSDIR}/%.cpp
 	mkdir -p ${dir ${OBJS}}
-	${CXX} ${CXXFLAGS} ${INCLUDE} -c $< -o $@
+	${CXX} ${CXXFLAGS} ${VERSION} ${INCLUDE} -c $< -o $@
 
 clean:
 	rm -rf ${OBJSDIR}

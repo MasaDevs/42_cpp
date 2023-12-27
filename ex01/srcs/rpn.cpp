@@ -1,6 +1,6 @@
 #include "rpn.hpp"
 
-int	RPN::perse(std::string str)
+int	RPN::perse(std::string const &str)
 {
 	int		ans;
 	this->checkFormat(str);
@@ -48,7 +48,7 @@ void	RPN::calc(int ope)
 	stk.push(first);
 }
 
-void	RPN::checkFormat(std::string str)
+void	RPN::checkFormat(std::string const &str)
 {
 	for (size_t i = 0; i < str.size(); i++)
 		if (i % 2)

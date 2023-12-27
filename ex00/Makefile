@@ -1,5 +1,5 @@
 NAME		=	btc
-CXX			=	g++
+CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 INCLUDE		=	-I ./includes
 SRCS		=	${shell find ${SRCSDIR} -name "*.cpp" -type f}
@@ -9,7 +9,7 @@ OBJS		=	${subst ${SRCSDIR}, ${OBJSDIR}, ${SRCS:.cpp=.o}}
 
 all: ${NAME}
 ${NAME}: ${OBJS}
-	${CXX} ${CXXFLAGS} ${OBJS} -o ${NAME}
+	${CXX} ${CXXFLAGS} ${VERSION} ${OBJS} -o ${NAME}
 
 ${OBJSDIR}/%.o: ${SRCSDIR}/%.cpp
 	mkdir -p ${dir ${OBJS}}

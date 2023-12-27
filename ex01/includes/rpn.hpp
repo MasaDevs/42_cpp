@@ -16,8 +16,8 @@ enum Operator
 class	RPN
 {
 	public:
-		int		perse(std::string);
-		void	checkFormat(std::string);
+		int		perse(std::string const &);
+		void	checkFormat(std::string const &);
 		void	calc(int ope);
 		void	push(int num);
 	private:
