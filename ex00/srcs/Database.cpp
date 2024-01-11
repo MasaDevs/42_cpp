@@ -21,7 +21,7 @@ Database::Database(std::string file_name)
 		std::string	s_data = line.substr(line.find(",") + 1);
 		try
 		{
-			float	data = std::stof(s_data);
+			double	data = std::stof(s_data);
 			this->insertData(date, data);
 		}
 		catch (std::invalid_argument &e)
@@ -32,7 +32,7 @@ Database::Database(std::string file_name)
 	ifs.close();
 }
 
-bool	Database::insertData(std::string date, float data)
+bool	Database::insertData(std::string date, double data)
 {
 	if (!DateFormat::checkDateFormat(date))
 		throw std::invalid_argument("database: insert: ivalid date format: date is not feasible.");
@@ -44,9 +44,9 @@ bool	Database::insertData(std::string date, float data)
 	return (true);
 }
 	
-float	Database::searchData(std::string date)
+double	Database::searchData(std::string date)
 {
-	std::map<std::string, float>::iterator iter = this->database.lower_bound(date);
+	std::map<std::string, double>::iterator iter = this->database.lower_bound(date);
 	if (date < database.begin()->first)
 		throw std::invalid_argument("database: search: too old date !");
 	return (iter->first == date ? iter->second : (--iter)->second);
@@ -54,7 +54,7 @@ float	Database::searchData(std::string date)
 
 void	Database::printData(void)
 {
-	for (std::map<std::string, float>::iterator iter = this->database.begin(); iter != database.end(); iter++)
+	for (std::map<std::string, double>::iterator iter = this->database.begin(); iter != database.end(); iter++)
 		std::cout << "date: " << iter->first  << " data: " << iter->second << std::endl;
 }
 

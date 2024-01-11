@@ -28,7 +28,7 @@ int	main(int argc, char *argv[])
 	std::getline(ifs_input, line);
 	while(std::getline(ifs_input, line))
 	{
-		if (line.find("|") == std::string::npos)
+		if (line.find(" |") == std::string::npos)
 		{
 			std::cerr << "input: the format is bad !" << std::endl;
 			continue ;
@@ -38,18 +38,18 @@ int	main(int argc, char *argv[])
 		try
 		{
 			if (!DateFormat::checkDateFormat(date))
-				throw std::invalid_argument("input: bad input");
-			float	input_data = std::stof(s_data);
+				throw std::invalid_argument("input: bad date format");
+			double	input_data = std::stof(s_data);
 			if (input_data < 0)
 				throw std::invalid_argument("input: not a positive number.");
-			else if (static_cast<long long>(INT_MAX) < static_cast<long long>(input_data))
+			else if (static_cast<double>(INT_MAX) < input_data)
 				throw std::invalid_argument("input: too Large Number !");
-			float	db_data = database.searchData(date);
+			double	db_data = database.searchData(date);
 			std::cout << date << " =>  " << input_data << " = " << db_data * input_data << std::endl;
 		}
 		catch (std::invalid_argument &e)
 		{
-			std::cout << "Error!: " << e.what() << std::endl;
+			std::cerr << "Error!: " << e.what() << std::endl;
 		}
 	}
 	ifs_input.close();

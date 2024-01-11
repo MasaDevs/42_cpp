@@ -11,11 +11,11 @@ class	Database
 {
 	public:
 		Database(std::string file_name);
-		bool	insertData(std::string date, float data);
-		float	searchData(std::string date);
+		bool	insertData(std::string date, double data);
+		double	searchData(std::string date);
 		void	printData(void);
 	private:
-		std::map<std::string, float> database;
+		std::map<std::string, double> database;
 };
 
 #endif
