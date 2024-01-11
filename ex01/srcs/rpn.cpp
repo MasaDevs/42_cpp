@@ -24,7 +24,7 @@ int	RPN::perse(std::string const &str)
 	ans = this->stk.top();
 	this->stk.pop();
 	if (!stk.empty())
-		throw	std::logic_error("The operand is invalid.");
+		throw	std::logic_error("The format is ivalud.");
 	return (ans);
 }
 		
