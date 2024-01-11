@@ -1,6 +1,6 @@
 NAME		=	PmergeMe
 CXX			=	c++
-CXXFLAGS	=	-Wall -Wextra -Werror
+CXXFLAGS	=	-Wall -Wextra -Werror -g -fsanitize=address
 SRCS		=	${shell find ${SRCSDIR} -name "*.cpp" -type f}
 SRCSDIR		=	srcs
 OBJSDIR		=	objs

@@ -21,7 +21,7 @@ Database::Database(std::string file_name)
 		std::string	s_data = line.substr(line.find(",") + 1);
 		try
 		{
-			double	data = std::stof(s_data);
+			double	data = std::stod(s_data);
 			this->insertData(date, data);
 		}
 		catch (std::invalid_argument &e)

@@ -1,78 +1,75 @@
+#include <algorithm>
+#include <cstddef>
+#include <exception>
 #include <iostream>
 #include <vector>
+#include <utility>
 #include <list>
 
-void	merge(std::vector<int>& v, int start, int end);
-void	insert_sort(std::vector<int>& v, int start, int end);
-void	insert_sort(std::list<int>& lst);
+#define NOT_AVAILABLE -1
 
-int main()
-{
-	int N;
-	
-	std::cin >> N;
-	std::vector<int> V(N);
-	std::list<int> lst;
+class MergeInsertionSort {
+	public:
+		MergeInsertionSort(std::vector<int> &V);
+		void	sortVector();
+		void	mergeSortVector(int left, int right);
+		void	mergeVector(int left, int mid, int right);
+		void	print();
+	private:
+		std::vector<std::pair<int, int>>	v_;
+		int									surplus_element_ = NOT_AVAILABLE;
+};
 
-	for (int i = 0; i < N; i++)
-		lst.push_back(N - i);
-	for(std::list<int>::iterator iter = lst.begin(); iter != lst.end(); iter++)
-		std::cout << *(iter) << " " << std::endl;
-	//for (int i = 0; i < N; i++)
-	//		V[i] = N - i;
-	//merge(V, 0, N - 1);
-	//for (int i = 0; i < N; i++)
-	//	if (0 < i && V[i] < V[i - 1])
-	//		std::cout << "NG" << std::endl;
-	//
-	//std::cout << std::endl;
-	insert_sort(lst);
-	for(std::list<int>::iterator iter = lst.begin(); iter != lst.end(); iter++)
-		std::cout << *(iter) << " " << std::endl;
-}
-
-void	insert_sort(std::vector<int>& v, int start, int end)
-{
-	if (start == end)
-		return ;
-	for (int i = start + 1; i <= end; i++)
-	{
-		int		j = i;
-		while(start < j && v[j] < v[j - 1])
-		{
-			int temp = v[j - 1];
-			v[j - 1] = v[j];
-			v[j] = temp;
-			j--;
-		}
+MergeInsertionSort::MergeInsertionSort(std::vector<int> &V) {
+	for (size_t i = 0; i < V.size(); i+=2) {
+		if (i + 1 == V.size())
+			surplus_element_ = V[i];
+		else
+			v_.push_back(std::make_pair(std::max(V[i], V[i + 1]), std::min(V[i], V[i + 1])));
 	}
 }
 
-void	merge(std::vector<int>& v, int start, int end)
-{
-	if (end - start < 2)	
-		return (insert_sort(v, start, end));
-	merge(v, start, (start + end) / 2);
-	merge(v, (start + end) / 2 + 1, end);
-	insert_sort(v, start, end);
+void	MergeInsertionSort::mergeSortVector(int left, int right) {
+	if (right - left < 3) {
+		if (right - left == 2 && v_[left + 1].first < v_[left].first)
+			std::swap(v_[left], v_[left + 1]);
+		return ;
+	}
+	int mid = (left + right) / 2;
+	mergeSortVector(left, mid);
+	mergeSortVector(mid, right);
+	mergeVector(left, mid, right);
+			
 }
 
-void	insert_sort(std::list<int>& lst)
-{
-	if (lst.size() <= 1)
-			return ;
-	for (std::list<int>::iterator iter = lst.begin(); iter != lst.end(); iter++)	
-	{
-		std::list<int>::iterator iter2 = iter;
-		std::list<int>::iterator iter3 = iter;
-		iter3--;	
-		while(iter2 != lst.begin() && *(iter2) < *(iter3))
-		{
-			int temp = *(iter3);
-			*(iter3) = *(iter2);
-			*(iter2) = temp;
-			iter2--;
-			iter3--;
-		}
-	}	
+void	MergeInsertionSort::mergeVector(int left, int mid, int right) {
+	std::vector<std::pair<int, int>>	left_vector, right_vector;
+
+
+
+}
+
+void	MergeInsertionSort::sortVector() {
+	mergeSortVector(0, v_.size());
+}
+
+void	MergeInsertionSort::print() {
+	for (size_t i = 0; i < v_.size(); i++)
+		std::cout << "pair: " << v_[i].first << " " << v_[i].second << std::endl;
+}
+
+int main(int argc, char *argv[]) {
+	if (argc < 2) {
+		std::cerr << "Error: input value must be a series of number" << std::endl;
+		return (1);
+	}
+
+	std::vector<int>	V;
+
+	for (int i = 1; i < argc; i++) {
+		V.push_back(std::atoi(argv[i]));
+	}
+	MergeInsertionSort	pmerge(V);
+	pmerge.sortVector();
+	pmerge.print();
 }
