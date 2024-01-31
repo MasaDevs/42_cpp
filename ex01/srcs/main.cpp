@@ -72,15 +72,13 @@ int main(void)
 		highest.signForm(higher);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (higher.getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (higher.getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		lowest.signForm(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (lower.getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (lower.getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		highest.gradeDecrement();
@@ -92,15 +90,12 @@ int main(void)
 		higher.beSigned(highest);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (higher.getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (higher.getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		lower.beSigned(lowest);
 		std::cout << "++++++++++++++++++++" << std::endl;
-
-		if (lower.getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (lower.getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 	}
 	std::cout << "this program successfully finished" << std::endl;
