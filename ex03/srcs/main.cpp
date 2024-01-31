@@ -10,7 +10,7 @@ int main(void)
 {
 	{
 		Intern	masa;
-		std::cout << "ShrubberyCreationForm" << std::endl;
+		std::cout << "ShrubberyCreationForm" << std::endl << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		Bureaucrat				highest("masahito arai", 1);
@@ -35,8 +35,7 @@ int main(void)
 		form1->beSigned(highest);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (form1->getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (form1->getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		form1->execute(highest);
@@ -46,8 +45,7 @@ int main(void)
 		form2->beSigned(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (form2->getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (form2->getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		form2->execute(middle);
@@ -57,8 +55,7 @@ int main(void)
 		form3->beSigned(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (form3->getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (form3->getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		form3->execute(lower);
@@ -68,12 +65,12 @@ int main(void)
 		middle.gradeIncrement();
 		lower.gradeIncrement();
 		std::cout << "++++++++++++++++++++" << std::endl;
+
 		//middle
 		form2->beSigned(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (form2->getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (form2->getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		form2->execute(middle);
@@ -83,8 +80,7 @@ int main(void)
 		form3->beSigned(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (form3->getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (form3->getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		form3->execute(lower);
@@ -97,7 +93,7 @@ int main(void)
 
 	{
 		Intern	masa;
-		std::cout << "RobotomyRequest" << std::endl;
+		std::cout << "RobotomyRequest" << std::endl << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		Bureaucrat				highest("masahito arai", 1);
@@ -122,8 +118,7 @@ int main(void)
 		form1->beSigned(highest);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (form1->getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (form1->getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		form1->execute(highest);
@@ -133,8 +128,7 @@ int main(void)
 		form2->beSigned(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (form2->getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (form2->getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		form2->execute(middle);
@@ -144,8 +138,7 @@ int main(void)
 		form3->beSigned(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (form3->getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (form3->getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		form3->execute(lower);
@@ -160,8 +153,7 @@ int main(void)
 		form2->beSigned(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (form2->getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (form2->getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		form2->execute(middle);
@@ -171,8 +163,7 @@ int main(void)
 		form3->beSigned(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (form3->getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (form3->getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		form3->execute(lower);
@@ -184,7 +175,7 @@ int main(void)
 
 	{
 		Intern masa;
-		std::cout << "PresidentialPardonFrom" << std::endl;
+		std::cout << "PresidentialPardonFrom" << std::endl << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 	
 		Bureaucrat				highest("masahito arai", 1);
@@ -209,8 +200,7 @@ int main(void)
 		form1->beSigned(highest);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (form1->getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (form1->getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		form1->execute(highest);
@@ -220,8 +210,7 @@ int main(void)
 		form2->beSigned(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (form2->getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (form2->getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		form2->execute(middle);
@@ -231,8 +220,7 @@ int main(void)
 		form3->beSigned(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (form3->getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (form3->getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		form3->execute(lower);
@@ -247,8 +235,7 @@ int main(void)
 		form2->beSigned(middle);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (form2->getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (form2->getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		form2->execute(middle);
@@ -258,8 +245,7 @@ int main(void)
 		form3->beSigned(lower);
 		std::cout << "++++++++++++++++++++" << std::endl;
 
-		if (form3->getIsSigned()) std::cout << "Yes" << std::endl;
-		else	std::cout << "No" << std::endl;
+		std::cout << (form3->getIsSigned() ? "Yes" : "No") << std::endl;
 		std::cout << "++++++++++++++++++++" << std::endl;
 
 		form3->execute(lower);
