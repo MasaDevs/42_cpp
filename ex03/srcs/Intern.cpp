@@ -55,7 +55,7 @@ AForm	*Intern::makeForm(std::string const &form_name, std::string const &target)
 			break;
 		default:
 			std::cout << "form name: " << form_name << " doesn't match this Intern." << std::endl;
-			return (form)
+			return (form);
 	}
 	std::cout << "Intern creates" << form_name  << ". "<< std::endl;
 	return (form);
