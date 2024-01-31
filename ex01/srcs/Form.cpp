@@ -67,7 +67,7 @@ bool	Form::getIsSigned(void) const
 
 bool	Form::getIsValid(void) const
 {
-	return (this->issigned_);
+	return (this->isvalid_);
 }
 
 void	Form::setIsSigned(bool issigned)

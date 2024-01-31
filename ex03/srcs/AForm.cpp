@@ -94,7 +94,7 @@ void	AForm::beSigned(Bureaucrat const &bureau)
 
 bool	AForm::getIsValid(void) const
 {
-	return (this->issigned_);
+	return (this->isvalid_);
 }
 
 void	AForm::checkExecuteGrade(Bureaucrat const &bureau)
