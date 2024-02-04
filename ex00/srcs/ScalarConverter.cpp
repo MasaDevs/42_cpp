@@ -39,8 +39,8 @@ void	ScalarConverter::convertType(T scalar_target)
 {
 	std::cout << "char: " << (isPrintable(scalar_target) ? std::string(1, scalar_target) : "No displayable") << std::endl;
 	std::cout << "int: " << static_cast<int>(scalar_target) << std::endl;
-	std::cout << "float: " << static_cast<float>(scalar_target) << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(scalar_target) << std::endl;
+	std::cout << "float: " << static_cast<float>(scalar_target) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(scalar_target) << ".0"<< std::endl;
 }
 
 void	ScalarConverter::convertType(float scalar_target)
@@ -55,8 +55,17 @@ void	ScalarConverter::convertType(float scalar_target)
 		std::cout << "char: " << (isPrintable(scalar_target) ? std::string(1, scalar_target) : "No displayable") << std::endl;
 		std::cout << "int: " << static_cast<int>(scalar_target) << std::endl;
 	}
-	std::cout << "float: " << static_cast<float>(scalar_target) << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(scalar_target) << std::endl;
+	if (std::floor(scalar_target) == scalar_target)
+	{
+		std::cout << "float: " << static_cast<float>(scalar_target) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(scalar_target) << ".0"<< std::endl;
+	}
+	else
+	{
+		std::cout << "float: " << static_cast<float>(scalar_target) << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(scalar_target) << std::endl;
+	}
+
 }
 
 void	ScalarConverter::convertType(double scalar_target)
@@ -71,8 +80,16 @@ void	ScalarConverter::convertType(double scalar_target)
 		std::cout << "char: " << (isPrintable(scalar_target) ? std::string(1, scalar_target) : "No displayable") << std::endl;
 		std::cout << "int: " << static_cast<int>(scalar_target) << std::endl;
 	}
-	std::cout << "float: " << static_cast<float>(scalar_target) << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(scalar_target) << std::endl;
+	if (std::floor(scalar_target) == scalar_target)
+	{
+		std::cout << "float: " << static_cast<float>(scalar_target) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(scalar_target) << ".0" << std::endl;
+	}
+	else
+	{
+		std::cout << "float: " << static_cast<float>(scalar_target) << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(scalar_target) << std::endl;
+	}
 }
 
 

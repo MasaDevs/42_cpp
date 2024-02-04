@@ -3,7 +3,7 @@ CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra -fsanitize=address
 INCLUDES	=	-I ./includes
 VERSION		=	-std=c++98
-SRCS		=	${shell find ${SRCSDIR} -name "*.cpp" -type f}
+SRCS		=	${wildcard ${SRCSDIR}/*.cpp}
 OBJS		=	${subst ${SRCSDIR}, ${OBJSDIR}, ${SRCS:.cpp=.o}}
 SRCSDIR		=	srcs
 OBJSDIR		=	objs

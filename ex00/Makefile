@@ -1,9 +1,9 @@
 NAME		=	convert
-CXX		=	c++
+CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra -g -fsanitize=address
 INCLUDES	=	-I ./includes
-VERSION		=	-std=c++11
-SRCS		=	${shell find ${SRCSDIR} -name "*.cpp" -type f}
+VERSION		=	-std=c++98
+SRCS		=	${wildcard ${SRCSDIR}/*.cpp}
 OBJS		=	${subst ${SRCSDIR}, ${OBJSDIR}, ${SRCS:.cpp=.o}}
 SRCSDIR		=	srcs
 OBJSDIR		=	objs
