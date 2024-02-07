@@ -12,6 +12,7 @@ class	Span
 		Span(unsigned int N);
 		~Span();
 		void		addNumber(int num);
+		void		addManyNumbers(int num, int size);
 		long long	shortestSpan();
 		long long	longestSpan();
 	private:
