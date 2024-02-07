@@ -8,6 +8,8 @@ SRCSDIR		=	srcs
 OBJSDIR		=	objs
 OBJS		=	${subst ${SRCSDIR}, ${OBJSDIR}, ${SRCS:.cpp=.o}}
 
+all: ${NAME}
+
 ${NAME}: ${OBJS}
 	${CXX} ${CXXFLAGS} ${VERSION} ${OBJS} -o ${NAME}
 
@@ -20,7 +22,7 @@ clean:
 fclean: clean
 	rm -f ${NAME}
 
-re: fclean ${NAME}
+re: fclean all
 
-.PHONY: clean fclean re
+.PHONY: clean fclean re all
 

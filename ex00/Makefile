@@ -3,10 +3,12 @@ CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 VERSION		=	-std=c++98
 INCLUDE		=	-I ./includes/
-SRCS		=	${shell find ${SRCSDIR} -name "*.cpp"}
+SRCS		=	${wildcard ${SRCSDIR}/*.cpp}
 SRCSDIR		=	srcs
 OBJSDIR		=	objs
 OBJS		=	${subst ${SRCSDIR}, ${OBJSDIR}, ${SRCS:.cpp=.o}}
+
+all: ${NAME}
 
 ${NAME}: ${OBJS}
 	${CXX} ${CXXFLAGS} ${VERSION} ${OBJS} -o ${NAME}
@@ -20,7 +22,7 @@ clean:
 fclean: clean
 	rm -f ${NAME}
 
-re: fclean ${NAME}
+re: fclean all
 
-.PHONY: clean fclean re
+.PHONY: clean fclean re all
 
