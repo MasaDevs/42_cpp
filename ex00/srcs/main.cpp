@@ -16,11 +16,12 @@ int main()
 	}
 	{
 		std::vector<int>::iterator iter = easyfind(V, -10);
-		std::cout << *iter << std::endl;
+		if (iter != V.end())
+			std::cout << *iter << std::endl;
 	}
 	{
 		std::vector<int>::iterator iter = easyfind(V, 101);
-		std::cout << *iter << std::endl;
+		if (iter != V.end())
+			std::cout << *iter << std::endl;
 	}
-
 }

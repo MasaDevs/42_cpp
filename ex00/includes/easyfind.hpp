@@ -3,7 +3,7 @@
 #include <iostream>
 #include <iterator>
 
-template <class T >
+template <class T>
 typename T::iterator	easyfind(T &container, int index)
 {
 	for (typename T::iterator iter = container.begin(); iter != container.end(); iter++)
@@ -13,4 +13,3 @@ typename T::iterator	easyfind(T &container, int index)
 }
 
 #endif
-
