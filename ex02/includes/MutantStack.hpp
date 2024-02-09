@@ -2,33 +2,20 @@
 #define MUTANTSTACK_HPP
 
 #include <iostream>
-#include <deque>
+#include <stack>
 
-template <typename T>
-class	MutantStack : public std::deque<T>
+template <class T>
+class	MutantStack : public std::stack<T>
 {
 	public:
-		T		top();
-		void	push(T num);
-		void	pop();
+		typedef typename std::stack<T>::container_type::iterator iterator;
+		MutantStack(){};
+		MutantStack(MutantStack const &mstack){*this = mstack;};
+		~MutantStack(){};
+		MutantStack &operator=(MutantStack const &mstack) {if (this != &mstack){this->c = mstack.c;} return (*this);};
+		iterator	begin(){return (this->c.begin());}
+		iterator	end(){return (this->c.end());}
+		
 };
-
-template <typename T>
-T		MutantStack<T>::top()
-{
-	return ((*this)[0]);
-}
-
-template <typename T>
-void	MutantStack<T>::push(T num)
-{
-	this->push_front(num);
-}
-
-template <typename T>
-void	MutantStack<T>::pop()
-{
-	this->pop_front();
-}
 
 #endif
