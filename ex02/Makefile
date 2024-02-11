@@ -1,7 +1,9 @@
 NAME		=	PmergeMe
-CXX			=	c++
-CXXFLAGS	=	-Wall -Wextra -Werror -g -fsanitize=address
-SRCS		=	${shell find ${SRCSDIR} -name "*.cpp" -type f}
+CXX		=	c++
+CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address,undefined -pedantic-errors
+INCLUDE		=	-I ./includes
+SRCS		=	${wildcard ${SRCSDIR}/*.cpp}
+VERSION		=	-std=c++98
 SRCSDIR		=	srcs
 OBJSDIR		=	objs
 OBJS		=	${subst ${SRCSDIR}, ${OBJSDIR}, ${SRCS:.cpp=.o}}
@@ -12,7 +14,7 @@ ${NAME}: ${OBJS}
 
 ${OBJSDIR}/%.o: ${SRCSDIR}/%.cpp
 	mkdir -p ${dir ${OBJS}}
-	${CXX} ${CXXFLAGS} ${INCLUDE} ${VERSION} -c $< -o $@
+	${CXX} ${CXXFLAGS} ${VERSION} ${INCLUDE} -c $< -o $@
 
 clean:
 	rm -rf ${OBJSDIR}
