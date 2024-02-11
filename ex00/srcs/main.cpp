@@ -1,5 +1,4 @@
-#include "Database.hpp"
-#include "DateFormat.hpp"
+#include "BitcoinExchange.hpp"
 #include <iostream>
 #include <limits>
 #include <string>
@@ -9,7 +8,7 @@
 
 int	main(int argc, char *argv[])
 {
-	Database	database("data.csv");
+	BitcoinExchange database("data.csv");
 	
 	if (argc != 2)
 	{
@@ -33,17 +32,18 @@ int	main(int argc, char *argv[])
 			std::cerr << "input: the format is bad !" << std::endl;
 			continue ;
 		}
-		std::string	date = line.substr(0,line.find(" |"));
-		std::string	s_data = line.substr(line.find("|") + 1);
 		try
 		{
-			if (!DateFormat::checkDateFormat(date))
+			std::string	date = line.substr(0,line.find(" |"));
+			std::string	s_data = line.substr(line.find("|") + 1);
+			double input_data;
+			if (!BitcoinExchange::checkDateFormat(date))
 				throw std::invalid_argument("input: bad date format");
-			double	input_data = std::stof(s_data);
+			BitcoinExchange::stringConverter(s_data, input_data);
 			if (input_data < 0)
 				throw std::invalid_argument("input: not a positive number.");
-			else if (static_cast<double>(INT_MAX) < input_data)
-				throw std::invalid_argument("input: too Large Number !");
+			else if (1000 < input_data)
+				throw std::invalid_argument("input: too Large Number.");
 			double	db_data = database.searchData(date);
 			std::cout << date << " =>  " << input_data << " = " << db_data * input_data << std::endl;
 		}
