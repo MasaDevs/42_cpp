@@ -1,15 +1,16 @@
 NAME		=	RPN
-CXX			=	c++
-CXXFLAGS	=	-Wall -Wextra -Werror
+CXX		=	c++
+CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address,undefined -pedantic-errors
 INCLUDE		=	-I ./includes
-SRCS		=	${shell find ${SRCSDIR} -name "*.cpp" -type f}
+SRCS		=	${wildcard ${SRCSDIR}/*.cpp}
+VERSION		=	-std=c++98
 SRCSDIR		=	srcs
 OBJSDIR		=	objs
 OBJS		=	${subst ${SRCSDIR}, ${OBJSDIR}, ${SRCS:.cpp=.o}}
 
 all: ${NAME}
 ${NAME}: ${OBJS}
-	${CXX} ${CXXFLAGS} ${OBJS} -o ${NAME}
+	${CXX} ${CXXFLAGS} ${VERSION} ${OBJS} -o ${NAME}
 
 ${OBJSDIR}/%.o: ${SRCSDIR}/%.cpp
 	mkdir -p ${dir ${OBJS}}

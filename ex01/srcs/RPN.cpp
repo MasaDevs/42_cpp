@@ -1,5 +1,20 @@
-#include "rpn.hpp"
+#include "RPN.hpp"
 
+RPN::RPN(){}
+RPN::RPN(RPN const &rpn)
+{
+	*this = rpn;
+}
+RPN &RPN::operator=(RPN const &rpn)
+{
+	if (this != &rpn)
+	{
+		this->stk = rpn.stk;
+	}
+	return (*this);
+}
+
+RPN::~RPN(){}
 int	RPN::perse(std::string const &str)
 {
 	int		ans;
@@ -42,7 +57,11 @@ void	RPN::calc(int ope)
 	else if (ope == mul)
 		first *= second;
 	else if (ope == dev)
+	{
+		if (second == 0)
+			throw std::runtime_error("division by zero");
 		first /= second;
+	}
 	else
 		throw	std::logic_error("This grammer is invalid.");
 	stk.push(first);

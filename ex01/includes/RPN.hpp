@@ -16,7 +16,11 @@ enum Operator
 class	RPN
 {
 	public:
-		int		perse(std::string const &);
+		RPN();
+		RPN(RPN const &rpn);
+		RPN &operator=(RPN const &rpn);
+		~RPN();
+		int	perse(std::string const &);
 		void	checkFormat(std::string const &);
 		void	calc(int ope);
 		void	push(int num);
