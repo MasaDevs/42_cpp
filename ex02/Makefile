@@ -1,5 +1,5 @@
 NAME		=	MutantStack
-CXX		=	c++
+CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 VERSION		=	-std=c++98
 INCLUDE		=	-I ./includes/

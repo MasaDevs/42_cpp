@@ -1,42 +1,46 @@
 #include "Span.hpp"
+#include <vector>
 
 int main()
 {
+	std::cout << Span::calc_distance(1, 2) << std::endl;
+	std::cout << Span::calc_distance(2, 1) << std::endl;
+	try
 	{
-		std::cout << "---------Subject Test------------" << std::endl;
-		Span sp = Span(5);
-		sp.addNumber(6);
-		sp.addNumber(3);
-		sp.addNumber(17);
-		sp.addNumber(9);
-		sp.addNumber(11);
-		std::cout << "shortest span: " << sp.shortestSpan() << std::endl;
-		std::cout << "longest span: " << sp.longestSpan() << std::endl;
+		std::cout << "--------- Span Range Check ----------" << std::endl;
+		Span span(6);
+		span.addNumber(INT_MAX);
+		span.addNumber(INT_MIN);
+		std::cout << "shortest: " << span.shortestSpan() << std::endl;
+		std::cout << "longest: " << span.longestSpan() << std::endl;
+		span.addNumber(0);
+		std::cout << "shortest: " << span.shortestSpan() << std::endl;
+		std::cout << "longest: " << span.longestSpan() << std::endl;
+		span.addNumber(2);
+		span.addNumber(2);
+		std::cout << "shortest: " << span.shortestSpan() << std::endl;
+		std::cout << "longest: " << span.longestSpan() << std::endl;
+		span.addNumber(2);
+	}
+	catch (std::exception &e)
+	{
+			std::cerr << "Error: "<< e.what() << std::endl;
 	}
 
+	try
 	{
-		std::cout << "---------Span Test------------" << std::endl;
-		try
-		{
-			Span sp = Span(5);
-			std::cout << sp.shortestSpan() << std::endl;
-			sp.addNumber(2);
-			std::cout << sp.longestSpan() << std::endl;
-		}
-		catch (std::exception &e)
-		{
-			std::cerr << "Error: " << e.what() << std::endl;
-		}
+		const int size = 10000;
+		Span span(size);
+		std::vector<int>	v(size);
+		for (int i = 0; i < size; i++)
+			v[i] = i;
+		span.addNumbers(v.begin(), v.end());
+		std::cout << "shortest: " << span.shortestSpan() << std::endl;
+		std::cout << "longest: " << span.longestSpan() << std::endl;
 	}
-
+	catch (std::exception &e)
 	{
-		std::cout << "---------Range Test------------" << std::endl;
-		Span sp(10000);
-		for (int i = 0; i < 5000; i++)
-			sp.addNumber(i);
-		sp.addManyNumbers(9999, 5000);
-		std::cout << "shortest span: " <<  sp.shortestSpan() << std::endl;
-		std::cout << "longest span: " << sp.longestSpan() << std::endl;
+			std::cerr << "Error: "<< e.what() << std::endl;
 	}
-	std::cout << "this program ends successfully !" << std::endl;
 }
+

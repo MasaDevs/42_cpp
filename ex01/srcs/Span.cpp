@@ -1,6 +1,6 @@
 #include "Span.hpp"
 
-Span::Span(unsigned int N) : N(N)
+Span::Span(unsigned int n) : N(n)
 {
 	std::cout << "Default Constructor" << std::endl;
 	return ;
@@ -12,45 +12,59 @@ Span::~Span()
 	return ;
 }
 
+Span::Span(Span const &span)
+{
+	std::cout << "Copy Constructor" << std::endl;
+	*this = span;
+}
+
+Span	&Span::operator=(Span const &span)
+{
+	if (this != &span)
+	{
+		this->s = span.s;
+		this->N = span.N;
+	}
+	return (*this);
+}
+
 void	Span::addNumber(int num)
 {
-	if (this->N < V.size())
-		throw std::out_of_range("exceed the size of this vector !");
-	this->V.push_back(num);
-	return ;
+	if (N < s.size() + 1)
+		throw std::range_error("Span is full.");
+	s.insert(num);
 }
 
-void	Span::addManyNumbers(int num, int size)
+unsigned int Span::calc_distance(int a, int b)
 {
-	if (this->N < V.size() + size)
-		throw std::out_of_range("exceed the size of this vector !");
-
-	std::vector<int>	P(size, num);
-	this->V.insert(this->V.end(), P.begin(), P.end());
-	return ;	
+	if (b < a)
+		return (calc_distance(b, a));
+	if (a < 0 && b < 0)
+		return (static_cast<unsigned int>(std::abs(b)) - static_cast<unsigned int>(std::abs(a)));
+	else if (a < 0)
+		return (static_cast<unsigned int>(std::abs(a)) + static_cast<unsigned int>(b));
+	else if (b < 0)
+		return (static_cast<unsigned int>(std::abs(b)) + static_cast<unsigned int>(a));
+	return (static_cast<unsigned int>(b - a));
 }
 
-long long	Span::shortestSpan()
+unsigned int	Span::shortestSpan()	
 {
-	if (this->V.size() < 2)
-		throw std::out_of_range("vecotor size is too small !");
+	if (s.size() < 2)	
+		throw std::range_error("shortestSpan: No span found.");
 
-	long long	span = LLONG_MAX;
-	std::vector<int> P = this->V;
-	std::sort(P.begin(), P.end());
-	for (size_t i = 0; i + 1 < P.size(); i++)
-		span = std::min(span, static_cast<long long>(std::abs(P[i + 1] - P[i])));
-	return (span);
+	std::deque<unsigned int> diff(s.size());
+	std::adjacent_difference(s.begin(), s.end(), diff.begin(), calc_distance);
+
+	diff.pop_front();
+	std::sort(diff.begin(), diff.end());
+
+	return (*(diff.begin()));
 }
 
-long long	Span::longestSpan()
+unsigned int	Span::longestSpan()	
 {
-	long long	span = LLONG_MIN;
-	std::vector<int> P = this->V;
-	if (this->V.size() < 2)
-		throw std::out_of_range("vecotor size is too small !");
-
-	std::sort(P.begin(), P.end());
-	span = std::max(span, static_cast<long long>(P[P.size() - 1] - P[0]));
-	return (span);
+	if (s.size() < 2)
+		throw std::range_error("longestSpan: No span found.");
+	return (this->calc_distance(*(s.begin()), *(s.rbegin())));
 }

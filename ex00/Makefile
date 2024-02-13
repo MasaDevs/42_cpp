@@ -1,6 +1,6 @@
 NAME		=	EasyFind
-CXX		=	c++
-CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
+CXX			=	c++
+CXXFLAGS	=	-Wall -Wextra -Werror -fsanitize=address,integer,undefined -pedantic-errors
 VERSION		=	-std=c++98
 INCLUDE		=	-I ./includes/
 SRCS		=	${wildcard ${SRCSDIR}/*.cpp}

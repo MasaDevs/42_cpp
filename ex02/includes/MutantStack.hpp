@@ -15,7 +15,6 @@ class	MutantStack : public std::stack<T>
 		MutantStack &operator=(MutantStack const &mstack) {if (this != &mstack){this->c = mstack.c;} return (*this);};
 		iterator	begin(){return (this->c.begin());}
 		iterator	end(){return (this->c.end());}
-		
 };
 
 #endif
