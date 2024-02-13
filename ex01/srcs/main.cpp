@@ -3,8 +3,6 @@
 
 int main()
 {
-	std::cout << Span::calc_distance(1, 2) << std::endl;
-	std::cout << Span::calc_distance(2, 1) << std::endl;
 	try
 	{
 		std::cout << "--------- Span Range Check ----------" << std::endl;

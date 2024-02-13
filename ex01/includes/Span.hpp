@@ -16,7 +16,6 @@ class	Span
 		Span	&operator=(Span const &span);
 		~Span();
 		void			addNumber(int num);
-		//void			addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 		template <typename Iterator>
 		void	addNumbers(Iterator begin, Iterator end)
 		{
