@@ -15,6 +15,7 @@ class	Span
 		Span(Span const &span);
 		Span	&operator=(Span const &span);
 		~Span();
+		unsigned int	size();
 		void			addNumber(int num);
 		template <typename Iterator>
 		void	addNumbers(Iterator begin, Iterator end)

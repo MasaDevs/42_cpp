@@ -28,6 +28,11 @@ Span	&Span::operator=(Span const &span)
 	return (*this);
 }
 
+unsigned int	Span::size()
+{
+	return (N);
+}
+
 void	Span::addNumber(int num)
 {
 	if (N < s.size() + 1)
@@ -43,8 +48,6 @@ unsigned int Span::calc_distance(int a, int b)
 		return (static_cast<unsigned int>(std::abs(b)) - static_cast<unsigned int>(std::abs(a)));
 	else if (a < 0)
 		return (static_cast<unsigned int>(std::abs(a)) + static_cast<unsigned int>(b));
-	else if (b < 0)
-		return (static_cast<unsigned int>(std::abs(b)) + static_cast<unsigned int>(a));
 	return (static_cast<unsigned int>(b - a));
 }
 
