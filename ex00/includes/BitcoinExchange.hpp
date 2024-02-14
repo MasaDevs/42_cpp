@@ -19,7 +19,11 @@ class	BitcoinExchange
 		static bool	checkDateFormat(std::string const &);
 		static bool	isValidDay(int year, int month, int day);
 		template <typename T>
-		static void	stringConverter(std::string const &str, T &num);
+		static void	stringConverter(std::string const &str, T &num) {
+			std::stringstream ss;
+			ss << str;
+			ss >> num;
+		}
 	private:
 		std::map<std::string, double> database;
 };

@@ -38,7 +38,7 @@ int	main(int argc, char *argv[])
 			std::string	s_data = line.substr(line.find("|") + 1);
 			double input_data;
 			if (!BitcoinExchange::checkDateFormat(date))
-				throw std::invalid_argument("input: bad date format");
+				throw std::invalid_argument("input: bad date format: " + date);
 			BitcoinExchange::stringConverter(s_data, input_data);
 			if (input_data < 0)
 				throw std::invalid_argument("input: not a positive number.");
