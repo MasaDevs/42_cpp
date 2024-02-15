@@ -25,6 +25,12 @@ int	main(int argc, char *argv[])
 
 	std::string		line;
 	std::getline(ifs_input, line);
+	if (line != "date | value")
+	{
+		std::cerr << "the top of input file must be \"date | value\"" << std::endl;
+		return (1);
+	}
+
 	while(std::getline(ifs_input, line))
 	{
 		if (line.find(" |") == std::string::npos)

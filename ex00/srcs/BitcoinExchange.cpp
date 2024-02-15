@@ -55,6 +55,8 @@ double	BitcoinExchange::searchData(std::string const &date) {
 		throw std::runtime_error("database: searchData: BitcoinExchange doesn't have any data. ");
 		
 	std::map<std::string, double>::iterator iter = this->database.lower_bound(date);
+	if (iter == database.end())
+		return (this->database.rbegin()->second);
 	if (date < database.begin()->first)
 		throw std::invalid_argument("database: search: too old date !");
 	return (iter->first == date ? iter->second : (--iter)->second);
